@@ -10,9 +10,12 @@
 angular.module('testApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+      {'title': 'HTML5 Boilerplate',
+       'content': 'HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.'},
+      {'title': 'AngularJS',
+       'content': 'AngularJS is a toolset for building the framework most suited to your application development.'},
+      {'title': 'Karma',
+       'content': 'Spectacular Test Runner for JavaScript.'}
     ];
 
     var ll = [
