@@ -14,4 +14,13 @@ angular.module('testApp')
       'AngularJS',
       'Karma'
     ];
+
+    var ll = [
+      {'id': 1, 'name': 'aaa'},
+      {'id': 2, 'name': 'aaa'},
+      {'id': 3, 'name': 'bbb'},
+      {'id': 4, 'name': 'bbb'}
+    ];
+    var aList = _.groupBy(ll, 'name');
+    console.log(aList);
   });
