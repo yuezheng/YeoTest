@@ -65,9 +65,21 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: '200.21.3.2',
-        livereload: 35729
+        hostname: '0.0.0.0',
+        livereload: 35729,
+        middleware: function(connect, options) {
+          return [
+            function(req, res, next) {
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+              res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+              // don't just call next() return it
+              return next();
+            },
+            // add other middlewares here 
+            connect.static(require('path').resolve('.'))
+          ];
+    }
       },
       livereload: {
         options: {
