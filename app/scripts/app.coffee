@@ -15,6 +15,8 @@ angular
     'ngRoute'
   ])
   .config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
+    $httpProvider.defaults.useXDomain = true
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $routeProvider
       .when '/',
         templateUrl: 'views/main.html'
@@ -27,5 +29,3 @@ angular
         controller: 'LoginCtrl'
       .otherwise
         redirectTo: '/'
-    $httpProvider.defaults.useXDomain = true
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
