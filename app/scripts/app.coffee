@@ -14,7 +14,7 @@ angular
     'ngResource',
     'ngRoute'
   ])
-  .config ($routeProvider) ->
+  .config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
     $routeProvider
       .when '/',
         templateUrl: 'views/main.html'
@@ -22,6 +22,10 @@ angular
       .when '/about',
         templateUrl: 'views/about.html'
         controller: 'AboutCtrl'
+      .when '/login',
+        templateUrl: 'views/login.html'
+        controller: 'LoginCtrl'
       .otherwise
         redirectTo: '/'
-
+    $httpProvider.defaults.useXDomain = true
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
