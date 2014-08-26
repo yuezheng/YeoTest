@@ -18,7 +18,7 @@ angular.module('testApp')
               method: 'POST'
               headers:
                 'Authorization': 'Basic dGVzdDp0ZXN0'
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
               data:
                 'username': $scope.username
                 'password': $scope.password
