@@ -2,19 +2,17 @@
 
 ###*
  # @ngdoc function
- # @name testApp.controller:MainCtrl
+ # @name Cross.controller:LoginCtrl
  # @description
- # # MainCtrl
- # Controller of the testApp
+ # # LoginCtrl
+ # Controller of the Cross
 ###
-angular.module('testApp')
+angular.module('Cross')
   .controller 'LoginCtrl', ($scope, $http) ->
     $scope.sendLoginRequest = () ->
       if $scope.username and $scope.password
-          console.log $scope.username
-          console.log $scope.password
           authData =
-              url: 'http://200.21.3.2:3303/'
+              url: 'http://200.21.3.2:4000/login'
               method: 'POST'
               headers:
                 'Authorization': 'Basic dGVzdDp0ZXN0'
@@ -26,6 +24,6 @@ angular.module('testApp')
               crossDomain: true
           $http authData
             .success (data, status, headers) ->
-                console.log(data)
+                console.log data
       else
-          alert "Input username and password"
+          ervice_cataloglert "Input username and password"

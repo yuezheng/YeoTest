@@ -2,30 +2,43 @@
 
 ###*
  # @ngdoc overview
- # @name testApp
+ # @name Cross
  # @description
- # # testApp
+ # # Cross
  #
  # Main module of the application.
 ###
-angular
-  .module('testApp', [
+
+app = angular.module('Cross', [
     'ngAnimate',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'loginCheck'
   ])
-  .config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
-    $httpProvider.defaults.useXDomain = true
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $routeProvider
-      .when '/',
-        templateUrl: 'views/main.html'
-        controller: 'MainCtrl'
-      .when '/about',
-        templateUrl: 'views/about.html'
-        controller: 'AboutCtrl'
-      .when '/login',
-        templateUrl: 'views/login.html'
-        controller: 'LoginCtrl'
-      .otherwise
-        redirectTo: '/'
+
+app.config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
+  $httpProvider.defaults.useXDomain = true
+  $httpProvider.defaults.withCredentials = true
+  delete $httpProvider.defaults.headers.common['X-Requested-With']
+  $routeProvider
+    .when '/',
+      templateUrl: 'views/main.html'
+      controller: 'MainCtrl'
+    .when '/login',
+      templateUrl: 'views/login.html'
+      controller: 'LoginCtrl'
+    .otherwise
+      redirectTo: '/'
+  return
+
+app.run ($rootScope, $location, $logincheck, $http) ->
+  $rootScope.$on '$routeChangeStart', (event, next, current) ->
+    if not $logincheck($http)
+      event.preventDefault()
+      $location.path '/login'
+    else
+      if next.originalPath == '/login'
+        $location.path '/'
+      else
+        next
+  return
