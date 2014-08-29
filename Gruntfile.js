@@ -41,8 +41,12 @@ module.exports = function (grunt) {
         files: ['test/spec/**/*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:test', 'karma']
       },
+      recess: {
+        files: ['<%= yeoman.app %>/styles/**/*.less'],
+        tasks: ['newer:recess']
+      },
       styles: {
-        files: ['<%= yeoman.app %>/styles/**/*.css'],
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
@@ -76,7 +80,7 @@ module.exports = function (grunt) {
               // don't just call next() return it
               return next();
             },
-            // add other middlewares here 
+            // add other middlewares here
             connect.static(require('path').resolve('.'))
           ];
     }
@@ -130,6 +134,21 @@ module.exports = function (grunt) {
         src: [
           'Gruntfile.js'
         ]
+      }
+    },
+
+    recess: {
+      options: {
+        compile: true
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: '**/*.less',
+          dest: '<%= yeoman.app %>/styles',
+          ext: '.css'
+        }]
       }
     },
 
@@ -193,7 +212,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'test/spec',
-          src: '{,*/}*.coffee',
+          src: '**/*.coffee',
           dest: '.tmp/spec',
           ext: '.js'
         }]
@@ -366,6 +385,7 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
+        'recess',
         'coffee:dist',
         'copy:styles'
       ],
@@ -374,6 +394,7 @@ module.exports = function (grunt) {
         'copy:styles'
       ],
       dist: [
+        'recess',
         'coffee',
         'copy:styles',
         'imagemin',

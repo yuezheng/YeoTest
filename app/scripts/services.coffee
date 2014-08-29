@@ -11,7 +11,7 @@ angular.module('loginCheck', [])
   .factory '$logincheck' , ($http) ->
     return ($http) ->
       params =
-        url: 'http://200.21.3.2:4000/'
+        url: window.crossConfig.backendServer
         method: 'GET'
         headers:
           'Authorization': 'Basic dGVzdDp0ZXN0'

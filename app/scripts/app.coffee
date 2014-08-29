@@ -13,32 +13,43 @@ app = angular.module('Cross', [
     'ngAnimate',
     'ngResource',
     'ngRoute',
+    'ui.router',
     'loginCheck'
   ])
 
-app.config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
+app.config ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) ->
   $httpProvider.defaults.useXDomain = true
   $httpProvider.defaults.withCredentials = true
   delete $httpProvider.defaults.headers.common['X-Requested-With']
-  $routeProvider
-    .when '/',
+  $urlRouterProvider.otherwise("home")
+  $stateProvider
+    .state 'home',
+      url: '/home'
       templateUrl: 'views/main.html'
       controller: 'MainCtrl'
-    .when '/login',
+    .state 'home.overview',
+      url: '/overview'
+      templateUrl: 'views/overview/overview.html'
+      controller: 'OverviewCtrl'
+    .state 'Users',
+      url: '/users'
+      templateUrl: 'views/UserManagement/users.html'
+      controller: 'UserCtrl'
+    .state 'login',
+      url: '/login'
       templateUrl: 'views/login.html'
       controller: 'LoginCtrl'
-    .otherwise
-      redirectTo: '/'
+
   return
 
-app.run ($rootScope, $location, $logincheck, $http) ->
-  $rootScope.$on '$routeChangeStart', (event, next, current) ->
+app.run ($rootScope, $state, $logincheck, $http) ->
+  $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
     if not $logincheck($http)
       event.preventDefault()
-      $location.path '/login'
+      $state.go 'home'
     else
-      if next.originalPath == '/login'
-        $location.path '/'
-      else
-        next
+      if toState.url == '/login'
+        event.preventDefault()
+        $state.go 'home.overview'
+      return
   return

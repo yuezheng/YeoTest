@@ -1,6 +1,22 @@
 <html>
-    <form method='post' action='' ng-submit='sendLoginRequest()' name='login'>
-      <input type='text' ng-model='username'>
-      <input type='password' ng-model='password'>
-      <input id='login_submit' type='submit' value='Login' />
+  <div ui-view>
+  </div>
+  <div class="container">
+  <div class="login-container">
+    <div class='logo-area'>
+
+    </div>
+    <form method='post' action='' ng-submit='sendLoginRequest()' name='login' class='form-horizontal'>
+     <fieldset>
+     <div class="control-group">
+      <input type='text' ng-model='username' placeholder="UserName" class='span3'>
+      <br>
+      <input type='password' ng-model='password' placeholder="Password">
+      <br>
+      <button id='login_submit' type='submit' value='Login' class="btn btn-default">Login</button>
+      </fieldset>
+     </div>
+    </form>
+  </div>
+  </div>
 </html>

@@ -1,8 +1,16 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<h1>Ec-Cloud</h1>
+<div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" ui-sref="home">Overview</a>
+      <ul class="nav">
+        <li><a ui-sref="home.overview">Overview</a></li>
+        <li><a ui-sref="overview.info">System Info</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <div class="well" ui-view></div>        
+    </div>
+  </div>
