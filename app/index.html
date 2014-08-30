@@ -9,10 +9,14 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/top_bar.css">
+    <link rel="stylesheet" href="styles/left_bar.css">
+    <link rel="stylesheet" href="styles/instances.css">
     <!-- endbuild -->
   </head>
   <body ng-app="Cross">
@@ -21,7 +25,6 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <ng-include src="'views/common/_nav_top.html'"></ng-include>
     <div ui-view>
     </div>
 
@@ -62,6 +65,7 @@
     <script src="bower_components/highcharts/highcharts-more.js"></script>
     <script src="bower_components/highcharts/modules/exporting.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ng-grid/build/ng-grid.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -72,6 +76,8 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/overview/overview.js"></script>
+        <script src="scripts/controllers/user/user.js"></script>
+        <script src="scripts/controllers/instances/instances.js"></script>
         <!-- endbuild -->
 </body>
 </html>

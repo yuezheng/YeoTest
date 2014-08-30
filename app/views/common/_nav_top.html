@@ -1,4 +1,14 @@
 <!--
 The top bar. Display logo and info of user login.
 -->
-<h3>EC-Cloud</h3>
+<div id="top_bar">
+ <div id="top_logo"></div>
+ <div id="user_info" ng-controller='UserCtrl'>
+   <ul>
+       <li id="current_user">{{ username }}</li>
+     <li id="users_projects"></li>
+     <li id="message_box"></li>
+     <li id="logout" ng-click="logout()" >Logout</li>
+   </ul>
+ </div>
+</div>

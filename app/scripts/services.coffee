@@ -8,8 +8,8 @@
 ###
 
 angular.module('loginCheck', [])
-  .factory '$logincheck' , ($http) ->
-    return ($http) ->
+  .factory '$logincheck' , ($http, $state) ->
+    return ($http, $state, next) ->
       params =
         url: window.crossConfig.backendServer
         method: 'GET'
@@ -22,7 +22,8 @@ angular.module('loginCheck', [])
       console.log window.crossConfig.backendServer
       $http params
         .success (data, status, headers) ->
-          return true
+          event.preventDefault()
+          $state.go next
         .error (error, status) ->
-          if status is 401
-            return false
+          event.preventDefault()
+          $state.go 'login'

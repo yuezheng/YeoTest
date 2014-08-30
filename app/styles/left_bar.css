@@ -1,0 +1,14 @@
+/* Style of top nav bar */
+
+.navbar {
+  float: left;
+  width: 15%;
+  height: 100%;
+  min-width: 210px;
+  margin-bottom: 0;
+  background: #2c4a67;
+}
+
+#container {
+  float: left;
+}

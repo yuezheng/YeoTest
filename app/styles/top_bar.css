@@ -1,0 +1,26 @@
+/* Style of top nav bar */
+
+#top_bar {
+  height: 50px;
+  background: #323232;
+}
+
+#top_bar #top_logo {
+  float: left;
+  width: 15%;
+  height: 50px;
+  min-width: 210px;
+  background: url('../images/logo_login.png') no-repeat center;
+  background-color: #242424;
+}
+
+#top_bar #user_info {
+  float: right;
+}
+
+#top_bar #user_info ul li {
+  float: left;
+  margin: 0 5px;
+  color: white;
+  list-style: none;
+}

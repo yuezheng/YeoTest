@@ -1,0 +1,23 @@
+<div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" ui-sref="home">Overview</a>
+      <ul class="nav">
+        <li><a ui-sref="home.overview">Overview</a></li>
+        <li><a ui-sref="home.info">System Info</a></li>
+      </ul>
+      <a class="brand" >User Management</a>
+      <ul class="nav">
+        <li><a ui-sref="user.users">Users</a></li>
+        <li><a ui-sref="home.projects">Projects</a></li>
+      </ul>
+      <a class="brand" >Instances</a>
+      <ul class="nav">
+        <li><a ui-sref="home.instances">Instances</a></li>
+        <li><a ui-sref="home.floavors">Flavors</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="container">
+      <div ui-view></div>            
+</div>

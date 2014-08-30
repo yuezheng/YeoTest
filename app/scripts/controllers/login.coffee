@@ -8,7 +8,7 @@
  # Controller of the Cross
 ###
 angular.module('Cross')
-  .controller 'LoginCtrl', ($scope, $http) ->
+  .controller 'LoginCtrl', ($scope, $http, $state) ->
     $scope.sendLoginRequest = () ->
       if $scope.username and $scope.password
           authData =
@@ -25,5 +25,6 @@ angular.module('Cross')
           $http authData
             .success (data, status, headers) ->
                 console.log data
+                $state.go 'home.overview'
       else
           alert "Input username and password"
