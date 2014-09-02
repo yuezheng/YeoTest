@@ -1,5 +1,84 @@
 .gridStyle {
     border: 1px solid rgb(212,212,212);
-    width: 400px; 
+    width: 600px; 
     height: 300px
 }
+
+.ngHeaderContainer {
+  background: #E1F2FF;
+}
+
+.ngRow.odd {
+  background: #E1F2FF;
+}
+.ngRow.odd:hover {
+  background: #FFFFFF;
+}
+
+#detail-container {
+  height: 100px;
+  width: 100px;
+  background: red;
+}
+
+.box { color: white; text-align: center; height: 100px; font-size: 86px; }
+.on  { background-color: green; }
+.off { background-color: red; }
+
+
+.box-show-setup, .box-hide-setup {
+  -webkit-transition:all linear 0.3s;
+  -moz-transition:all linear 0.3s;
+  -ms-transition:all linear 0.3s;
+  -o-transition:all linear 0.3s;
+  transition:all linear 0.3s;
+}
+
+.box-show-setup { opacity:0; height: 0; }
+.box-show-setup.box-show-start { opacity:1; height: 100px; }
+
+.box-hide-setup { opacity:1; height: 0; }
+.box-hide-setup.box-hide-start { opacity:0; height: 100px; }
+
+.animate-enter, .animate-leave {
+transition: 500ms ease-in all;
+position: relative;
+display: block;
+} 
+.animate-enter.animate-enter-active, .animate-leave {
+left: 0;
+}
+.animate-leave.animate-leave-active, .animate-enter {
+left: 500px;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+ transition: 500ms ease-in all;
+position: relative;
+display: block;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  left:500px;
+}
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  left:0;
+}
+
+
+.my-show-hide-animation.ng-hide-add,
+.my-show-hide-animation.ng-hide-remove {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s ease-in all;
+
+  /* remember to add this */
+  display:block!important;
+  position: relative;
+}
+.my-show-hide-animation.ng-hide {
+  left: 500px;
+}
+

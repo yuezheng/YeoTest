@@ -1,5 +1,113 @@
 .gridStyle {
-  width: 400px;
+  width: 600px;
   height: 300px;
   border: 1px solid #d4d4d4;
+}
+
+.ngHeaderContainer {
+  background: #E1F2FF;
+}
+
+.ngRow.odd {
+  background: #E1F2FF;
+}
+
+.ngRow.odd:hover {
+  background: #FFFFFF;
+}
+
+#detail-container {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+
+.box {
+  height: 100px;
+  font-size: 86px;
+  color: white;
+  text-align: center;
+}
+
+.on {
+  background-color: green;
+}
+
+.off {
+  background-color: red;
+}
+
+.box-show-setup,
+.box-hide-setup {
+  -webkit-transition: all linear 0.3s;
+     -moz-transition: all linear 0.3s;
+      -ms-transition: all linear 0.3s;
+       -o-transition: all linear 0.3s;
+          transition: all linear 0.3s;
+}
+
+.box-show-setup {
+  height: 0;
+  opacity: 0;
+}
+
+.box-show-setup.box-show-start {
+  height: 100px;
+  opacity: 1;
+}
+
+.box-hide-setup {
+  height: 0;
+  opacity: 1;
+}
+
+.box-hide-setup.box-hide-start {
+  height: 100px;
+  opacity: 0;
+}
+
+.animate-enter,
+.animate-leave {
+  position: relative;
+  display: block;
+  transition: 500ms ease-in all;
+}
+
+.animate-enter.animate-enter-active,
+.animate-leave {
+  left: 0;
+}
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+  left: 500px;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+  position: relative;
+  display: block;
+  transition: 500ms ease-in all;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  left: 500px;
+}
+
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  left: 0;
+}
+
+.my-show-hide-animation.ng-hide-add,
+.my-show-hide-animation.ng-hide-remove {
+  position: relative;
+  display: block!important;
+  -webkit-transition: 0.5s linear all;
+          transition: 0.5s ease-in all;
+}
+
+.my-show-hide-animation.ng-hide {
+  left: 500px;
 }
