@@ -13,11 +13,6 @@ angular.module('loginCheck', [])
       params =
         url: window.crossConfig.backendServer
         method: 'GET'
-        headers:
-          'Authorization': 'Basic dGVzdDp0ZXN0'
-          'Content-Type': 'application/json'
-        withCredentials: true
-        crossDomain: true
       $http params
         .success (data, status, headers) ->
           event.preventDefault()

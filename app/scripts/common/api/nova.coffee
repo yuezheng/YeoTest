@@ -3,6 +3,9 @@
 instanceAttrs = ['name', 'status', 'OS-EXT-SRV-ATTR:hypervisor_hostname'
                  'flavor', 'tenant_id', 'user_id']
 
+###
+Simple wrapper around nova server API
+###
 class $cross.Server extends $cross.APIResourceWrapper
   constructor: (instance, attrs) ->
     super instance, attrs
@@ -10,10 +13,16 @@ class $cross.Server extends $cross.APIResourceWrapper
   getFullObj: (instance, $http) ->
     console.log instance
 
+###
+Simple wrapper around nova flavor API
+###
 class $cross.Flavor extends $cross.APIResourceWrapper
   constructor: (flavor, attrs) ->
     super flavor, attrs
 
+###
+List server that contain base instance info.
+###
 $cross.listServers = ($http, $window, callback) ->
   requestData =
     url: $window.crossConfig.backendServer + 'servers'
@@ -27,6 +36,10 @@ $cross.listServers = ($http, $window, callback) ->
         serverList.push server.getObject(server)
       callback serverList
 
+###
+List server that contain info base instance and extended.
+###
+# TODO(ZhengYue): Modify function name
 $cross.listFullServers = ($http, $window, $q, callback) ->
   # TODO(ZhengYue): Add pagenation
   serverUrl = $window.crossConfig.backendServer
@@ -40,10 +53,15 @@ $cross.listFullServers = ($http, $window, $q, callback) ->
     .then (response) ->
       return response.data
   # TODO(ZhengYue): The user list interface not implement
+
+  # Ensure that multiple requests all return
+  # TODO(ZhengYue): Error handler
   $q.all([instances, flavors, projects])
     .then (values) ->
       flavorMap = {}
       projectsMap = {}
+      # NOTE(ZhengYue): Package flavor/project/user info into
+      # a Object which indexed with id.
       for flavor in values[1].data
         flavorObj = new $cross.Flavor(flavor, ['name', 'id', 'vcpus', 'ram', 'disk'])
         flavorMap[flavor.id] = flavorObj.getObject(flavorObj)
@@ -53,6 +71,8 @@ $cross.listFullServers = ($http, $window, $q, callback) ->
         projectsMap[project.id] = projectObj.getObject(projectObj)
 
       serverList = []
+
+      # Inject detail info(flavor/project/user) into server obj.
       for instance in values[0].data
         server = new $cross.Server(instance, instanceAttrs)
         serverObj = server.getObject(server)
@@ -61,7 +81,6 @@ $cross.listFullServers = ($http, $window, $q, callback) ->
         serverObj.vcpus = serverFlavor['vcpus']
         serverObj.ram = serverFlavor['ram']
         serverObj.project = projectsMap[serverObj.tenant_id]['name']
-
         serverList.push serverObj
 
       callback serverList
