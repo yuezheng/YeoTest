@@ -1,111 +1,113 @@
 /* Space out content a bit */
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+/* Variables will be used in index page */
 
-.header,
-.marketing,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
+/* Min width of cross app */
+
+/* Min height of cross app */
+
+/* Background of app */
+
+/* Left frame width of cross app */
+
+/* Left frame background of cross app */
+
+/* Top height of cross app */
+
+/* Left logo background of cross app */
+
+/* Top tool background of cross app */
+
+/* Left nav bar item background */
+
+body {
+  padding: 0;
 }
 
-/* Custom page header */
-
-.header {
-  border-bottom: 1px solid #e5e5e5;
+.cross-index {
+  width: 100%;
+  height: 100%;
+  min-width: 1024px;
+  background: #ffffff;
+  over-flow: auto;
 }
 
-/* Make the masthead heading the same height as the navigation */
+.cross-index > .cross-frame-left {
+  position: absolute;
+  width: 172px;
+  height: 100%;
+  background: #2c4a67;
+}
 
-.header h3 {
-  padding-bottom: 19px;
-  margin-top: 0;
-  margin-bottom: 0;
+.cross-index > .cross-frame-left > .cross-tool-nav-logo {
+  height: 45px;
+  background: #242424 url(../images/logo.jpg) 25px 6px no-repeat;
+}
+
+.cross-index > .cross-frame-left > .cross-tool-nav {
+  margin-top: 10px;
+}
+
+.cross-index > .cross-frame-left > .cross-tool-nav > .cross-tool-nav-bar {
+  padding: 0;
+  margin: 5px 0 5px 0;
+  list-style: none;
+}
+
+.cross-index > .cross-frame-left > .cross-tool-nav .cross-tool-nav-bar .nav-title-lead {
+  height: 40px;
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: 600;
   line-height: 40px;
+  color: #ffffff;
+  cursor: pointer;
 }
 
-/* Custom page footer */
-
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.cross-index > .cross-frame-left > .cross-tool-nav .cross-tool-nav-bar .nav-title-lead > i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background: url(../images/cross-nav-system.jpg) no-repeat;
 }
 
-/* Customize container */
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-  .container .login-container {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .container .login-container .logo-area {
-    width: 140px;
-    height: 45px;
-    margin: 0 auto;
-    background: url('../images/logo_login.png') no-repeat left center;
-  }
-  .container .login-container input {
-    width: 230px;
-    margin-top: 5px;
-  }
-  .container .login-container #login_submit {
-    width: 230px;
-    margin-top: 30px;
-  }
+.cross-index > .cross-frame-left > .cross-tool-nav .cross-tool-nav-bar .nav-title-lead .cross-nav-system {
+  background: url(../images/cross-nav-system.jpg) no-repeat;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.cross-index > .cross-frame-left > .cross-tool-nav .cross-tool-nav-bar .nav-title-item > a {
+  display: block;
+  height: 28px;
+  padding-left: 60px;
+  margin: 5px 0 5px 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* Main marketing message and sign up button */
-
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+.cross-index > .cross-frame-left > .cross-tool-nav .cross-tool-nav-bar .nav-title-item > a.active {
+  background-color: #269bd8;
 }
 
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
+.cross-index > .cross-frame-left > .cross-tool-nav .cross-tool-nav-bar .nav-title-item > a.active:hover {
+  background-color: #269bd8;
 }
 
-/* Supporting marketing content */
-
-.marketing {
-  margin: 40px 0;
+.cross-index > .cross-frame-left > .cross-tool-nav .cross-tool-nav-bar .nav-title-item > a:hover {
+  background-color: #375a7c;
 }
 
-.marketing p + h4 {
-  margin-top: 28px;
+.cross-index > .cross-frame-main {
+  height: 100%;
+  margin-left: 172px;
 }
 
-/* Responsive: Portrait tablets and up */
-
-@media screen and (min-width: 768px) {
-  {
-    /* Remove the padding we set earlier */
-  
-    /* Space out the masthead */
-  
-    /* Remove the bottom border on the jumbotron for visual effect */
-  
-  }
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  .header {
-    margin-bottom: 30px;
-  }
-  .jumbotron {
-    border-bottom: 0;
-  }
+.cross-index > .cross-frame-main > .cross-frame-main-top-tool {
+  height: 45px;
+  background: #323232;
 }

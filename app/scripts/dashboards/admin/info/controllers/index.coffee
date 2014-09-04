@@ -7,5 +7,6 @@
  # # MainCtrl
  # Controller of the Cross
 ###
-angular.module('Cross')
-  .controller 'MainCtrl', ($scope, $http, $rootScope) ->
+angular.module('Cross.admin.info')
+  .controller 'InfoCtr', ($scope, $http, $rootScope) ->
+    console.log 'instance'

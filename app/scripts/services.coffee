@@ -18,8 +18,6 @@ angular.module('loginCheck', [])
           'Content-Type': 'application/json'
         withCredentials: true
         crossDomain: true
-      console.log 'Send request for judge user login'
-      console.log window.crossConfig.backendServer
       $http params
         .success (data, status, headers) ->
           event.preventDefault()

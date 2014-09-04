@@ -1,0 +1,42 @@
+<div>
+<ul>
+    <li ng-repeat="tab in tabs"
+        ng-class="{active:isActiveTab(tab.template)}"
+        class="tab"
+        ng-click="onClickTab(tab)">{{tab.title}}</li>
+</ul>
+
+<div id="mainView">
+    <div ng-include="currentTab"></div>
+</div>
+
+<script type="text/ng-template" id="one.tpl.html">
+    <div id="viewOne">
+        <button class='btn btn-disable'>VNC Console</button>
+        <button class='btn btn-disable'>Delete</button>
+        <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          More Action
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Dropdown link</a></li>
+          <li><a href="#">Dropdown link</a></li>
+        </ul>
+        </div>
+        <div ui-if="dataForGrid.length>0" class="gridStyle" ng-grid="gridOptions" ng-style="getTableStyle()"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="two.tpl.html">
+    <div id="viewTwo">
+        <h1>View Two</h1>
+    </div>
+</script>
+
+<script type="text/ng-template" id="three.tpl.html">
+    <div id="viewThree">
+        <h1>View Three</h1>
+    </div>
+</script>
+</div>

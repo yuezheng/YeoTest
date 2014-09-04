@@ -10,6 +10,10 @@
 ###
 
 app = angular.module('Cross', [
+    'Cross.settings',
+    'Cross.admin',
+    #'Cross.project',
+    'Cross.menu',
     'ngAnimate',
     'ngResource',
     'ngRoute',
@@ -22,24 +26,11 @@ app.config ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) -
   $httpProvider.defaults.useXDomain = true
   $httpProvider.defaults.withCredentials = true
   delete $httpProvider.defaults.headers.common['X-Requested-With']
-  $urlRouterProvider.otherwise("home")
+  $urlRouterProvider.otherwise '/admin/overview'
   $stateProvider
-    .state 'home',
-      url: '/home'
+    .state 'admin',
       templateUrl: 'views/main.html'
       controller: 'MainCtrl'
-    .state 'home.overview',
-      url: '/overview'
-      templateUrl: 'views/overview/overview.html'
-      controller: 'OverviewCtrl'
-    .state 'home.instances',
-      url: '/instances'
-      templateUrl: 'views/instances/instances.html'
-      controller: 'InstancesCtrl'
-    .state 'user',
-      url: '/users'
-      templateUrl: 'views/UserManagement/users.html'
-      controller: 'UserCtrl'
     .state 'login',
       url: '/login'
       templateUrl: 'views/login.html'
@@ -49,6 +40,5 @@ app.config ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) -
 
 app.run ($rootScope, $state, $logincheck, $http, $location) ->
   $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
-    console.log toState
     $logincheck($http, $state, toState)
   return

@@ -1,0 +1,26 @@
+.container {
+  max-width: 730px;
+}
+
+.container .login-container {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container .login-container .logo-area {
+  width: 140px;
+  height: 45px;
+  margin: 0 auto;
+  background: url('../images/logo_login.png') no-repeat left center;
+}
+
+.container .login-container input {
+  width: 230px;
+  margin-top: 5px;
+}
+
+.container .login-container #login_submit {
+  width: 230px;
+  margin-top: 30px;
+}

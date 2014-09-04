@@ -1,97 +1,84 @@
 /* Space out content a bit */
+@import "variables.less";
+
 body {
+  padding: 0;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
+.cross-index {
+  width: 100%;
+  min-width: @APP_MIN_WIDTH;
+  height: 100%;
+  background: @APP_BACKGROUND;
+  over-flow: auto;
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
+  & > .cross-frame-left {
+    position: absolute;
+    height: 100%;
+    width: @APP_FRAME_LEFT_WIDTH;
+    background: @APP_FRAME_LEFT_BACKGROUND;
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
+    & > .cross-tool-nav-logo {
+      background: @APP_FRAME_LEFT_LOGO_BACKGROUND;
+      height: @APP_TOP_HEIGHT;
+    }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
+    & > .cross-tool-nav {
+      margin-top: 10px;
 
-    .login-container {
-      margin: 0 auto;
-      max-width: 500px;
-      text-align: center;
-      .logo-area {
-        margin: 0 auto;
-        width: 140px;
-        height: 45px;
-        background: url('../images/logo_login.png') no-repeat left center;
+      & > .cross-tool-nav-bar {
+        padding: 0;
+        list-style: none;
+        margin: 5px 0 5px 0;
       }
-      input {
-        width: 230px;
-        margin-top: 5px;
+
+      .cross-tool-nav-bar .nav-title-lead {
+        height: 40px;
+        margin-left: 30px;
+        line-height: 40px;
+        cursor: pointer;
+        .crossLeftNavLeadFont();
+
+        & > i {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+          vertical-align: middle;
+          background: url(../images/cross-nav-system.jpg) no-repeat;
+        }
+        @import "nav_lead.less";
       }
-      #login_submit {
-        width: 230px;
-        margin-top: 30px;
+
+      .cross-tool-nav-bar .nav-title-item > a {
+        height: 28px;
+        display: block;
+        line-height: 28px;
+        padding-left: 60px;
+        margin: 5px 0 5px 0;
+        cursor: pointer;
+        text-decoration: none;
+        .crossLeftNavItemFont();
+        &.active {
+          background-color: @APP_LEFT_NAV_ITEM_ACTIVE_COLOR;
+          &:hover {
+            background-color: @APP_LEFT_NAV_ITEM_ACTIVE_COLOR;
+          }
+        }
+        &:hover {
+          background-color: @APP_LEFT_NAV_ITEM_HOVER_COLOR;
+        }
       }
     }
   }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
+  & > .cross-frame-main {
+    margin-left: @APP_FRAME_LEFT_WIDTH;
+    height: 100%;
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+    & > .cross-frame-main-top-tool {
+      background: @APP_FRAME_TOP_TOOL_BACKGROUND;
+      height: @APP_TOP_HEIGHT;
+    }
   }
 }

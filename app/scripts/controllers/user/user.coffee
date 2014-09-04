@@ -2,7 +2,6 @@
 
 angular.module('Cross')
   .controller 'UserCtrl', ($scope, $http, $rootScope, $state) ->
-    console.log "User management"
     $scope.username = ""
     $scope.userId = ""
     reqParams =
@@ -11,7 +10,6 @@ angular.module('Cross')
       headers:
         'Authorization': 'Basic dGVzdDp0ZXN0'
         'Content-Type': 'application/json'
-    console.log 'Request user info'
     $http reqParams
       .success (data, status, headers) ->
         $scope.username = data.user.name
@@ -22,20 +20,20 @@ angular.module('Cross')
           headers:
             'Authorization': 'Basic dGVzdDp0ZXN0'
             'Content-Type': 'application/json'
-        console.log "Get user detail"
         $http userParams
           .success (data, status, headers) ->
-            console.log data
+            $scope.user = data
       .error (error, status) ->
+        # TODO(zhengyue): Add some tips
         console.log error
 
-    $scope.logout = () ->
-      console.log 'Log out'
+    $scope.logout = ->
       logoutParams =
-        url: window.crossConfig.backendServer + 'logout'
+        url: "#{$window.$CROSS.setting.serverUrl}logout"
         method: 'GET'
       $http logoutParams
         .success (data, status) ->
           $state.go 'login'
         .error (error, status) ->
+          # TODO(zhengyue): Add some tips
           console.log error

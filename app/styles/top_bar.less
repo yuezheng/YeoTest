@@ -1,20 +1,9 @@
 /* Style of top nav bar */
-
-@top_bar_bg: #323232;
-@top_logo_bg: #242424;
+@import "variables.less";
 
 #top_bar {
-  @top_bar_height: 50px;
-  height: @top_bar_height;
-  background: @top_bar_bg;
-  #top_logo {
-    width: 15%;
-    min-width: 210px;
-    float: left;
-    height: @top_bar_height;
-    background-color: @top_logo_bg; 
-    background: url('../images/logo_login.png') no-repeat center;
-  }
+  @top_bar_height: 45px;
+  background: @TOP_BAR_BG;
   #user_info {
     float: right;
     ul {

@@ -24,7 +24,7 @@ angular.module('Cross')
               crossDomain: true
           $http authData
             .success (data, status, headers) ->
-                console.log data
-                $state.go 'home.overview'
+              # TODO(zhengyue): Judge user's rule to choice redirect
+              $state.go 'admin./overview'
       else
           alert "Input username and password"

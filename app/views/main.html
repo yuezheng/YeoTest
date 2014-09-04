@@ -1,13 +1,28 @@
-<ng-include src="'views/common/_nav_top.html'"></ng-include>
-<div id="main_content">
-    <ng-include src="'views/common/_nav_left.html'"></ng-include>
-</div>
+<!-- cross application index -->
+<div class="cross-index">
+  <!-- cross left tool bar -->
+  <div class="cross-frame-left">
+    <div class="cross-tool-nav-logo">
+    </div>
+    <div class="cross-tool-nav">
+      <ul class="cross-tool-nav-bar">
+        <li ng-repeat="dashboard in $dashboards">
+          <div class="nav-title-lead">
+            <i class="cross-nav-{{dashboard.slug}}"></i>{{dashboard.name}}
+          </div>
+          <div class="nav-title-item" ng-repeat="panel in dashboard.panels">
+            <a ui-sref="{{$view}}./{{panel.slug}}">{{panel.name}}</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<script type="text/javascript">
-  window.onresize = setSize;
-  setSize();
-  function setSize(){
-    var main_content = document.getElementById("main_content");
-    main_content.style.height = (document.documentElement.clientHeight - 50) + "px";
-  }
-</script>
+  <!-- cross main view page -->
+  <div class="cross-frame-main">
+    <div class="cross-frame-main-top-tool">
+        <ng-include src="'views/common/_nav_top.html'"></ng-include>
+    </div>
+    <div class="cross-frame-main-center" ui-view></div>
+  </div>
+</div>
