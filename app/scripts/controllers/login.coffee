@@ -14,14 +14,9 @@ angular.module('Cross')
           authData =
               url: window.crossConfig.backendServer + 'login'
               method: 'POST'
-              headers:
-                'Authorization': 'Basic dGVzdDp0ZXN0'
-                'Content-Type': 'application/json'
               data:
                 'username': $scope.username
                 'password': $scope.password
-              withCredentials: true
-              crossDomain: true
           $http authData
             .success (data, status, headers) ->
               # TODO(zhengyue): Judge user's rule to choice redirect

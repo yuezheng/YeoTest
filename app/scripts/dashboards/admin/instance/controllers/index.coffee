@@ -27,19 +27,60 @@ angular.module('Cross.admin.instance')
     $scope.isActiveTab = (tabUrl) ->
       return tabUrl == $scope.currentTab
 
-    $scope.projects = [
+    $scope.instances = [
     ]
+    
+    $scope.filterOptions =
+      filterText: '',
+      useExternalFilter: true
+
+    $scope.totalServerItems = 0
+    $scope.pagingOptions = {
+      pageSizes: [15, 25, 50]
+      pageSize: 15
+      currentPage: 1
+    }
+
+    $scope.setPagingData = (pagedData, total) ->
+      $scope.instances = pagedData
+      $scope.totalServerItems = total
+      if !$scope.$$phase
+        $scope.$apply()
+
+    largeLoad = [
+        {"name": "Moroni", "allowance": 50, "paid": true},
+        {"name": "Moroni", "allowance": 50,  "paid": true},
+        {"name": "Tiancum", "allowance": 53,  "paid": false}]
 
     $scope.columnDefs = [
-      {field: "name", displayName: "Name"}
+      {field: "name", displayName: "Name", cellTemplate: '<div ng-click="foo(col)" ng-bind="row.getProperty(col.field)"></div>'}
       {field: "hypervisor_hostname", displayName: "Host"}
       {field: "project", displayName: "Project"}
       {field: "vcpus", displayName: "CPU"}
       {field: "ram", displayName: "RAM"}
       {field: "status", displayName: "Status"}
     ]
+
+    $scope.getPagedDataAsync = (pageSize, currentPage, searchText) ->
+      setTimeout(() ->
+        currentPage = currentPage - 1
+        dataQueryOpts =
+          dataFrom: parseInt(pageSize) * parseInt(currentPage)
+          dataTo: parseInt(pageSize) * parseInt(currentPage) + parseInt(pageSize)
+        $cross.listDetailedServers $http, $window, $q, dataQueryOpts, (instances, total) ->
+          $scope.setPagingData(instances, total)
+      , 100)
+
+    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage)
+
+    watchCallback = (newVal, oldVal) ->
+      if newVal != oldVal and newVal.currentPage != oldVal.currentPage
+        $scope.getPagedDataAsync $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText
+
+    $scope.$watch('pagingOptions', watchCallback, true)
+
     $scope.gridOptions = {
-      data: 'projects',
+      data: 'instances',
       showSelectionCheckbox: true,
       enablePaging: true,
       showFooter: true,
@@ -47,22 +88,11 @@ angular.module('Cross.admin.instance')
       rowTemplate: $scope.rowTemplate,
       afterSelectionChange: (rowitem, event) ->
         $scope.selectedItems = $scope.gridOptions.selectedItems
-        console.log $scope.selectedItems
       selectedItems: [],
+      totalServerItems:'totalServerItems',
+      pagingOptions: $scope.pagingOptions,
+      filterOptions: $scope.filterOptions
     }
-    $cross.listFullServers $http, $window, $q, (instances) ->
-      $scope.projects = instances
-      console.log instances
-      $scope.selectedItem = []
-      $scope.gridOptions = {
-          data: 'projects',
-          showSelectionCheckbox: true,
-          enablePaging: true,
-          showFooter: true,
-          columnDefs: 'columnDefs',
-          rowTemplate: $scope.rowTemplate,
-          afterSelectionChange: (rowitem, event) ->
-            $scope.selectedItems = $scope.gridOptions.selectedItems
-            console.log $scope.selectedItems
-          selectedItems: [],
-      }
+
+    $scope.foo = (item) ->
+      console.log(item)

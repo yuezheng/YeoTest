@@ -40,10 +40,13 @@ $cross.listServers = ($http, $window, callback) ->
 List server that contain info base instance and extended.
 ###
 # TODO(ZhengYue): Modify function name
-$cross.listFullServers = ($http, $window, $q, callback) ->
-  # TODO(ZhengYue): Add pagenation
+$cross.listDetailedServers = ($http, $window, $q, query, callback) ->
   serverUrl = $window.crossConfig.backendServer
-  instances = $http.get(serverUrl + 'servers?limit_from=0&limit_to=20')
+  limitFrom = query.dataFrom || 0
+  limitTo = query.dataTo || 20
+  instancesParams = "servers?limit_from=#{limitFrom}&limit_to=#{limitTo}"
+  console.log instancesParams
+  instances = $http.get(serverUrl + instancesParams)
     .then (response) ->
       return response.data
   flavors = $http.get(serverUrl + 'os-flavors')
@@ -83,4 +86,4 @@ $cross.listFullServers = ($http, $window, $q, callback) ->
         serverObj.project = projectsMap[serverObj.tenant_id]['name']
         serverList.push serverObj
 
-      callback serverList
+      callback serverList, values[0].total

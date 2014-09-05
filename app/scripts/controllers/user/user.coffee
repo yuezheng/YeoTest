@@ -17,9 +17,6 @@ angular.module('Cross')
         userParams =
           url: window.crossConfig.backendServer + "users/" + $scope.userId
           method: 'GET'
-          headers:
-            'Authorization': 'Basic dGVzdDp0ZXN0'
-            'Content-Type': 'application/json'
         $http userParams
           .success (data, status, headers) ->
             $scope.user = data
