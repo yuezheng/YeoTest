@@ -41,6 +41,12 @@ $cross.registerPanel = (panelView, routes)->
           url: "#{_SLUG_}#{route.url}"
           templateUrl: "#{_BASE_URL}#{route.templateUrl}"
           controller: route.controller
+      if route.subState
+        $stateProvider
+          .state "#{dashboard}.#{route.url}.detail",
+            url: "#{_SLUG_}#{route.url}#{route.subState.url}"
+            templateUrl: "#{_BASE_URL}#{route.subState.templateUrl}"
+            controller: route.subState.controller
 
     return
 
@@ -63,6 +69,7 @@ $cross.registerPanel = (panelView, routes)->
       key = "#{dashboard}.#{panelGroup.slug}.#{panel.slug}"
       $window.$CROSS.panels[key] = panel.name
 
+    console.log $state.get()
     return
 
 ###*

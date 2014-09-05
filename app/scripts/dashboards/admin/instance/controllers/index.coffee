@@ -53,9 +53,9 @@ angular.module('Cross.admin.instance')
         {"name": "Tiancum", "allowance": 53,  "paid": false}]
 
     $scope.columnDefs = [
-      {field: "name", displayName: "Name", cellTemplate: '<div ng-click="foo(col)" ng-bind="row.getProperty(col.field)"></div>'}
+      {field: "name", displayName: "Name", cellTemplate: '<div ng-click="foo(row.entity.id)" class="ngCellText enableClick"><a ui-sref="admin./instance.detail({ instanceId:row.entity.id })" ng-bind="row.getProperty(col.field)"></a></div>'}
       {field: "hypervisor_hostname", displayName: "Host"}
-      {field: "project", displayName: "Project"}
+      {field: "project", displayName: "Project", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText enableClick"></div>'}
       {field: "vcpus", displayName: "CPU"}
       {field: "ram", displayName: "RAM"}
       {field: "status", displayName: "Status"}
@@ -83,15 +83,17 @@ angular.module('Cross.admin.instance')
       data: 'instances',
       showSelectionCheckbox: true,
       enablePaging: true,
+      selectWithCheckboxOnly: true,
+      enableHighlighting: true,
       showFooter: true,
       columnDefs: 'columnDefs',
-      rowTemplate: $scope.rowTemplate,
       afterSelectionChange: (rowitem, event) ->
         $scope.selectedItems = $scope.gridOptions.selectedItems
       selectedItems: [],
       totalServerItems:'totalServerItems',
       pagingOptions: $scope.pagingOptions,
-      filterOptions: $scope.filterOptions
+      filterOptions: $scope.filterOptions,
+      plugins: [new $cross.ngGridFlexibleHeightPlugin()]
     }
 
     $scope.foo = (item) ->

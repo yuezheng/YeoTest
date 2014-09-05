@@ -1,6 +1,6 @@
 'use strict'
 
-instanceAttrs = ['name', 'status', 'OS-EXT-SRV-ATTR:hypervisor_hostname'
+instanceAttrs = ['id', 'name', 'status', 'OS-EXT-SRV-ATTR:hypervisor_hostname'
                  'flavor', 'tenant_id', 'user_id']
 
 ###
@@ -44,6 +44,8 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
   serverUrl = $window.crossConfig.backendServer
   limitFrom = query.dataFrom || 0
   limitTo = query.dataTo || 20
+  if limitFrom != 0
+    limitFrom += 1
   instancesParams = "servers?limit_from=#{limitFrom}&limit_to=#{limitTo}"
   console.log instancesParams
   instances = $http.get(serverUrl + instancesParams)

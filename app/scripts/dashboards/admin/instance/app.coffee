@@ -6,6 +6,10 @@ routes =[
     url: '/instance'
     templateUrl: 'views/index.html'
     controller: 'InstanceCtr'
+    subState:
+      url: '/:instanceId'
+      templateUrl: 'views/detail.html'
+      controller: 'InstanceDetailCtr'
   }
 ]
 

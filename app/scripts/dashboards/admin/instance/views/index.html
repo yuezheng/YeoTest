@@ -24,7 +24,9 @@
           <li><a href="#">Dropdown link</a></li>
         </ul>
         </div>
-        <div ui-if="dataForGrid.length>0" class="gridStyle" ng-grid="gridOptions" ng-style="getTableStyle()"></div>
+        <div class="gridStyle" ng-grid="gridOptions">
+          <div class="detail-panel" ui-view></div>
+        </div>
     </div>
 </script>
 

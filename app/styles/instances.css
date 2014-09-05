@@ -4,12 +4,27 @@
   border: 1px solid #d4d4d4;
 }
 
-.gridStyle .ngCanvas {
-  width: 100% !important;
+.gridStyle .ngCellText {
+  text-align: center;
+  text-overflow: inherit;
+  border: none;
 }
 
-.gridStyle .ngRow {
-  width: 100% !important;
+.gridStyle .ngHeaderSortColumn {
+  text-align: center;
+}
+
+.gridStyle .ngVerticalBarVisible {
+  background: none;
+}
+
+.gridStyle .enableClick {
+  color: #269BD8;
+  cursor: pointer;
+}
+
+.gridStyle .ngViewport {
+  height: auto !important;
 }
 
 .ngHeaderContainer {
