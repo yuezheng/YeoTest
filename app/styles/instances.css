@@ -27,6 +27,44 @@
   height: auto !important;
 }
 
+.gridStyle .detail-panel {
+  position: absolute;
+  left: 450px;
+  z-index: 100;
+  width: 450px;
+  height: 500px;
+  line-height: 30px;
+  background: white;
+  border: 1px solid #d4d4d4;
+}
+
+.gridStyle .detail-panel .detail_tab {
+  height: 30px;
+  background: #E1F2FF;
+}
+
+.gridStyle .detail-panel .detail_tab li {
+  float: left;
+  height: 30px;
+  padding-right: 3px;
+  padding-left: 3px;
+  line-height: 30px;
+}
+
+.gridStyle .detail-panel .action_bar_in_detail {
+  height: 30px;
+  line-height: 40px;
+}
+
+.gridStyle .detail-panel .detail_info .title {
+  height: 35px;
+  background: #f3f3f3;
+}
+
+.gridStyle .detail-panel .detail_area {
+  margin: 5px 0;
+}
+
 .ngHeaderContainer {
   background: #E1F2FF;
 }
@@ -128,7 +166,7 @@
   position: relative;
   display: block!important;
   -webkit-transition: 0.5s linear all;
-          transition: 0.5s ease-in all;
+          transition: 1.5s ease-in all;
 }
 
 .my-show-hide-animation.ng-hide {

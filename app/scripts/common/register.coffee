@@ -44,7 +44,7 @@ $cross.registerPanel = (panelView, routes)->
       if route.subState
         $stateProvider
           .state "#{dashboard}.#{route.url}.detail",
-            url: "#{_SLUG_}#{route.url}#{route.subState.url}"
+            url: "#{route.subState.url}"
             templateUrl: "#{_BASE_URL}#{route.subState.templateUrl}"
             controller: route.subState.controller
 

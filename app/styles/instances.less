@@ -23,6 +23,40 @@
   .ngViewport {
     height: auto !important;
   }
+
+  .detail-panel{
+    position: absolute;
+    z-index: 100;
+    width: 450px;
+    height: 500px;
+    left: 450px;
+    background: white;
+    line-height: 30px;
+    border: 1px solid #d4d4d4;
+    .detail_tab {
+      height: 30px; 
+      background: #E1F2FF;
+      li {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        padding-left: 3px;
+        padding-right: 3px;
+      }
+    }
+    .action_bar_in_detail {
+      height: 30px;
+      line-height: 40px;
+    }
+    .detail_info 
+      .title {
+        height: 35px; 
+        background: #f3f3f3;
+      }
+      .detail_area {
+        margin: 5px 0px;
+      }
+  }
 }
 
 .ngHeaderContainer {
@@ -93,7 +127,7 @@ display: block;
 .my-show-hide-animation.ng-hide-add,
 .my-show-hide-animation.ng-hide-remove {
   -webkit-transition:0.5s linear all;
-  transition:0.5s ease-in all;
+  transition:1.5s ease-in all;
 
   /* remember to add this */
   display:block!important;

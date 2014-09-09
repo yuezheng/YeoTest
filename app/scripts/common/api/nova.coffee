@@ -89,3 +89,18 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
         serverList.push serverObj
 
       callback serverList, values[0].total
+
+
+###
+List server that contain base instance info.
+###
+$cross.serverGet = ($http, $window, instanceId, callback) ->
+  requestData =
+    url: $window.crossConfig.backendServer + 'servers/' + instanceId
+    method: 'GET'
+
+  $http requestData
+    .success (instance, status, headers) ->
+      server = new $cross.Server(instance, instanceAttrs)
+      server_detail = server.getObject(server)
+      callback server_detail
