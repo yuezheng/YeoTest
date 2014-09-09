@@ -47,7 +47,6 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
   if limitFrom != 0
     limitFrom += 1
   instancesParams = "servers?limit_from=#{limitFrom}&limit_to=#{limitTo}"
-  console.log instancesParams
   instances = $http.get(serverUrl + instancesParams)
     .then (response) ->
       return response.data
@@ -90,14 +89,27 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
 
       callback serverList, values[0].total
 
-
 ###
-List server that contain base instance info.
+Get a server.
 ###
 $cross.serverGet = ($http, $window, instanceId, callback) ->
   requestData =
     url: $window.crossConfig.backendServer + 'servers/' + instanceId
     method: 'GET'
+
+  $http requestData
+    .success (instance, status, headers) ->
+      server = new $cross.Server(instance, instanceAttrs)
+      server_detail = server.getObject(server)
+      callback server_detail
+
+###
+Get a server.
+###
+$cross.serverDelete = ($http, $window, instanceId, callback) ->
+  requestData =
+    url: $window.crossConfig.backendServer + 'servers/' + instanceId
+    method: 'DELETE'
 
   $http requestData
     .success (instance, status, headers) ->

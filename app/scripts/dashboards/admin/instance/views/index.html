@@ -1,10 +1,12 @@
 <div>
-<ul>
-    <li ng-repeat="tab in tabs"
-        ng-class="{active:isActiveTab(tab.template)}"
-        class="tab"
-        ng-click="onClickTab(tab)">{{tab.title}}</li>
-</ul>
+  <div class='instance_tabs'>
+    <ul>
+        <li ng-repeat="tab in tabs"
+            ng-class="{active:isActiveTab(tab.template)}"
+            class="tab"
+            ng-click="onClickTab(tab)">{{tab.title}}</li>
+    </ul>
+  </div>
 
 <div id="mainView">
     <div ng-include="currentTab"></div>
@@ -12,8 +14,9 @@
 
 <script type="text/ng-template" id="one.tpl.html">
     <div id="viewOne">
+      <div class='action_group'>
         <button class='btn btn-disable'>VNC Console</button>
-        <button class='btn btn-disable'>Delete</button>
+        <button class='btn' ng-click='deleteServer()'>Delete</button>
         <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
           More Action
@@ -24,6 +27,7 @@
           <li><a href="#">Dropdown link</a></li>
         </ul>
         </div>
+      </div>
         <div class="gridStyle" ng-grid="gridOptions">
           <div ui-view ng-show="detail_show" class="detail-panel my-show-hide-animation" ></div>
         </div>
@@ -32,7 +36,7 @@
 
 <script type="text/ng-template" id="two.tpl.html">
     <div id="viewTwo">
-        <h1>View Two</h1>
+        <h1 ng-show='selectedItems'>{{selectedItems}}</h1>
     </div>
 </script>
 

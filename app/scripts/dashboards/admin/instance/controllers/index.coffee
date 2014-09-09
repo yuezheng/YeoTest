@@ -8,7 +8,7 @@
  # Controller of the Cross
 ###
 angular.module('Cross.admin.instance')
-  .controller 'InstanceCtr', ($scope, $http, $window, $q) ->
+  .controller 'InstanceCtr', ($scope, $http, $window, $q, $state, $timeout, $interval) ->
     serverUrl = $window.$CROSS.settings.serverURL
     $scope.tabs = [{
       title: 'Instances',
@@ -41,25 +41,41 @@ angular.module('Cross.admin.instance')
       currentPage: 1
     }
 
+    $scope.labileStatus = [
+      'BUILD'
+    ]
+
     $scope.setPagingData = (pagedData, total) ->
       $scope.instances = pagedData
       $scope.totalServerItems = total
+      for item in pagedData
+        if item.status in $scope.labileStatus
+          item.labileStatus = 'unknwon'
+        else
+          item.labileStatus = 'active'
       if !$scope.$$phase
         $scope.$apply()
 
-    largeLoad = [
-        {"name": "Moroni", "allowance": 50, "paid": true},
-        {"name": "Moroni", "allowance": 50,  "paid": true},
-        {"name": "Tiancum", "allowance": 53,  "paid": false}]
-
     $scope.columnDefs = [
-      {field: "name", displayName: "Name", cellTemplate: '<div ng-click="foo(row.entity.id)" class="ngCellText enableClick"><a ui-sref="admin./instance.detail({ instanceId:row.entity.id })" ng-bind="row.getProperty(col.field)"></a></div>'}
+      {field: "name", displayName: "Name", cellTemplate: '<div class="ngCellText enableClick"><a ui-sref="admin./instance.detail({ instanceId:row.entity.id })")" ng-click="foo(row.rowIndex)" ng-bind="row.getProperty(col.field)"></a></div>'}
       {field: "hypervisor_hostname", displayName: "Host"}
       {field: "project", displayName: "Project", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText enableClick"></div>'}
       {field: "vcpus", displayName: "CPU"}
       {field: "ram", displayName: "RAM"}
-      {field: "status", displayName: "Status"}
+      {field: "status", displayName: "Status", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText" ng-class="row.entity.labileStatus"></div>'}
     ]
+
+    $scope.getLabileData = (instanceId) ->
+      freshData = $interval(() ->
+        #TODO(ZhengYue): Get detail info by instance id
+        $cross.serverGet $http, $window, instanceId, (instance) ->
+          if instance.status in $scope.labileStatus
+            console.log instance
+          else
+            $interval.cancel(freshData)
+          # if instance.status is ok, update $scope.instances and cancel fresh
+          # else cuntiue freshData
+      , 3000)
 
     $scope.getPagedDataAsync = (pageSize, currentPage, searchText) ->
       setTimeout(() ->
@@ -79,6 +95,16 @@ angular.module('Cross.admin.instance')
 
     $scope.$watch('pagingOptions', watchCallback, true)
 
+    instanceCallback = (newVal, oldVal) ->
+      if newVal != oldVal
+        for instance in newVal
+          if instance.status in $scope.labileStatus
+            $scope.getLabileData(instance.id)
+
+    $scope.$watch('instances', instanceCallback, true)
+
+    $scope.selectedIndex = []
+
     $scope.gridOptions = {
       data: 'instances',
       showSelectionCheckbox: true,
@@ -88,13 +114,28 @@ angular.module('Cross.admin.instance')
       showFooter: true,
       columnDefs: 'columnDefs',
       afterSelectionChange: (rowitem, event) ->
-        $scope.selectedItems = $scope.gridOptions.selectedItems
-      selectedItems: [],
+        if angular.isArray(rowitem)
+          for row in rowitem
+            if row.rowIndex not in $scope.selectedIndex
+              $scope.selectedIndex.push row.rowIndex
+        else if rowitem.rowIndex not in $scope.selectedIndex
+          $scope.selectedIndex.push rowitem.rowIndex
       totalServerItems:'totalServerItems',
+      selectedItems: [],
       pagingOptions: $scope.pagingOptions,
       filterOptions: $scope.filterOptions,
       plugins: [new $cross.ngGridFlexibleHeightPlugin()]
     }
 
     $scope.foo = (item) ->
-      console.log(item)
+      for row in $scope.selectedIndex
+        $scope.gridOptions.selectRow(row, false)
+      $scope.gridOptions.selectRow(item, true)
+
+    $scope.deleteServer = () ->
+      if $scope.selectedItems and $scope.selectedItems.length > 0
+        for item in $scope.selectedItems
+          console.log 'ss'
+          # TODO(ZhengYue): Delete server
+      else
+        alert "Choose a instance"

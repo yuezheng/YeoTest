@@ -10,6 +10,10 @@
   border: none;
 }
 
+.gridStyle .ngCellText.unknwon {
+  background: url(../images/processing.gif) no-repeat center;
+}
+
 .gridStyle .ngHeaderSortColumn {
   text-align: center;
 }
@@ -20,7 +24,6 @@
 
 .gridStyle .enableClick {
   color: #269BD8;
-  cursor: pointer;
 }
 
 .gridStyle .ngViewport {
@@ -179,27 +182,37 @@ ul {
   list-style: none;
 }
 
-li.tab {
+.instance_tabs {
+  height: 35px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #DDDDDD;
+}
+
+.instance_tabs li.tab {
   float: left;
-  padding: 5px 5px 0 5px;
-  margin: 3px 3px 0 3px;
+  height: 35px;
+  padding: 0 5px 0px 5px;
+  line-height: 35px;
   color: #696969;
-  background-color: #CCC;
-  border: 1px solid #000;
-  border-bottom-width: 0;
+  cursor: pointer;
+}
+
+.instance_tabs .tab.active {
+  color: #000;
+  background-color: #FFF;
+  border-bottom: 2px solid #6FB6DA;
 }
 
 #mainView {
   padding: 0 1em;
   clear: both;
-  border: 1px solid black;
-}
-
-.tab.active {
-  color: #000;
-  background-color: #FFF;
 }
 
 #viewOne {
   height: 600px;
+}
+
+#viewOne .action_group {
+  margin: 10px 0;
 }

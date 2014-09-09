@@ -15,8 +15,6 @@ angular.module('Cross.admin.instance')
 
     $scope.action_list = []
 
-    console.log $scope.instance_detail_tabs
-
     currentInstance = $stateParams.instanceId
     if currentInstance
       $scope.detail_show = true
@@ -29,8 +27,6 @@ angular.module('Cross.admin.instance')
         $scope.action_list = [
           'delete'
         ]
-        console.log $scope.action_list
-      console.log $scope.server_detail
     )
 
     $scope.panle_close = () ->
