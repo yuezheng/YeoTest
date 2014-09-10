@@ -112,7 +112,6 @@ $cross.serverDelete = ($http, $window, instanceId, callback) ->
     method: 'DELETE'
 
   $http requestData
-    .success (instance, status, headers) ->
-      server = new $cross.Server(instance, instanceAttrs)
-      server_detail = server.getObject(server)
-      callback server_detail
+    .success (data, status, headers) ->
+      console.log status
+      callback status

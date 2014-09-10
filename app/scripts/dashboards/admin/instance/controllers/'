@@ -20,8 +20,6 @@ angular.module('Cross.admin.instance')
       title: 'Soft-deleted',
       template: 'three.tpl.html'
     }]
-
-    $scope.firstPage = false
     $scope.currentTab = 'one.tpl.html'
     $scope.onClickTab = (tab) ->
       $scope.currentTab = tab.template
@@ -32,25 +30,20 @@ angular.module('Cross.admin.instance')
     $scope.instances = [
     ]
 
-    __LIST_MAX__ = 5
     getPageCountList = (current_page, page_count) ->
       list = []
-      if page_count <= __LIST_MAX__
-        index = 0
-
-        while index < page_count
-          list[index] = index
-          index++
-      else
-        start = current_page - Math.ceil(__LIST_MAX__ / 2)
-        start = (if start < 0 then 0 else start)
-        start = (if start + __LIST_MAX__ >= page_count then page_count - __LIST_MAX__ else start)
-        index = 0
-
-        while index < __LIST_MAX__
-          list[index] = start + index
-          index++
-      list
+    if page_count <= 5
+        for (var index = 0 ; index < page_count; index ++) {
+            list[index] = index;
+        }
+    } else {
+        var start = current_page - Math.ceil(__LIST_MAX__ / 2); 
+        start = start < 0 ? 0:start;
+        start = start + __LIST_MAX__ >= page_count ? page_count - __LIST_MAX__: start;
+        for (var index = 0 ; index < __LIST_MAX__; index ++) {
+            list[index] = start + index;
+        }
+    return list
 
     $scope.footerTemplate = $templateCache.get('ng-grid-footer')
     console.log typeof($scope.footerTemplate)
@@ -94,9 +87,6 @@ angular.module('Cross.admin.instance')
     $scope.setPagingData = (pagedData, total) ->
       $scope.instances = pagedData
       $scope.totalServerItems = total
-      $scope.pageCounts = Math.ceil(total / $scope.pagingOptions.pageSize)
-      $scope.showPages = getPageCountList($scope.pagingOptions.currentPage, $scope.pageCounts)
-      console.log $scope.showPages
       for item in pagedData
         if item.status in $scope.labileStatus
           item.labileStatus = 'unknwon'
@@ -195,11 +185,3 @@ angular.module('Cross.admin.instance')
             console.log response
       else
         alert "Choose a instance"
-
-    $scope.gotoPage = (index) ->
-      if index
-        if typeof(index) is 'number'
-          $scope.pagingOptions.currentPage = $scope.showPages[index] + 1
-        else
-          $scope.pagingOptions.currentPage = $scope.pagingOptions.currentPage + 1
-

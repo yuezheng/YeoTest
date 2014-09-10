@@ -15,21 +15,30 @@
 <script type="text/ng-template" id="one.tpl.html">
     <div id="viewOne">
       <div class='action_group'>
-        <button class='btn btn-disable'>VNC Console</button>
-        <button class='btn' ng-click='deleteServer()'>Delete</button>
+          <button class='btn' ng-class="batchActionEnableClass">VNC Console</button>
+        <button class='btn' ng-class="batchActionEnableClass" ng-click='deleteServer()'>Delete</button>
         <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <button type="button" class="btn btn-default dropdown-toggle btn-enable" data-toggle="dropdown">
           More Action
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Dropdown link</a></li>
-          <li><a href="#">Dropdown link</a></li>
+          <li ng-repeat="action in batchActions">
+          <a ng-click="serverAction('{{action.action}}')"><i ng-class="action.action"></i>{{action.verbose}}</a></li>
+          <li class='split-line'></li>
+          <li ng-repeat="action in mantanceActions">
+          <a ng-click="serverAction('{{action.action}}')"><i ng-class="action.action"></i>{{action.verbose}}</a></li>
+          <li class='split-line'></li>
+          <li ng-repeat="action in networkActions">
+          <a ng-click="serverAction('{{action.action}}')"><i ng-class="action.action"></i>{{action.verbose}}</a></li>
+          <li class='split-line'></li>
+          <li ng-repeat="action in volumeActions">
+          <a ng-click="serverAction('{{action.action}}')"><i ng-class="action.action"></i>{{action.verbose}}</a></li>
         </ul>
         </div>
       </div>
-        <div class="gridStyle" ng-grid="gridOptions">
-          <div ui-view ng-show="detail_show" class="detail-panel my-show-hide-animation" ></div>
+        <div class="gridStyle ui-view-container" ng-grid="gridOptions">
+            <div ui-view ng-init="detail_show='detail_hide'" class="detail-panel" ng-class={{"detail_show"}}></div>
         </div>
     </div>
 </script>
@@ -44,5 +53,33 @@
     <div id="viewThree">
         <h1>View Three</h1>
     </div>
+</script>
+
+<script type="text/ng-template" id="ng-grid-footer">
+<div ng-show="showFooter" class="ngFooterPanel" ng-class="{'ui-widget-content': jqueryUITheme, 'ui-corner-bottom': jqueryUITheme}" ng-style="footerStyle()">
+  <div class="ngTotalSelectContainer" >
+    <div class="ngFooterTotalItems" ng-class="{'ngNoMultiSelect': !multiSelect}" >
+      <span class="ngLabel">{{i18n.ngTotalItemsLabel}} {{maxRows()}}</span><span ng-show="filterText.length > 0" class="ngLabel">({{i18n.ngShowingItemsLabel}} {{totalFilteredItemsLength()}})</span>
+    </div>
+    <div class="ngFooterSelectedItems" ng-show="multiSelect">
+      <span class="ngLabel">{{i18n.ngSelectedItemsLabel}} {{selectedItems.length}}</span>
+    </div>
+  </div>
+  <div class='pageCode'>
+      <li ng-show='firstPage'>&lt;&lt;</li>
+      <li ng-repeat="page in showPages" class="page{{page+1==pagingOptions.currentPage }}" ng-click="gotoPage($index)">{{ page + 1 }}</li>
+      <li>&gt;&gt;</li>
+  </div>
+  <div class="ngPagerContainer" style="float: right; margin-top: 10px;" ng-show="enablePaging" ng-class="{'ngNoMultiSelect': !multiSelect}">
+  <div style="float:left; margin-right: 10px; line-height:25px;" class="ngPagerControl" style="float: left; min-width: 135px;">
+    <button type="button" class="ngPagerButton" ng-click="pageToFirst()" ng-disabled="cantPageBackward()" title="{{i18n.ngPagerFirstTitle}}"><div class="ngPagerFirstTriangle"><div class="ngPagerFirstBar"></div></div></button>
+    <button type="button" class="ngPagerButton" ng-click="pageBackward()" ng-disabled="cantPageBackward()" title="{{i18n.ngPagerPrevTitle}}"><div class="ngPagerFirstTriangle ngPagerPrevTriangle"></div></button>
+    <input class="ngPagerCurrent" min="1" max="{{currentMaxPages}}" type="number" style="width:50px; height: 24px; margin-top: 1px; padding: 0 4px;" ng-model="pagingOptions.currentPage"/>
+    <span style="position: relative; top: -5px;">/ {{maxPages()}}</span>
+    <button type="button" class="ngPagerButton" ng-click="pageForward()" ng-disabled="cantPageForward()" title="{{i18n.ngPagerNextTitle}}"><div class="ngPagerLastTriangle ngPagerNextTriangle"></div></button>
+    <button type="button" class="ngPagerButton" ng-click="pageToLast()" ng-disabled="cantPageToLast()" title="{{i18n.ngPagerLastTitle}}"><div class="ngPagerLastTriangle"><div class="ngPagerLastBar"></div></div></button>
+    </div>
+  </div>
+</div>
 </script>
 </div>

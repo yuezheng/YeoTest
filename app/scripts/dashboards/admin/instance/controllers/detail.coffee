@@ -17,9 +17,9 @@ angular.module('Cross.admin.instance')
 
     currentInstance = $stateParams.instanceId
     if currentInstance
-      $scope.detail_show = true
+      $scope.detail_show = "detail_show"
     else
-      $scope.detail_show = false
+      $scope.detail_show = "detail_hide"
 
     $cross.serverGet($http, $window, currentInstance, (server) ->
       $scope.server_detail = server

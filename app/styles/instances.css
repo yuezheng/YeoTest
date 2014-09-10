@@ -1,7 +1,31 @@
+/* Variables will be used in index page */
+
+/* Min width of cross app */
+
+/* Min height of cross app */
+
+/* Background of app */
+
+/* Left frame width of cross app */
+
+/* Left frame background of cross app */
+
+/* Top height of cross app */
+
+/* Left logo background of cross app */
+
+/* Top tool background of cross app */
+
+/* Left nav bar item background */
+
+/* Attr at data table */
+
+/* Style of button for action */
+
 .gridStyle {
   width: 100%;
   height: 500px;
-  border: 1px solid #d4d4d4;
+  border: none;
 }
 
 .gridStyle .ngCellText {
@@ -30,46 +54,52 @@
   height: auto !important;
 }
 
-.gridStyle .detail-panel {
-  position: absolute;
-  left: 450px;
-  z-index: 100;
-  width: 450px;
-  height: 500px;
-  line-height: 30px;
-  background: white;
-  border: 1px solid #d4d4d4;
+.gridStyle .ngRow.even {
+  background: #ffffff;
 }
 
-.gridStyle .detail-panel .detail_tab {
-  height: 30px;
-  background: #E1F2FF;
+.gridStyle .ngRow.even:hover {
+  background: #e1f2ff;
 }
 
-.gridStyle .detail-panel .detail_tab li {
+.gridStyle .ngRow.odd {
+  background: #f2f2f2;
+}
+
+.gridStyle .ngRow.odd:hover {
+  background: #e1f2ff;
+}
+
+.gridStyle .ngFooterPanel {
+  background-color: #ffffff;
+  border-top: none;
+}
+
+.gridStyle .ngFooterPanel .pageCode {
+  float: right;
+  width: 200px;
+  height: 25px;
+}
+
+.gridStyle .ngFooterPanel .pageCode li {
+  display: block;
   float: left;
-  height: 30px;
-  padding-right: 3px;
-  padding-left: 3px;
-  line-height: 30px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.gridStyle .detail-panel .action_bar_in_detail {
-  height: 30px;
-  line-height: 40px;
-}
-
-.gridStyle .detail-panel .detail_info .title {
-  height: 35px;
-  background: #f3f3f3;
-}
-
-.gridStyle .detail-panel .detail_area {
-  margin: 5px 0;
+.gridStyle .ngFooterPanel .pageCode li.pagetrue {
+  color: #FFFFFF;
+  background-color: #28a9ee;
 }
 
 .ngHeaderContainer {
-  background: #E1F2FF;
+  background: #cce4f6;
 }
 
 .ngRow.odd {
@@ -84,96 +114,6 @@
   width: 100px;
   height: 100px;
   background: red;
-}
-
-.box {
-  height: 100px;
-  font-size: 86px;
-  color: white;
-  text-align: center;
-}
-
-.on {
-  background-color: green;
-}
-
-.off {
-  background-color: red;
-}
-
-.box-show-setup,
-.box-hide-setup {
-  -webkit-transition: all linear 0.3s;
-     -moz-transition: all linear 0.3s;
-      -ms-transition: all linear 0.3s;
-       -o-transition: all linear 0.3s;
-          transition: all linear 0.3s;
-}
-
-.box-show-setup {
-  height: 0;
-  opacity: 0;
-}
-
-.box-show-setup.box-show-start {
-  height: 100px;
-  opacity: 1;
-}
-
-.box-hide-setup {
-  height: 0;
-  opacity: 1;
-}
-
-.box-hide-setup.box-hide-start {
-  height: 100px;
-  opacity: 0;
-}
-
-.animate-enter,
-.animate-leave {
-  position: relative;
-  display: block;
-  transition: 500ms ease-in all;
-}
-
-.animate-enter.animate-enter-active,
-.animate-leave {
-  left: 0;
-}
-
-.animate-leave.animate-leave-active,
-.animate-enter {
-  left: 500px;
-}
-
-.repeat-item.ng-enter,
-.repeat-item.ng-leave {
-  position: relative;
-  display: block;
-  transition: 500ms ease-in all;
-}
-
-.repeat-item.ng-enter,
-.repeat-item.ng-leave.ng-leave-active {
-  left: 500px;
-}
-
-.repeat-item.ng-leave,
-.repeat-item.ng-enter.ng-enter-active {
-  left: 0;
-}
-
-.my-show-hide-animation.ng-hide-add,
-.my-show-hide-animation.ng-hide-remove {
-  position: relative;
-  display: block!important;
-  -webkit-transition: 0.5s linear all;
-          transition: 1.5s ease-in all;
-}
-
-.my-show-hide-animation.ng-hide {
-  left: 500px;
 }
 
 ul {
@@ -215,4 +155,152 @@ ul {
 
 #viewOne .action_group {
   margin: 10px 0;
+}
+
+#viewOne .action_group .btn {
+  margin: 0 5px;
+}
+
+.detail-panel.ng-enter {
+  -webkit-transition: left 0.5s ease-in;
+     -moz-transition: left 0.5s ease-in;
+       -o-transition: left 0.5s ease-in;
+          transition: left 0.5s ease-in;
+}
+
+.detail-panel.detail_hide {
+  display: none;
+}
+
+.detail-panel.detail_show {
+  position: absolute;
+  left: 850px;
+  z-index: 100;
+  width: 450px;
+  height: 500px;
+  line-height: 30px;
+  background: white;
+  border: 1px solid #d4d4d4;
+}
+
+.detail-panel.detail_show .detail_tab {
+  height: 30px;
+  background: #E1F2FF;
+}
+
+.detail-panel.detail_show .detail_tab li {
+  float: left;
+  height: 30px;
+  padding-right: 3px;
+  padding-left: 3px;
+  line-height: 30px;
+}
+
+.detail-panel.detail_show .action_bar_in_detail {
+  height: 30px;
+  line-height: 40px;
+}
+
+.detail-panel.detail_show .detail_info .title {
+  height: 35px;
+  background: #f3f3f3;
+}
+
+.detail-panel.detail_show .detail_area {
+  margin: 5px 0;
+}
+
+.btn {
+  padding: 3px 12px;
+}
+
+.btn:active {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shandow: none;
+}
+
+.btn:focus {
+  color: #747474;
+  outline: none;
+}
+
+.btn:active:focus {
+  outline: none;
+}
+
+.btn-disable {
+  color: #747474;
+  cursor: default;
+  background: #e3e3e3;
+}
+
+.btn-disable:hover {
+  color: #747474;
+}
+
+.btn-enable {
+  color: #ffffff;
+  background: #28a9ee;
+  background-color: #28a9ee;
+}
+
+.btn-enable:hover {
+  color: #ffffff;
+  background: #28a9ee;
+  background-color: #28a9ee;
+}
+
+.btn-enable:focus {
+  color: #ffffff;
+  outline: none;
+}
+
+.btn-group.open .dropdown-toggle {
+  color: #ffffff;
+  background: #28a9ee;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-group.open .dropdown-toggle.btn-default {
+  color: #ffffff;
+  background: #28a9ee;
+  background-color: #28a9ee;
+}
+
+.btn-group .dropdown-menu {
+  width: 140px;
+  min-width: 120px;
+  border: 1px solid #28a9ee;
+}
+
+.btn-group .dropdown-menu li {
+  display: block;
+}
+
+.btn-group .dropdown-menu li.split-line {
+  height: 1px;
+  background: #e3e3e3;
+}
+
+.btn-group .dropdown-menu li a {
+  display: block;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.btn-group .dropdown-menu li a:hover {
+  background: #28a9ee;
+}
+
+.btn-group .dropdown-menu li a i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  margin-right: 3px;
+  background: url('../images/actions_icon.png');
+  background-position: -20px 15px;
 }

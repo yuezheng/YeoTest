@@ -1,5 +1,7 @@
+@import "variables.less";
+
 .gridStyle {
-  border: 1px solid rgb(212,212,212);
+  border: none;
   width: 100%;
   height: 500px;
 
@@ -25,44 +27,46 @@
   .ngViewport {
     height: auto !important;
   }
-
-  .detail-panel{
-    position: absolute;
-    z-index: 100;
-    width: 450px;
-    height: 500px;
-    left: 450px;
-    background: white;
-    line-height: 30px;
-    border: 1px solid #d4d4d4;
-    .detail_tab {
-      height: 30px; 
-      background: #E1F2FF;
+  .ngRow.even {
+    background: @DATA_TABLE_EVEN_ROW_BG;
+    &:hover {
+      background: @DATA_TABLE_ROW_HOVER;
+    }
+  }
+  .ngRow.odd {
+    background: @DATA_TABLE_ODD_ROW_BG;
+    &:hover {
+      background: @DATA_TABLE_ROW_HOVER;
+    }
+  }
+  .ngFooterPanel {
+    background-color: @DATA_TABLE_EVEN_ROW_BG;
+    border-top: none;
+    .pageCode {
+      width: 200px;
+      height: 25px;
+      float: right;
       li {
+        list-style: none;
         float: left;
-        height: 30px;
-        line-height: 30px;
-        padding-left: 3px;
-        padding-right: 3px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+        &.pagetrue {
+          background-color: @BUTTON_ENABLED_BG;
+          color: #FFFFFF;
+        }
       }
     }
-    .action_bar_in_detail {
-      height: 30px;
-      line-height: 40px;
-    }
-    .detail_info 
-      .title {
-        height: 35px; 
-        background: #f3f3f3;
-      }
-      .detail_area {
-        margin: 5px 0px;
-      }
   }
 }
 
 .ngHeaderContainer {
-  background: #E1F2FF;
+  background: @DATA_TABLE_HEADER_BG;
 }
 
 .ngRow.odd {
@@ -76,67 +80,6 @@
   height: 100px;
   width: 100px;
   background: red;
-}
-
-.box { color: white; text-align: center; height: 100px; font-size: 86px; }
-.on  { background-color: green; }
-.off { background-color: red; }
-
-
-.box-show-setup, .box-hide-setup {
-  -webkit-transition:all linear 0.3s;
-  -moz-transition:all linear 0.3s;
-  -ms-transition:all linear 0.3s;
-  -o-transition:all linear 0.3s;
-  transition:all linear 0.3s;
-}
-
-.box-show-setup { opacity:0; height: 0; }
-.box-show-setup.box-show-start { opacity:1; height: 100px; }
-
-.box-hide-setup { opacity:1; height: 0; }
-.box-hide-setup.box-hide-start { opacity:0; height: 100px; }
-
-.animate-enter, .animate-leave {
-transition: 500ms ease-in all;
-position: relative;
-display: block;
-}
-.animate-enter.animate-enter-active, .animate-leave {
-left: 0;
-}
-.animate-leave.animate-leave-active, .animate-enter {
-left: 500px;
-}
-
-.repeat-item.ng-enter,
-.repeat-item.ng-leave {
- transition: 500ms ease-in all;
-position: relative;
-display: block;
-}
-
-.repeat-item.ng-enter,
-.repeat-item.ng-leave.ng-leave-active {
-  left:500px;
-}
-.repeat-item.ng-leave,
-.repeat-item.ng-enter.ng-enter-active {
-  left:0;
-}
-
-
-.my-show-hide-animation.ng-hide-add,
-.my-show-hide-animation.ng-hide-remove {
-  -webkit-transition:0.5s linear all;
-  transition:1.5s ease-in all;
-
-  /* remember to add this */
-  display:block!important;
-  position: relative;
-}
-.my-show-hide-animation.ng-hide {
-  left: 500px;
 }
 
 ul {
@@ -172,5 +115,147 @@ ul {
   height: 600px;
   .action_group {
     margin: 10px 0px;
+    .btn {
+      margin: 0px 5px;
+    }
+  }
+}
+
+.detail-panel.ng-enter {
+  -webkit-transition:left .5s ease-in;
+  -moz-transition:left .5s ease-in;
+  -o-transition:left .5s ease-in;
+  transition:left .5s ease-in;
+}
+
+.detail-panel.detail_show.ng-enter-active {
+}
+
+.detail-panel.detail_show.ng-leave-active {
+}
+
+  .detail-panel.detail_hide{
+    display: none;
+  }
+
+  .detail-panel.detail_show{
+    position: absolute;
+    z-index: 100;
+    width: 450px;
+    height: 500px;
+    left: 850px;
+    background: white;
+    line-height: 30px;
+    border: 1px solid #d4d4d4;
+    .detail_tab {
+      height: 30px; 
+      background: #E1F2FF;
+      li {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        padding-left: 3px;
+        padding-right: 3px;
+      }
+    }
+    .action_bar_in_detail {
+      height: 30px;
+      line-height: 40px;
+    }
+    .detail_info 
+      .title {
+        height: 35px; 
+        background: #f3f3f3;
+      }
+      .detail_area {
+        margin: 5px 0px;
+      }
+  }
+
+.btn {
+  padding: 3px 12px;
+  &:active {
+    -webkit-box-shadow: none;
+    box-shandow: none;
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+    color: @BUTTON_DISABLEd_TEXT_COLOR;
+  }
+  &:active:focus {
+    outline: none;
+  }
+}
+
+.btn-disable {
+  background: @BUTTON_DISABLED_BG;
+  color: @BUTTON_DISABLEd_TEXT_COLOR;
+  cursor: default;
+  &:hover {
+    color: @BUTTON_DISABLEd_TEXT_COLOR;
+  }
+}
+
+.btn-enable {
+  background: @BUTTON_ENABLED_BG;
+  background-color: @BUTTON_ENABLED_BG;
+  color: @BUTTON_ENABLED_TEXT_COLOR; 
+  &:hover {
+    background: @BUTTON_ENABLED_BG;
+    background-color: @BUTTON_ENABLED_BG;
+    color: @BUTTON_ENABLED_TEXT_COLOR; 
+  }
+  &:focus {
+    outline: none;
+    color: @BUTTON_ENABLED_TEXT_COLOR; 
+  }
+}
+
+.btn-group.open .dropdown-toggle {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: @BUTTON_ENABLED_BG;
+  color: @BUTTON_ENABLED_TEXT_COLOR; 
+}
+
+.btn-group.open .dropdown-toggle.btn-default {
+  background: @BUTTON_ENABLED_BG;
+  background-color: @BUTTON_ENABLED_BG;
+  color: @BUTTON_ENABLED_TEXT_COLOR; 
+}
+
+.btn-group {
+   open .dropdown-toggle {
+   }
+  .dropdown-menu {
+    min-width: 120px;
+    width: 140px;
+    border: 1px solid @BUTTON_ENABLED_BG;
+    li { 
+      display: block;
+      &.split-line {
+        height: 1px;
+        background: @BUTTON_DISABLED_BG;
+      }
+      a {
+        display: block;
+        padding: 3px 10px;
+        cursor: pointer;
+        &:hover {
+          background: @BUTTON_ENABLED_BG;
+        }
+        i {
+          width: 15px;
+          height: 15px;
+          margin-top: 3px;
+          margin-right: 3px;
+          display: inline-block;
+          float: left;
+          background: url('../images/actions_icon.png');
+          background-position: -20px 15px;
+        }
+      }
+    }
   }
 }
