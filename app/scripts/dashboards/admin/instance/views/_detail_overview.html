@@ -1,7 +1,7 @@
 <div class='action_bar_in_detail'>
   <ul>
   <li class='action_header'>Actions</li>
-  <li ng-repeat='action in actionList'><a>{{action.verbose}}</a></li>
+  <li ng-repeat='action in actionList'><a ng-click="serverAction(action.name)">{{action.verbose}}</a></li>
   </ul>
 </div>
 
