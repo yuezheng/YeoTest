@@ -18,13 +18,13 @@
           <button class='btn' ng-class="batchActionEnableClass">VNC Console</button>
         <button class='btn' ng-class="batchActionEnableClass" ng-click='deleteServer()'>Delete</button>
         <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle btn-enable" data-toggle="dropdown">
+        <button type="button"ng-class="batchActionEnableClass" class="btn btn-default dropdown-toggle btn-enable" data-toggle="dropdown">
           More Action
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
           <li ng-repeat="action in batchActions">
-          <a ng-click="serverAction('{{action.action}}')"><i ng-class="action.action"></i>{{action.verbose}}</a></li>
+          <a ng-click="serverAction($index, 'batch')"><i ng-class={{action['action']}}></i>{{action.verbose}}</a></li>
           <li class='split-line'></li>
           <li ng-repeat="action in mantanceActions">
           <a ng-click="serverAction('{{action.action}}')"><i ng-class="action.action"></i>{{action.verbose}}</a></li>
@@ -66,19 +66,9 @@
     </div>
   </div>
   <div class='pageCode'>
-      <li ng-show='firstPage'>&lt;&lt;</li>
+      <li ng-show='unFristPage' ng-click="gotoPage('pre')" class="change-page">&lt;&lt;</li>
       <li ng-repeat="page in showPages" class="page{{page+1==pagingOptions.currentPage }}" ng-click="gotoPage($index)">{{ page + 1 }}</li>
-      <li>&gt;&gt;</li>
-  </div>
-  <div class="ngPagerContainer" style="float: right; margin-top: 10px;" ng-show="enablePaging" ng-class="{'ngNoMultiSelect': !multiSelect}">
-  <div style="float:left; margin-right: 10px; line-height:25px;" class="ngPagerControl" style="float: left; min-width: 135px;">
-    <button type="button" class="ngPagerButton" ng-click="pageToFirst()" ng-disabled="cantPageBackward()" title="{{i18n.ngPagerFirstTitle}}"><div class="ngPagerFirstTriangle"><div class="ngPagerFirstBar"></div></div></button>
-    <button type="button" class="ngPagerButton" ng-click="pageBackward()" ng-disabled="cantPageBackward()" title="{{i18n.ngPagerPrevTitle}}"><div class="ngPagerFirstTriangle ngPagerPrevTriangle"></div></button>
-    <input class="ngPagerCurrent" min="1" max="{{currentMaxPages}}" type="number" style="width:50px; height: 24px; margin-top: 1px; padding: 0 4px;" ng-model="pagingOptions.currentPage"/>
-    <span style="position: relative; top: -5px;">/ {{maxPages()}}</span>
-    <button type="button" class="ngPagerButton" ng-click="pageForward()" ng-disabled="cantPageForward()" title="{{i18n.ngPagerNextTitle}}"><div class="ngPagerLastTriangle ngPagerNextTriangle"></div></button>
-    <button type="button" class="ngPagerButton" ng-click="pageToLast()" ng-disabled="cantPageToLast()" title="{{i18n.ngPagerLastTitle}}"><div class="ngPagerLastTriangle"><div class="ngPagerLastBar"></div></div></button>
-    </div>
+      <li ng-show='unLastPage' ng-click="gotoPage('next')" class="change-page">&gt;&gt;</li>
   </div>
 </div>
 </script>

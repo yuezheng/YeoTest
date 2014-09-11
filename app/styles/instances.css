@@ -50,6 +50,10 @@
   color: #269BD8;
 }
 
+.gridStyle .enableClick a:hover {
+  text-decoration: none;
+}
+
 .gridStyle .ngViewport {
   height: auto !important;
 }
@@ -77,8 +81,10 @@
 
 .gridStyle .ngFooterPanel .pageCode {
   float: right;
-  width: 200px;
+  width: 160px;
   height: 25px;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 .gridStyle .ngFooterPanel .pageCode li {
@@ -94,6 +100,15 @@
 }
 
 .gridStyle .ngFooterPanel .pageCode li.pagetrue {
+  color: #FFFFFF;
+  background-color: #28a9ee;
+}
+
+.gridStyle .ngFooterPanel .pageCode li.change-page {
+  border-radius: 0;
+}
+
+.gridStyle .ngFooterPanel .pageCode li.change-page:hover {
   color: #FFFFFF;
   background-color: #28a9ee;
 }
@@ -161,11 +176,43 @@ ul {
   margin: 0 5px;
 }
 
+.detail-panel.ng-enter,
+.detail-panel.ng-leave {
+  position: absolute;
+  right: 0;
+  left: 300px;
+  -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+       -o-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
+}
+
 .detail-panel.ng-enter {
-  -webkit-transition: left 0.5s ease-in;
-     -moz-transition: left 0.5s ease-in;
-       -o-transition: left 0.5s ease-in;
-          transition: left 0.5s ease-in;
+  opacity: 1;
+  -webkit-transform: translate3d(500px, 0, 0);
+     -moz-transform: translate3d(500px, 0, 0);
+          transform: translate3d(500px, 0, 0);
+}
+
+.detail-panel.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+     -moz-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.detail-panel.ng-leave {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+     -moz-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.detail-panel.ng-leave-active {
+  opacity: 1;
+  -webkit-transform: translate3d(500px, 0, 0);
+     -moz-transform: translate3d(500px, 0, 0);
+          transform: translate3d(500px, 0, 0);
 }
 
 .detail-panel.detail_hide {
@@ -174,10 +221,10 @@ ul {
 
 .detail-panel.detail_show {
   position: absolute;
-  left: 850px;
+  left: 450px;
   z-index: 100;
-  width: 450px;
-  height: 500px;
+  width: 850px;
+  height: 480px;
   line-height: 30px;
   background: white;
   border: 1px solid #d4d4d4;

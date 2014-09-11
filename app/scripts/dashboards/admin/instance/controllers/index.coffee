@@ -21,7 +21,8 @@ angular.module('Cross.admin.instance')
       template: 'three.tpl.html'
     }]
 
-    $scope.firstPage = false
+    $scope.unFristPage = false
+    $scope.unLastPage = false
     $scope.currentTab = 'one.tpl.html'
     $scope.onClickTab = (tab) ->
       $scope.currentTab = tab.template
@@ -53,8 +54,6 @@ angular.module('Cross.admin.instance')
       list
 
     $scope.footerTemplate = $templateCache.get('ng-grid-footer')
-    console.log typeof($scope.footerTemplate)
-    
     $scope.filterOptions =
       filterText: '',
       useExternalFilter: true
@@ -73,8 +72,8 @@ angular.module('Cross.admin.instance')
       {action: 'migrate', verbose: 'Migrate'}
     ]
     $scope.networkActions = [
-      {action: 'attachIp', verbose: 'Attach Ip'}
-      {action: 'removeIP', verbose: 'Untach Ip'}
+      {action: 'attachIp', verbose: 'Attach IP'}
+      {action: 'removeIP', verbose: 'Untach IP'}
     ]
     $scope.volumeActions = [
       {action: 'attachVolume', verbose: 'Attach Volume'}
@@ -96,7 +95,13 @@ angular.module('Cross.admin.instance')
       $scope.totalServerItems = total
       $scope.pageCounts = Math.ceil(total / $scope.pagingOptions.pageSize)
       $scope.showPages = getPageCountList($scope.pagingOptions.currentPage, $scope.pageCounts)
-      console.log $scope.showPages
+      if $scope.pagingOptions.currentPage == 1 and $scope.showPages.length > 1
+        $scope.unFristPage = false
+        $scope.unLastPage = true
+      else
+        $scope.unFristPage = true
+        if $scope.pagingOptions.currentPage == $scope.pageCounts
+          $scope.unLastPage = false
       for item in pagedData
         if item.status in $scope.labileStatus
           item.labileStatus = 'unknwon'
@@ -109,9 +114,9 @@ angular.module('Cross.admin.instance')
       {field: "name", displayName: "Name", cellTemplate: '<div class="ngCellText enableClick"><a ui-sref="admin./instance.detail({ instanceId:row.entity.id })")" ng-click="foo(row.rowIndex)" ng-bind="row.getProperty(col.field)"></a></div>'}
       {field: "hypervisor_hostname", displayName: "Host"}
       {field: "project", displayName: "Project", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText enableClick"></div>'}
-      {field: "vcpus", displayName: "CPU"}
-      {field: "ram", displayName: "RAM"}
-      {field: "status", displayName: "Status", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText" ng-class="row.entity.labileStatus"></div>'}
+      {field: "vcpus", displayName: "CPU", width: 120}
+      {field: "ram", displayName: "RAM", width: 120}
+      {field: "status", displayName: "Status", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText" ng-class="row.entity.labileStatus"></div>', width: 130}
     ]
 
     $scope.getLabileData = (instanceId) ->
@@ -193,13 +198,26 @@ angular.module('Cross.admin.instance')
           instanceId = item.id
           $cross.serverDelete $http, $window, instanceId, (response) ->
             console.log response
+            if response == 200
+              alert 'Success'
+      else
+        alert "Choose a instance"
+
+    $scope.serverAction = (action, group) ->
+      console.log $scope[group + 'Actions'][action].action
+      if $scope.selectedItems and $scope.selectedItems.length > 0
+        for item in $scope.selectedItems
+          instanceId = item.id
+          $cross.serverDelete $http, $window, instanceId, (response) ->
+            console.log response
       else
         alert "Choose a instance"
 
     $scope.gotoPage = (index) ->
-      if index
-        if typeof(index) is 'number'
-          $scope.pagingOptions.currentPage = $scope.showPages[index] + 1
-        else
-          $scope.pagingOptions.currentPage = $scope.pagingOptions.currentPage + 1
+      if typeof(index) is 'number'
+        $scope.pagingOptions.currentPage = $scope.showPages[index] + 1
+      else if index == 'next'
+        $scope.pagingOptions.currentPage = $scope.pagingOptions.currentPage + 1
+      else if index == 'pre'
+        $scope.pagingOptions.currentPage = $scope.pagingOptions.currentPage - 1
 

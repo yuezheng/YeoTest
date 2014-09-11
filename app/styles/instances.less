@@ -22,6 +22,9 @@
 
   .enableClick {
     color: #269BD8;
+    a:hover {
+      text-decoration: none;
+    }
   }
 
   .ngViewport {
@@ -43,9 +46,11 @@
     background-color: @DATA_TABLE_EVEN_ROW_BG;
     border-top: none;
     .pageCode {
-      width: 200px;
+      width: 160px;
       height: 25px;
       float: right;
+      margin-left: 20px;
+      margin-top: 10px;
       li {
         list-style: none;
         float: left;
@@ -59,6 +64,13 @@
         &.pagetrue {
           background-color: @BUTTON_ENABLED_BG;
           color: #FFFFFF;
+        }
+        &.change-page {
+          border-radius: 0px;
+          &:hover {
+            background-color: @BUTTON_ENABLED_BG;
+            color: #FFFFFF;
+          }
         }
       }
     }
@@ -121,17 +133,42 @@ ul {
   }
 }
 
+.detail-panel.ng-enter, .detail-panel.ng-leave {
+  position: absolute;
+  left: 300px;
+  right: 0;
+  -webkit-transition:all .5s ease-in-out;
+    -moz-transition:all .5s ease-in-out;
+    -o-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}
+
 .detail-panel.ng-enter {
-  -webkit-transition:left .5s ease-in;
-  -moz-transition:left .5s ease-in;
-  -o-transition:left .5s ease-in;
-  transition:left .5s ease-in;
+  opacity: 1;
+  -webkit-transform:translate3d(500px, 0, 0);
+  -moz-transform:translate3d(500px, 0, 0);
+  transform:translate3d(500px, 0, 0);
 }
 
-.detail-panel.detail_show.ng-enter-active {
+.detail-panel.ng-enter-active {
+  opacity: 1; 
+  -webkit-transform:translate3d(0, 0, 0);
+  -moz-transform:translate3d(0, 0, 0);
+  transform:translate3d(0, 0, 0);
 }
 
-.detail-panel.detail_show.ng-leave-active {
+.detail-panel.ng-leave {
+  opacity: 1; 
+  -webkit-transform:translate3d(0, 0, 0);
+  -moz-transform:translate3d(0, 0, 0);
+  transform:translate3d(0, 0, 0);
+}
+
+.detail-panel.ng-leave-active {
+  opacity: 1;
+  -webkit-transform:translate3d(500px, 0, 0);
+  -moz-transform:translate3d(500px, 0, 0);
+  transform:translate3d(500px, 0, 0);
 }
 
   .detail-panel.detail_hide{
@@ -141,9 +178,9 @@ ul {
   .detail-panel.detail_show{
     position: absolute;
     z-index: 100;
-    width: 450px;
-    height: 500px;
-    left: 850px;
+    width: 850px;
+    height: 480px;
+    left: 450px;
     background: white;
     line-height: 30px;
     border: 1px solid #d4d4d4;
