@@ -1,0 +1,20 @@
+<div class='action_bar_in_detail'>
+  <ul>
+  <li class='action_header'>Actions</li>
+  <li ng-repeat='action in actionList'><a>{{action.verbose}}</a></li>
+  </ul>
+</div>
+
+<div class='base_info detail_info'>
+  <div class='title'>Detail info</div>
+  <div class='detail_area'>
+    <ul>
+        <li>Name: {{server_detail.name}}</li>
+        <li>Id: {{server_detail.id}}</li>
+    </ul>
+  </div>
+</div>
+
+<div class='other_info detail_info'>
+  <div class='title'>Flavor Info</div>
+</div>

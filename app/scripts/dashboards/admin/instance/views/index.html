@@ -38,7 +38,7 @@
         </div>
       </div>
         <div class="gridStyle ui-view-container" ng-grid="gridOptions">
-            <div ui-view ng-init="detail_show='detail_hide'" class="detail-panel" ng-class={{"detail_show"}}></div>
+          <div ui-view ng-init="detail_show='detail_hide'" class="detail-panel" ng-class={{"detail_show"}} ng-style="{height: detailHeight, minHeight: 480, width: detailWidth}"></div>
         </div>
     </div>
 </script>

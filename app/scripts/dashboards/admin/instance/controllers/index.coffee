@@ -21,6 +21,7 @@ angular.module('Cross.admin.instance')
       template: 'three.tpl.html'
     }]
 
+
     $scope.unFristPage = false
     $scope.unLastPage = false
     $scope.currentTab = 'one.tpl.html'
@@ -111,7 +112,7 @@ angular.module('Cross.admin.instance')
         $scope.$apply()
 
     $scope.columnDefs = [
-      {field: "name", displayName: "Name", cellTemplate: '<div class="ngCellText enableClick"><a ui-sref="admin./instance.detail({ instanceId:row.entity.id })")" ng-click="foo(row.rowIndex)" ng-bind="row.getProperty(col.field)"></a></div>'}
+      {field: "name", displayName: "Name", cellTemplate: '<div class="ngCellText enableClick"><a ui-sref="admin./instance.detail./overview({ instanceId:row.entity.id })")" ng-click="foo(row.rowIndex)" ng-bind="row.getProperty(col.field)"></a></div>'}
       {field: "hypervisor_hostname", displayName: "Host"}
       {field: "project", displayName: "Project", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText enableClick"></div>'}
       {field: "vcpus", displayName: "CPU", width: 120}
@@ -192,6 +193,10 @@ angular.module('Cross.admin.instance')
         $scope.gridOptions.selectRow(row, false)
       $scope.gridOptions.selectRow(item, true)
 
+      container = angular.element('.ui-view-container')
+      $scope.detailHeight = $(window).height() - container.offset().top
+      $scope.detailWidth = container.width() - 260
+
     $scope.deleteServer = () ->
       if $scope.selectedItems and $scope.selectedItems.length > 0
         for item in $scope.selectedItems
@@ -220,4 +225,3 @@ angular.module('Cross.admin.instance')
         $scope.pagingOptions.currentPage = $scope.pagingOptions.currentPage + 1
       else if index == 'pre'
         $scope.pagingOptions.currentPage = $scope.pagingOptions.currentPage - 1
-

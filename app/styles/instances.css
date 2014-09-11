@@ -22,115 +22,6 @@
 
 /* Style of button for action */
 
-.gridStyle {
-  width: 100%;
-  height: 500px;
-  border: none;
-}
-
-.gridStyle .ngCellText {
-  text-align: center;
-  text-overflow: inherit;
-  border: none;
-}
-
-.gridStyle .ngCellText.unknwon {
-  background: url(../images/processing.gif) no-repeat center;
-}
-
-.gridStyle .ngHeaderSortColumn {
-  text-align: center;
-}
-
-.gridStyle .ngVerticalBarVisible {
-  background: none;
-}
-
-.gridStyle .enableClick {
-  color: #269BD8;
-}
-
-.gridStyle .enableClick a:hover {
-  text-decoration: none;
-}
-
-.gridStyle .ngViewport {
-  height: auto !important;
-}
-
-.gridStyle .ngRow.even {
-  background: #ffffff;
-}
-
-.gridStyle .ngRow.even:hover {
-  background: #e1f2ff;
-}
-
-.gridStyle .ngRow.odd {
-  background: #f2f2f2;
-}
-
-.gridStyle .ngRow.odd:hover {
-  background: #e1f2ff;
-}
-
-.gridStyle .ngFooterPanel {
-  background-color: #ffffff;
-  border-top: none;
-}
-
-.gridStyle .ngFooterPanel .pageCode {
-  float: right;
-  width: 160px;
-  height: 25px;
-  margin-top: 10px;
-  margin-left: 20px;
-}
-
-.gridStyle .ngFooterPanel .pageCode li {
-  display: block;
-  float: left;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  text-align: center;
-  list-style: none;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-.gridStyle .ngFooterPanel .pageCode li.pagetrue {
-  color: #FFFFFF;
-  background-color: #28a9ee;
-}
-
-.gridStyle .ngFooterPanel .pageCode li.change-page {
-  border-radius: 0;
-}
-
-.gridStyle .ngFooterPanel .pageCode li.change-page:hover {
-  color: #FFFFFF;
-  background-color: #28a9ee;
-}
-
-.ngHeaderContainer {
-  background: #cce4f6;
-}
-
-.ngRow.odd {
-  background: #E1F2FF;
-}
-
-.ngRow.odd:hover {
-  background: #FFFFFF;
-}
-
-#detail-container {
-  width: 100px;
-  height: 100px;
-  background: red;
-}
-
 ul {
   padding: 0;
   margin: 0;
@@ -224,7 +115,6 @@ ul {
   left: 450px;
   z-index: 100;
   width: 850px;
-  height: 480px;
   line-height: 30px;
   background: white;
   border: 1px solid #d4d4d4;
@@ -238,14 +128,57 @@ ul {
 .detail-panel.detail_show .detail_tab li {
   float: left;
   height: 30px;
-  padding-right: 3px;
-  padding-left: 3px;
   line-height: 30px;
 }
 
+.detail-panel.detail_show .detail_tab li.active {
+  background: #FFFFFF;
+}
+
+.detail-panel.detail_show .detail_tab li a {
+  display: block;
+  padding-right: 8px;
+  padding-left: 8px;
+  color: black;
+}
+
+.detail-panel.detail_show .detail_tab li a:hover {
+  text-decoration: none;
+}
+
 .detail-panel.detail_show .action_bar_in_detail {
-  height: 30px;
-  line-height: 40px;
+  height: 35px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 35px;
+  background: #EAF5FD;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li {
+  float: left;
+  height: 35px;
+  line-height: 35px;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li.action_header {
+  width: 70px;
+  padding-left: 20px;
+  margin-right: 10px;
+  background: #CCE4F6;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a {
+  padding: 3px 2px;
+  padding-left: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a:hover {
+  color: white;
+  text-decoration: none;
+  background: #29AAEE;
 }
 
 .detail-panel.detail_show .detail_info .title {

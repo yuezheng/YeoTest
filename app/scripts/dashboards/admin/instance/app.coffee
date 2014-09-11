@@ -10,6 +10,24 @@ routes =[
       url: '/:instanceId'
       templateUrl: 'views/detail.html'
       controller: 'InstanceDetailCtr'
+      subStates: [
+        {
+          url: '/overview'
+          templateUrl: 'views/_detail_overview.html'
+        }
+        {
+          url: '/log'
+          templateUrl: 'views/_detail_log.html'
+        }
+        {
+          url: '/console'
+          templateUrl: 'views/_detail_console.html'
+        }
+        {
+          url: '/monitor'
+          templateUrl: 'views/_detail_monitor.html'
+        }
+      ]
   }
 ]
 

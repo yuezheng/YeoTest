@@ -1,0 +1,118 @@
+/* Variables will be used in index page */
+
+/* Min width of cross app */
+
+/* Min height of cross app */
+
+/* Background of app */
+
+/* Left frame width of cross app */
+
+/* Left frame background of cross app */
+
+/* Top height of cross app */
+
+/* Left logo background of cross app */
+
+/* Top tool background of cross app */
+
+/* Left nav bar item background */
+
+/* Attr at data table */
+
+/* Style of button for action */
+
+.gridStyle {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.gridStyle .ngHeaderContainer {
+  background: #cce4f6;
+}
+
+.gridStyle .ngCellText {
+  text-align: center;
+  text-overflow: inherit;
+  border: none;
+}
+
+.gridStyle .ngCellText.unknwon {
+  background: url(../images/processing.gif) no-repeat center;
+}
+
+.gridStyle .ngHeaderSortColumn {
+  text-align: center;
+}
+
+.gridStyle .ngVerticalBarVisible {
+  background: none;
+}
+
+.gridStyle .enableClick {
+  color: #269bd8;
+}
+
+.gridStyle .enableClick a:hover {
+  text-decoration: none;
+}
+
+.gridStyle .ngViewport {
+  height: auto !important;
+}
+
+.gridStyle .ngRow.even {
+  background: #ffffff;
+}
+
+.gridStyle .ngRow.even:hover {
+  background: #e1f2ff;
+}
+
+.gridStyle .ngRow.odd {
+  background: #f2f2f2;
+}
+
+.gridStyle .ngRow.odd:hover {
+  background: #e1f2ff;
+}
+
+.gridStyle .ngFooterPanel {
+  background-color: #ffffff;
+  border-top: none;
+}
+
+.gridStyle .ngFooterPanel .pageCode {
+  float: right;
+  width: 160px;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.gridStyle .ngFooterPanel .pageCode li {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.gridStyle .ngFooterPanel .pageCode li.pagetrue {
+  color: #ffffff;
+  background-color: #28a9ee;
+}
+
+.gridStyle .ngFooterPanel .pageCode li.change-page {
+  border-radius: 0;
+}
+
+.gridStyle .ngFooterPanel .pageCode li.change-page:hover {
+  color: #ffffff;
+  background-color: #28a9ee;
+}

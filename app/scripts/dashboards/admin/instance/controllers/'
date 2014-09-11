@@ -46,23 +46,22 @@ angular.module('Cross.admin.instance')
 
     $cross.serverGet $http, $window, currentInstance, (server) ->
       $scope.server_detail = server
-      console.log server.status
       if $scope.server_detail.status in $scope.UNKOWN_STATUS
         $scope.actionList = [
-          {name: 'edit', verbose: 'Edit'},
-        ]
-      else if $scope.server_detail.status == 'ACTIVE'
+          {name: 'edit', verbose: 'Edit'}
+          ]
+      else $scope.server_detail.status == 'active'
         $scope.actionList = [
-          {name: 'edit', verbose: 'Edit'},
-          {name: 'resize', verbose: 'Resize'},
-          {name: 'snapshot', verbose: 'Snapshot'},
-          {name: 'migrate', verbose: 'Migrate'},
-          {name: 'shutdown', verbose: 'Shut Down'},
-          {name: 'suspend', verbose: 'Suspend'},
-          {name: 'reboot', verbose: 'Reboot'},
+          {name: 'edit', verbose: 'Edit'}
+          {name: 'resize', verbose: 'Resize'}
+          {name: 'snapshot', verbose: 'Snapshot'}
+          {name: 'migrate', verbose: 'Migrate'}
+          {name: 'shutdown', verbose: 'Shut Down'}
+          {name: 'suspend', verbose: 'Suspend'}
+          {name: 'reboot', verbose: 'Reboot'}
         ]
 
-      $scope.actionList.push({name: 'delete', verbose: 'Delete'})
+      $scope.actionList.push {name: 'delete', verbose: 'Delete'}
 
     $scope.panle_close = () ->
       $state.go 'admin./instance'
