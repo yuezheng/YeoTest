@@ -37,4 +37,29 @@ $cross.ngGridFlexibleHeightPlugin = function (opts) {
         self.scope.$watch('catHashKeys()', innerRecalcForData);
         self.scope.$watch(self.grid.config.data, recalcHeightForData);
     };
+};
+
+$cross.resizeViewPort = function () { // and the two steps below
+  // retrieve viewPortHeight
+  var viewportHeight = $('ngViewPort').height();
+  var gridHeight = $('ngGrid').height();
+
+  // set the .ngGridStyle or the first parent of my ngViewPort in current scope
+  var viewportHeight = $('.ngViewport').height();
+  var canvasHeight = $('.ngCanvas').height();
+  var gridHeight = $('.ngGrid').height();
+
+  var finalHeight = canvasHeight;
+  var minHeight = 150;
+  var maxHeight = 300;
+
+
+  // if the grid height less than 150 set to 150, same for > 300 set to 300
+  if (finalHeight < minHeight) {
+    finalHeight = minHeight;
+  } else if (finalHeight > viewportHeight) {
+    finalHeight = maxHeight;
+  }
+
+  $(".ngViewport").height(finalHeight);
 }

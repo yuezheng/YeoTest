@@ -14,15 +14,9 @@
      text-align: center;
      border: none;
      &.status {
-      text-align: left;
-      padding-left: 15px;
-      &.stoped {
-        background: url(../images/server_status.png) no-repeat;
-      }
       &.unknwon {
        background: url(../images/processing.gif) no-repeat center;
-      }   
-    }
+    }   
   }
   .ngHeaderSortColumn {
     text-align: center;

@@ -89,6 +89,17 @@ angular.module('Cross.admin.instance')
 
     $scope.labileStatus = [
       'BUILD'
+      'MIGRATING'
+      'HARD_REBOOT'
+    ]
+    $scope.abnormalStatus = [
+      'ERROR'
+    ]
+    $scope.shutdowStatus = [
+      'PAUSED'
+      'SUSPENDED'
+      'STOPPED'
+      'SHUTOFF'
     ]
 
     $scope.setPagingData = (pagedData, total) ->
@@ -103,21 +114,26 @@ angular.module('Cross.admin.instance')
         $scope.unFristPage = true
         if $scope.pagingOptions.currentPage == $scope.pageCounts
           $scope.unLastPage = false
+
       for item in pagedData
         if item.status in $scope.labileStatus
           item.labileStatus = 'unknwon'
-        else
-          item.labileStatus = 'active'
+        else if item.status in $scope.shutdowStatus
+          item.labileStatus = 'stoped'
+        else if item.status in $scope.abnormalStatus
+          item.labileStatus = 'abnormal'
       if !$scope.$$phase
         $scope.$apply()
 
     $scope.columnDefs = [
       {field: "name", displayName: "Name", cellTemplate: '<div class="ngCellText enableClick"><a ui-sref="admin./instance.detail./overview({ instanceId:row.entity.id })")" ng-click="foo(row.rowIndex)" ng-bind="row.getProperty(col.field)"></a></div>'}
+      {field: "fixed", displayName: "FixedIP", cellTemplate: '<div class=ngCellText ng-click="test(col)" ng-bind="row.getProperty(col.field)"></div>'}
+      {field: "floating", displayName: "FloatingIP", cellTemplate: '<div class=ngCellText ng-click="test(row, col, $event)"><li style="list-style: none" ng-repeat="value in row.getProperty(col.field)">{{value}}</li></div>'}
       {field: "hypervisor_hostname", displayName: "Host"}
       {field: "project", displayName: "Project", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText enableClick"></div>'}
       {field: "vcpus", displayName: "CPU", width: 120}
       {field: "ram", displayName: "RAM", width: 120}
-      {field: "status", displayName: "Status", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText" ng-class="row.entity.labileStatus"></div>', width: 130}
+      {field: "status", displayName: "Status", cellTemplate: '<div ng-bind="row.getProperty(col.field)" class="ngCellText status" ng-class="row.entity.labileStatus"></div>', width: 130}
     ]
 
     $scope.getLabileData = (instanceId) ->
@@ -139,6 +155,7 @@ angular.module('Cross.admin.instance')
           dataFrom: parseInt(pageSize) * parseInt(currentPage)
           dataTo: parseInt(pageSize) * parseInt(currentPage) + parseInt(pageSize)
         $cross.listDetailedServers $http, $window, $q, dataQueryOpts, (instances, total) ->
+          console.log instances
           $scope.setPagingData(instances, total)
       , 100)
 
@@ -187,6 +204,13 @@ angular.module('Cross.admin.instance')
       plugins: [new $cross.ngGridFlexibleHeightPlugin()],
       footerTemplate: $scope.footerTemplate
     }
+
+    $scope.test = (row, col, event) ->
+      console.log row
+      console.log row.getProperty(col.field)
+      target = angular.element(event.target)
+      tt = target.closest('div[class^="ngCell"]').parents('div[class^="ngCell"]').parent()
+      console.log tt
 
     $scope.foo = (item) ->
       for row in $scope.selectedIndex

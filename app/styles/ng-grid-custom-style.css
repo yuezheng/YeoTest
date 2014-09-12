@@ -38,7 +38,16 @@
   border: none;
 }
 
-.gridStyle .ngCellText.unknwon {
+.gridStyle .ngCellText.status {
+  padding-left: 15px;
+  text-align: left;
+}
+
+.gridStyle .ngCellText.status.stoped {
+  background: url(../images/server_status.png) no-repeat;
+}
+
+.gridStyle .ngCellText.status.unknwon {
   background: url(../images/processing.gif) no-repeat center;
 }
 

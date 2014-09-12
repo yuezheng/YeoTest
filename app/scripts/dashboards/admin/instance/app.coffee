@@ -18,6 +18,7 @@ routes =[
         {
           url: '/log'
           templateUrl: 'views/_detail_log.html'
+          controller: 'InstanceLogCtr'
         }
         {
           url: '/console'

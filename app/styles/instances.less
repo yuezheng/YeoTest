@@ -110,6 +110,17 @@ ul {
       }
     }
   }
+  .close-detail {
+    height: 80px;
+    width: 40px;
+    line-height: 80px;
+    position: absolute;
+    background: #CCE4F6;
+    top: 260px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    cursor: pointer;
+  }
   .action_bar_in_detail {
     height: 35px;
     line-height: 35px;
@@ -140,14 +151,38 @@ ul {
       }
     }
   }
-  .detail_info 
-    .title {
+  .detail_info { 
+    .detail_title {
       height: 35px; 
+      line-height: 35px;
       background: #f3f3f3;
     }
     .detail_area {
       margin: 5px 0px;
+      .item_name {
+        width: 30%;
+        float: left;
+        li {
+          text-align: right;
+        }
+      }
+      .space {
+        width: 6%;
+        height: 100px;
+        float: left;
+      }
+      .item_value {
+        width: 50%;
+        float: left;
+        .ip-list {
+          margin-right: 10px;
+        }
+      }
+      .clear {
+        clear: both;
+      }
     }
+}
 }
 
 .btn {

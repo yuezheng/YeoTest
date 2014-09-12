@@ -1,7 +1,7 @@
 'use strict'
 
 instanceAttrs = ['id', 'name', 'status', 'OS-EXT-SRV-ATTR:hypervisor_hostname'
-                 'flavor', 'tenant_id', 'user_id']
+                 'flavor', 'tenant_id', 'user_id', 'addresses']
 
 ###
 Simple wrapper around nova server API
@@ -58,6 +58,18 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
       return response.data
   # TODO(ZhengYue): The user list interface not implement
 
+  getAddr = (addresses) ->
+    fixed = []
+    floating = []
+    if addresses.private
+      for addr in addresses.private
+        if addr['OS-EXT-IPS:type'] == 'fixed'
+          fixed.push addr.addr
+        else if addr['OS-EXT-IPS:type'] == 'floating'
+          floating.push addr.addr
+
+    return {fixed: fixed, floating: floating}
+
   # Ensure that multiple requests all return
   # TODO(ZhengYue): Error handler
   $q.all([instances, flavors, projects])
@@ -85,6 +97,14 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
         serverObj.vcpus = serverFlavor['vcpus']
         serverObj.ram = serverFlavor['ram']
         serverObj.project = projectsMap[serverObj.tenant_id]['name']
+        delete serverObj.flavor
+
+        address = JSON.parse(serverObj.addresses)
+        addresses = getAddr address
+        serverObj.fixed = addresses.fixed
+        serverObj.floating = addresses.floating
+        delete serverObj.addresses
+
         serverList.push serverObj
 
       callback serverList, values[0].total
@@ -92,16 +112,62 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
 ###
 Get a server.
 ###
-$cross.serverGet = ($http, $window, instanceId, callback) ->
-  requestData =
-    url: $window.crossConfig.backendServer + 'servers/' + instanceId
-    method: 'GET'
+$cross.serverGet = ($http, $window, $q, instanceId, callback) ->
+  if !instanceId
+    return
+  serverUrl = $window.crossConfig.backendServer
+  flavors = $http.get(serverUrl + 'os-flavors')
+    .then (response) ->
+      return response.data
+  projects = $http.get(serverUrl + 'projects/5/5')
+    .then (response) ->
+      return response.data
+  server = $http.get(serverUrl + 'servers/' + instanceId)
+    .then (response) ->
+      return response.data
 
-  $http requestData
-    .success (instance, status, headers) ->
-      server = new $cross.Server(instance, instanceAttrs)
-      server_detail = server.getObject(server)
-      callback server_detail
+  getAddr = (addresses) ->
+    fixed = []
+    floating = []
+    if addresses.private
+      for addr in addresses.private
+        if addr['OS-EXT-IPS:type'] == 'fixed'
+          fixed.push addr.addr
+        else if addr['OS-EXT-IPS:type'] == 'floating'
+          floating.push addr.addr
+
+    return {fixed: fixed, floating: floating}
+
+  $q.all([flavors, projects, server])
+    .then (values) ->
+      flavorMap = {}
+      projectsMap = {}
+      # NOTE(ZhengYue): Package flavor/project/user info into
+      # a Object which indexed with id.
+      for flavor in values[0].data
+        flavorObj = new $cross.Flavor(flavor, ['name', 'id', 'vcpus', 'ram', 'disk'])
+        flavorMap[flavor.id] = flavorObj.getObject(flavorObj)
+
+      for project in values[1].data
+        projectObj = new $cross.Project(project, ['name'])
+        projectsMap[project.id] = projectObj.getObject(projectObj)
+
+      server = new $cross.Server(values[2], instanceAttrs)
+      serverObj = server.getObject(server)
+      console.log serverObj
+      flavorId = JSON.parse(serverObj.flavor).id
+      serverFlavor = flavorMap[flavorId]
+      serverObj.vcpus = serverFlavor['vcpus']
+      serverObj.ram = serverFlavor['ram']
+      serverObj.project = projectsMap[serverObj.tenant_id]['name']
+      delete serverObj.flavor
+
+      address = JSON.parse(serverObj.addresses)
+      addresses = getAddr address
+      serverObj.fixed = addresses.fixed
+      serverObj.floating = addresses.floating
+      delete serverObj.addresses
+      callback serverObj
 
 ###
 Get a server.
@@ -113,5 +179,18 @@ $cross.serverDelete = ($http, $window, instanceId, callback) ->
 
   $http requestData
     .success (data, status, headers) ->
-      console.log status
       callback status
+
+$cross.serverLog = ($http, $window, instanceId, logLength=35, callback) ->
+  if !instanceId
+    return
+  serverUrl = $window.crossConfig.backendServer
+  requestData =
+    url: serverUrl + 'servers/' + instanceId + '/action'
+    method: 'POST'
+    data: {"os-getConsoleOutput": {"length": logLength}}
+
+  $http requestData
+    .success (data, status, headers) ->
+      if data
+        callback data.output

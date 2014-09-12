@@ -25,7 +25,9 @@ angular.module('Cross.admin.instance')
       'ERROR'
     ]
 
-    $scope.actionList = []
+    $scope.actionList = [
+      {name: 'edit', verbose: 'Edit'},
+    ]
 
     currentInstance = $stateParams.instanceId
 
@@ -44,16 +46,14 @@ angular.module('Cross.admin.instance')
     else
       $scope.detail_show = "detail_hide"
 
-    $cross.serverGet $http, $window, currentInstance, (server) ->
+    $cross.serverGet $http, $window, $q, currentInstance, (server) ->
       $scope.server_detail = server
-      console.log server.status
       if $scope.server_detail.status in $scope.UNKOWN_STATUS
         $scope.actionList = [
           {name: 'edit', verbose: 'Edit'},
         ]
       else if $scope.server_detail.status == 'ACTIVE'
-        $scope.actionList = [
-          {name: 'edit', verbose: 'Edit'},
+        activeAction = [
           {name: 'resize', verbose: 'Resize'},
           {name: 'snapshot', verbose: 'Snapshot'},
           {name: 'migrate', verbose: 'Migrate'},
@@ -61,6 +61,14 @@ angular.module('Cross.admin.instance')
           {name: 'suspend', verbose: 'Suspend'},
           {name: 'reboot', verbose: 'Reboot'},
         ]
+        for action in activeAction
+          $scope.actionList.push action
+      else if $scope.server_detail.status == 'SHUTOFF'
+        shutoffAction = [
+          {name: 'poweron', verbose: 'Power On'}
+        ]
+        for action in shutoffAction
+          $scope.actionList.push action
 
       $scope.actionList.push({name: 'delete', verbose: 'Delete'})
 

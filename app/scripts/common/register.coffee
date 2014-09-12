@@ -53,7 +53,7 @@ $cross.registerPanel = (panelView, routes)->
             .state "#{dashboard}.#{route.url}.detail.#{nest.url}",
               url: "#{nest.url}"
               templateUrl: "#{_BASE_URL}#{nest.templateUrl}"
-              controller: subState.controller
+              controller: nest.controller || subState.controller
 
     return
 

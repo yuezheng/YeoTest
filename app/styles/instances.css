@@ -146,6 +146,18 @@ ul {
   text-decoration: none;
 }
 
+.detail-panel.detail_show .close-detail {
+  position: absolute;
+  top: 260px;
+  width: 40px;
+  height: 80px;
+  line-height: 80px;
+  cursor: pointer;
+  background: #CCE4F6;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
 .detail-panel.detail_show .action_bar_in_detail {
   height: 35px;
   margin-top: 20px;
@@ -181,13 +193,42 @@ ul {
   background: #29AAEE;
 }
 
-.detail-panel.detail_show .detail_info .title {
+.detail-panel.detail_show .detail_info .detail_title {
   height: 35px;
+  line-height: 35px;
   background: #f3f3f3;
 }
 
-.detail-panel.detail_show .detail_area {
+.detail-panel.detail_show .detail_info .detail_area {
   margin: 5px 0;
+}
+
+.detail-panel.detail_show .detail_info .detail_area .item_name {
+  float: left;
+  width: 30%;
+}
+
+.detail-panel.detail_show .detail_info .detail_area .item_name li {
+  text-align: right;
+}
+
+.detail-panel.detail_show .detail_info .detail_area .space {
+  float: left;
+  width: 6%;
+  height: 100px;
+}
+
+.detail-panel.detail_show .detail_info .detail_area .item_value {
+  float: left;
+  width: 50%;
+}
+
+.detail-panel.detail_show .detail_info .detail_area .item_value .ip-list {
+  margin-right: 10px;
+}
+
+.detail-panel.detail_show .detail_info .detail_area .clear {
+  clear: both;
 }
 
 .btn {
