@@ -154,7 +154,6 @@ $cross.serverGet = ($http, $window, $q, instanceId, callback) ->
 
       server = new $cross.Server(values[2], instanceAttrs)
       serverObj = server.getObject(server)
-      console.log serverObj
       flavorId = JSON.parse(serverObj.flavor).id
       serverFlavor = flavorMap[flavorId]
       serverObj.vcpus = serverFlavor['vcpus']
@@ -193,4 +192,4 @@ $cross.serverLog = ($http, $window, instanceId, logLength=35, callback) ->
   $http requestData
     .success (data, status, headers) ->
       if data
-        callback data.output
+        callback data.data

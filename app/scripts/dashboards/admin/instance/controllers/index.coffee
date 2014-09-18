@@ -110,6 +110,7 @@ angular.module('Cross.admin.instance')
       if $scope.pagingOptions.currentPage == 1 and $scope.showPages.length > 1
         $scope.unFristPage = false
         $scope.unLastPage = true
+      else if $scope.pagingOptions.currentPage == 1 and $scope.showPages.length == 1
       else
         $scope.unFristPage = true
         if $scope.pagingOptions.currentPage == $scope.pageCounts
@@ -139,11 +140,17 @@ angular.module('Cross.admin.instance')
     $scope.getLabileData = (instanceId) ->
       freshData = $interval(() ->
         #TODO(ZhengYue): Get detail info by instance id
-        $cross.serverGet $http, $window, instanceId, (instance) ->
+        $cross.serverGet $http, $window, $q, instanceId, (instance) ->
           if instance.status in $scope.labileStatus
             console.log instance
           else
             $interval.cancel(freshData)
+
+          angular.forEach $scope.instances, (row, index) ->
+            if row.id == instance.id
+              $scope.instances[index] = instance
+              $scope.gridOptions.data = $scope.instances
+              console.log 'Update the row'
           # if instance.status is ok, update $scope.instances and cancel fresh
           # else cuntiue freshData
       , 3000)
@@ -155,7 +162,6 @@ angular.module('Cross.admin.instance')
           dataFrom: parseInt(pageSize) * parseInt(currentPage)
           dataTo: parseInt(pageSize) * parseInt(currentPage) + parseInt(pageSize)
         $cross.listDetailedServers $http, $window, $q, dataQueryOpts, (instances, total) ->
-          console.log instances
           $scope.setPagingData(instances, total)
       , 100)
 
@@ -206,11 +212,8 @@ angular.module('Cross.admin.instance')
     }
 
     $scope.test = (row, col, event) ->
-      console.log row
-      console.log row.getProperty(col.field)
       target = angular.element(event.target)
       tt = target.closest('div[class^="ngCell"]').parents('div[class^="ngCell"]').parent()
-      console.log tt
 
     $scope.foo = (item) ->
       for row in $scope.selectedIndex
@@ -220,6 +223,10 @@ angular.module('Cross.admin.instance')
       container = angular.element('.ui-view-container')
       $scope.detailHeight = $(window).height() - container.offset().top
       $scope.detailWidth = container.width() - 260
+      $scope.instances[row] = {}
+      $scope.gridOptions.data = $scope.instances
+      console.log $scope.gridOptions.data[row]
+      console.log $scope.instances[row]
 
     $scope.deleteServer = () ->
       if $scope.selectedItems and $scope.selectedItems.length > 0
@@ -233,7 +240,6 @@ angular.module('Cross.admin.instance')
         alert "Choose a instance"
 
     $scope.serverAction = (action, group) ->
-      console.log $scope[group + 'Actions'][action].action
       if $scope.selectedItems and $scope.selectedItems.length > 0
         for item in $scope.selectedItems
           instanceId = item.id

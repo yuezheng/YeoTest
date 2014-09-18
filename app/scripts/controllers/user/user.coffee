@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('Cross')
-  .controller 'UserCtrl', ($scope, $http, $rootScope, $state) ->
+  .controller 'UserCtrl', ($scope, $http, $rootScope, $state, $window) ->
     $scope.username = ""
     $scope.userId = ""
     reqParams =
@@ -26,7 +26,7 @@ angular.module('Cross')
 
     $scope.logout = ->
       logoutParams =
-        url: "#{$window.$CROSS.setting.serverUrl}logout"
+        url: window.crossConfig.backendServer + "logout"
         method: 'GET'
       $http logoutParams
         .success (data, status) ->
