@@ -1,1 +1,152 @@
-<div class="lead">Hello world!!!->overview</div>
+<div class="cross-dashboards-admin-overview">
+  <div class="overview-top">
+    <div class="system-overview">
+      <!--<div class="system-lead">
+        <i class="resource"></i><span>{{note.resource.lead}}</span>
+      </div>-->
+      <div class="system-resource-list">
+
+        <div class="resource-item">
+          <div class="content">
+            <div class="lead">
+              <i class="lead-cluster"></i>
+              <span class="lead-name">{{note.resource.cluster}}</span>
+            </div>
+            <div class="detail">
+              <span class="detail-number">{{resource.clusters}}</span>
+              <span class="unit">{{note.resource.unit}}</span>
+            </div>
+          </div>
+          <div class="line-bottom"></div>
+        </div>
+
+        <div class="resource-item">
+          <div class="content">
+            <div class="lead">
+              <i class="lead-host"></i>
+              <span class="lead-name">{{note.resource.host}}</span>
+            </div>
+            <div class="detail">
+              <span class="detail-number">{{resource.hosts}}</span>
+              <span class="unit">{{note.resource.unit}}</span>
+            </div>
+          </div>
+          <div class="line-bottom"></div>
+        </div>
+
+        <div class="resource-item">
+          <div class="content">
+            <div class="lead">
+              <i class="lead-vm"></i>
+              <span class="lead-name">{{note.resource.vm}}</span>
+            </div>
+            <div class="detail">
+              <span class="detail-number">{{resource.vms}}</span>
+              <span class="unit">{{note.resource.unit}}</span>
+            </div>
+          </div>
+          <div class="line-bottom"></div>
+        </div>
+
+        <div class="resource-item">
+          <div class="content">
+            <div class="lead">
+              <i class="lead-volume"></i>
+              <span class="lead-name">{{note.resource.volume}}</span>
+            </div>
+            <div class="detail">
+              <span class="detail-number">{{resource.volumes}}</span>
+              <span class="unit">{{note.resource.unit}}</span>
+            </div>
+          </div>
+          <div class="line-bottom"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="system-usage">
+      <div class="system-lead">
+        <i class="usage"></i><span>{{note.usage.lead}}</span>
+      </div>
+      <div class="system-usage-main">
+        <div class="usage-item">
+          <div val="usage.vcpu" class="sectorDirective resource-usage">
+            <div class="sector-outer">
+              <div class="sector-inner">{{usage.vcpu}}%</div>
+              <svg><path class="{{usage.vcpuState}}" /></svg>
+            </div>
+          </div>
+          <div class="usage-item-detail">
+            <span>{{usage.vcpuUsed}}/</span><span>{{usage.vcpuTotal}}</span>
+          </div>
+          <div class="usage-item-name">{{note.usage.vcpu}}</div>
+        </div>
+
+        <div class="usage-item">
+          <div val="usage.ram" class="sectorDirective resource-usage">
+            <div class="sector-outer">
+              <div class="sector-inner">{{usage.ram}}%</div>
+              <svg><path class="{{usage.ramState}}" /></svg>
+            </div>
+          </div>
+          <div class="usage-item-detail">
+            <span>{{usage.ramUsed}}/</span><span>{{usage.ramTotal}}</span>
+          </div>
+          <div class="usage-item-name">{{note.usage.ram}}</div>
+        </div>
+
+        <div class="usage-item">
+          <div val="usage.volume" class="sectorDirective resource-usage">
+            <div class="sector-outer">
+              <div class="sector-inner">{{usage.volume}}%</div>
+              <svg><path class="{{usage.volumeState}}" /></svg>
+            </div>
+          </div>
+          <div class="usage-item-detail">
+            <span>{{usage.volumeUsed}}/</span><span>{{usage.volumeTotal}}</span>
+          </div>
+          <div class="usage-item-name">{{note.usage.volume}}</div>
+        </div>
+
+        <div class="usage-item">
+          <div val="usage.floatingIP" class="sectorDirective resource-usage">
+            <div class="sector-outer">
+              <div class="sector-inner">{{usage.floatingIP}}%</div>
+              <svg><path class="{{usage.floatingIPState}}" /></svg>
+            </div>
+          </div>
+          <div class="usage-item-detail">
+            <span>{{usage.floatingIPUsed}}/</span><span>{{usage.floatingIPTotal}}</span>
+          </div>
+          <div class="usage-item-name">{{note.usage.floatingIP}}</div>
+        </div>
+      </div>
+      <div class="cross-line-vertical"></div>
+    </div>
+    <div class="usage-bottom"></div>
+  </div>
+  <div class="overview-main">
+    <div class="overview-latest-message">
+      <div class="system-lead">
+        <i class="message"></i><span>{{note.message.lead}}</span>
+        <div class="message-more">
+          <a ui-sref="/admin/message/alarm">{{note.message.more}}&gt;</a>
+        </div>
+      </div>
+      <div class="message-list">
+        <div ng-repeat="message in messages" class="message-item">
+          <div class="message-datetime">{{message.creat_at}}</div>
+          <div class="message-lead {{$index==0?'first':''}}"><i></i></div>
+          <div class="message-content" title="{{message.content}}">{{message.content|limitTo:30}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="overview-hosts-topology">
+      <div class="system-lead">
+        <i class="topology"></i><span>{{note.topology.lead}}</span>
+      </div>
+      <div val="topology.hostView" class="host-topology-view hostTopologyDirective">
+      </div>
+    </div>
+  </div>
+</div>

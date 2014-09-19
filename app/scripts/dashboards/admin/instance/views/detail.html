@@ -1,9 +1,9 @@
 <div>
     <div class='detail_tab'>
         <ul>
-            <li ng-repeat='tab in instance_detail_tabs' ng-class=tab.active><a ui-sref='{{tab.url}}'>{{tab.name}}</a></li>
+            <li ng-repeat='tab in instance_detail_tabs' ng-class=tab.active ng-if=tab.available><a ui-sref='{{tab.url}}'>{{tab.name}}</a></li>
       </ul>
     </div>
     <div ui-view></div>
-    <div ng-click='panle_close()' class='close-detail'>&nbsp X</div>
+    <div ng-click='panle_close()' class='close-detail'>&times</div>
 </div>

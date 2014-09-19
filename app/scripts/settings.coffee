@@ -1,7 +1,7 @@
 __CROSS_SETTINGS__ =
   dashboards: ["menu", "admin", "project"]
-  serverURL: "http://localhost:4000"
-  locale: "ZH_CN"
+  serverURL: "http://200.21.3.2:4000"
+  locale: "zh_cn"
   defaultView: 'admin'
 
 
@@ -17,4 +17,6 @@ angular.module('Cross.settings', [])
     $window.$CROSS = $window.$CROSS || {}
     $window.$CROSS.settings = __CROSS_SETTINGS__
     $window.$CROSS.permissions = []
+    $cross.initialLocal __CROSS_SETTINGS__.locale
     return
+

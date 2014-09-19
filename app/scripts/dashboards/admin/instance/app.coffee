@@ -23,6 +23,7 @@ routes =[
         {
           url: '/console'
           templateUrl: 'views/_detail_console.html'
+          controller: 'InstanceConsoleCtr'
         }
         {
           url: '/monitor'

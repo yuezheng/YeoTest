@@ -9,7 +9,7 @@
 
 angular.module('loginCheck', [])
   .factory '$logincheck' , ($http, $state) ->
-    return ($http, $state, next) ->
+    return ($http, $state, next, event) ->
       params =
         url: window.crossConfig.backendServer
         method: 'GET'
@@ -17,6 +17,7 @@ angular.module('loginCheck', [])
         .success (data, status, headers) ->
           event.preventDefault()
           $state.go next
+          $cross.initialCentBox()
         .error (error, status) ->
           event.preventDefault()
           $state.go 'login'

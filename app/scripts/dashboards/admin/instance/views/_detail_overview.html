@@ -1,7 +1,9 @@
 <div class='action_bar_in_detail'>
   <ul>
   <li class='action_header'>Actions</li>
-  <li ng-repeat='action in actionList'><a ng-click="serverAction(action.name)">{{action.verbose}}</a></li>
+  <li ng-repeat='action in actionList' class='instance_action'>
+    <a ng-click="serverAction(action.name)" ng-class=action.name>{{action.verbose}}</a>
+  </li>
   </ul>
 </div>
 
@@ -42,13 +44,15 @@
       <ul>
         <li>VCPUS</li>
         <li>RAM</li>
+        <li>Disk</li>
       </ul>
     </div>
     <div class='space'></div>
     <div class='item_value'>
       <ul>
         <li>{{server_detail.vcpus}}</li>
-        <li>{{server_detail.ram}}</li>
+        <li>{{server_detail.ram | unitSwitch}} GB</li>
+        <li>{{server_detail.disk}} GB</li>
       </ul>
     </div>
     <div class='clear'></div>

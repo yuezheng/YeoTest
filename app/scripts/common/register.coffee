@@ -76,6 +76,7 @@ $cross.registerPanel = (panelView, routes)->
       key = "#{dashboard}.#{panelGroup.slug}.#{panel.slug}"
       $window.$CROSS.panels[key] = panel.name
 
+    console.log $state.get()
     return
 
 ###*

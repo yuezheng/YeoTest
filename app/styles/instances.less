@@ -1,9 +1,9 @@
 @import "variables.less";
 
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .instance_tabs {
   height: 35px;
@@ -11,22 +11,22 @@ ul {
   border-bottom: 2px solid #DDDDDD;
   padding-left: 10px;
   li.tab {
-      float: left;
-      height: 35px;
-      line-height: 35px;
-      padding: 0px 5px 0px 5px;
-      color: #696969;
-      cursor: pointer;
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    padding: 0px 5px 0px 5px;
+    color: #696969;
+    cursor: pointer;
   }
   .tab.active {
-      background-color: #FFF;
-      border-bottom: 2px solid #6FB6DA;
-      color: #000;
+    background-color: #FFF;
+    border-bottom: 2px solid #6FB6DA;
+    color: #000;
   }
 }
 #mainView {
-    clear: both;
-    padding: 0 1em;
+  clear: both;
+  padding: 0 1em;
 }
 
 #viewOne {
@@ -35,6 +35,7 @@ ul {
     margin: 10px 0px;
     .btn {
       margin: 0px 5px;
+      border: none;
     }
   }
 }
@@ -44,9 +45,9 @@ ul {
   left: 300px;
   right: 0;
   -webkit-transition:all .5s ease-in-out;
-    -moz-transition:all .5s ease-in-out;
-    -o-transition:all .5s ease-in-out;
-    transition:all .5s ease-in-out;
+  -moz-transition:all .5s ease-in-out;
+  -o-transition:all .5s ease-in-out;
+  transition:all .5s ease-in-out;
 }
 
 .detail-panel.ng-enter {
@@ -57,14 +58,14 @@ ul {
 }
 
 .detail-panel.ng-enter-active {
-  opacity: 1; 
+  opacity: 1;
   -webkit-transform:translate3d(0, 0, 0);
   -moz-transform:translate3d(0, 0, 0);
   transform:translate3d(0, 0, 0);
 }
 
 .detail-panel.ng-leave {
-  opacity: 1; 
+  opacity: 1;
   -webkit-transform:translate3d(0, 0, 0);
   -moz-transform:translate3d(0, 0, 0);
   transform:translate3d(0, 0, 0);
@@ -84,13 +85,14 @@ ul {
 .detail-panel.detail_show{
   position: absolute;
   z-index: 100;
-  width: 890px;
-  left: 410px;
+  width: 950px;
+  top: 38px;
+  left: 280px;
   background: white;
   line-height: 30px;
   border: 1px solid #d4d4d4;
   .detail_tab {
-    height: 30px; 
+    height: 30px;
     background: #E1F2FF;
     li {
       float: left;
@@ -110,10 +112,21 @@ ul {
       }
     }
   }
+
+  .console_area {
+    .vnc_tip {
+      text-align: center;
+    }
+    iframe {
+      border: none;
+    }
+  }
+
   .close-detail {
-    height: 80px;
-    width: 40px;
-    line-height: 80px;
+    height: 60px;
+    width: 30px;
+    line-height: 60px;
+    font-size: 30px;
     position: absolute;
     background: #CCE4F6;
     top: 260px;
@@ -144,18 +157,83 @@ ul {
         cursor: pointer;
         border-radius: 3px;
         &:hover {
-          background: #29AAEE;
+          background-color: #29AAEE;
           color: white;
           text-decoration: none;
+        }
+        &.edit {
+          background-image: url('../images/action_edit_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_edit_detail_hover.png');
+          }
+        }
+        &.resize {
+          background-image: url('../images/action_resize_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_resize_detail_hover.png');
+          }
+        }
+        &.delete {
+          background-image: url('../images/action_delete_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_delete_detail_hover.png');
+          }
+        }
+        &.snapshot {
+          background-image: url('../images/action_snapshot_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_snapshot_detail_hover.png');
+          }
+        }
+        &.reboot {
+          background-image: url('../images/action_reboot_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_reboot_detail_hover.png');
+          }
+        }
+        &.migrate {
+          background-image: url('../images/action_migrate_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_migrate_detail_hover.png');
+          }
+        }
+        &.suspend {
+          background-image: url('../images/action_suspend_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_suspend_detail_hover.png');
+          }
+        }
+        &.shutdown {
+          background-image: url('../images/action_shutdown_detail.png');
+          background-repeat: no-repeat;
+          background-position: 3px center;
+          &:hover {
+          background-image: url('../images/action_shutdown_detail_hover.png');
+          }
         }
       }
     }
   }
-  .detail_info { 
+  .detail_info {
     .detail_title {
-      height: 35px; 
+      height: 35px;
       line-height: 35px;
       background: #f3f3f3;
+      padding-left: 10px;
     }
     .detail_area {
       margin: 5px 0px;
@@ -174,6 +252,9 @@ ul {
       .item_value {
         width: 50%;
         float: left;
+        li {
+          white-space: nowrap;
+        }
         .ip-list {
           margin-right: 10px;
         }
@@ -199,6 +280,18 @@ ul {
   &:active:focus {
     outline: none;
   }
+
+  &.more {
+    padding-left: 5px;
+    i{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      float: left;
+      margin: 3px;
+      background: url('../images/action_more_hover.png') no-repeat;
+    }
+  }
 }
 
 .btn-disable {
@@ -208,20 +301,77 @@ ul {
   &:hover {
     color: @BUTTON_DISABLEd_TEXT_COLOR;
   }
+  &.del {
+    padding-left: 5px;
+    i{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      float: left;
+      margin: 3px;
+      background: url('../images/action_delete.png') no-repeat;
+    }
+  }
+  &.vnc {
+    padding-left: 5px;
+    a {
+      display: inline-block;
+      color: @BUTTON_DISABLEd_TEXT_COLOR;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    i{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      float: left;
+      margin: 3px;
+      background: url('../images/action_vnc.png') no-repeat;
+    }
+  }
 }
 
 .btn-enable {
   background: @BUTTON_ENABLED_BG;
   background-color: @BUTTON_ENABLED_BG;
-  color: @BUTTON_ENABLED_TEXT_COLOR; 
+  color: @BUTTON_ENABLED_TEXT_COLOR;
   &:hover {
     background: @BUTTON_ENABLED_BG;
     background-color: @BUTTON_ENABLED_BG;
-    color: @BUTTON_ENABLED_TEXT_COLOR; 
+    color: @BUTTON_ENABLED_TEXT_COLOR;
   }
   &:focus {
     outline: none;
-    color: @BUTTON_ENABLED_TEXT_COLOR; 
+    color: @BUTTON_ENABLED_TEXT_COLOR;
+  }
+  &.del {
+    padding-left: 5px;
+    i{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      float: left;
+      margin: 3px;
+      background: url('../images/action_delete_hover.png') no-repeat;
+    }
+  }
+  &.vnc {
+    padding-left: 5px;
+    a {
+      color: white;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    i{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      float: left;
+      margin: 3px;
+      background: url('../images/action_console_hover.png') no-repeat;
+    }
   }
 }
 
@@ -229,13 +379,13 @@ ul {
   -webkit-box-shadow: none;
   box-shadow: none;
   background: @BUTTON_ENABLED_BG;
-  color: @BUTTON_ENABLED_TEXT_COLOR; 
+  color: @BUTTON_ENABLED_TEXT_COLOR;
 }
 
 .btn-group.open .dropdown-toggle.btn-default {
   background: @BUTTON_ENABLED_BG;
   background-color: @BUTTON_ENABLED_BG;
-  color: @BUTTON_ENABLED_TEXT_COLOR; 
+  color: @BUTTON_ENABLED_TEXT_COLOR;
 }
 
 .btn-group {
@@ -245,7 +395,7 @@ ul {
     min-width: 120px;
     width: 140px;
     border: 1px solid @BUTTON_ENABLED_BG;
-    li { 
+    li {
       display: block;
       &.split-line {
         height: 1px;
@@ -256,7 +406,46 @@ ul {
         padding: 3px 10px;
         cursor: pointer;
         &:hover {
+          color: white;
           background: @BUTTON_ENABLED_BG;
+          i{
+            &.attachIp {
+              background: url('../images/action_attach_hover.png') no-repeat left center;
+            }
+            &.removeIP {
+              background: url('../images/action_attachIp_hover.png') no-repeat left center;
+            }
+            &.reboot {
+              background: url('../images/action_reboot_hover.png') no-repeat left center;
+            }
+            &.poweron {
+              background: url('../images/action_poweron_hover.png') no-repeat left center;
+            }
+            &.poweroff {
+              background: url('../images/action_poweroff_hover.png') no-repeat left center;
+            }
+            &.suspend {
+              background: url('../images/action_suspend_hover.png') no-repeat left center;
+            }
+            &.migrate {
+              background: url('../images/action_migrate_hover.png') no-repeat left center;
+            }
+            &.wakeup {
+              background: url('../images/action_wakeup_hover.png') no-repeat left center;
+            }
+            &.resize {
+              background: url('../images/action_resize_hover.png') no-repeat left center;
+            }
+            &.snapshot {
+              background: url('../images/action_snapshot_hover.png') no-repeat left center;
+            }
+            &.attachVolume {
+              background: url('../images/action_attachvolume_hover.png') no-repeat left center;
+            }
+            &.removeVolume {
+              background: url('../images/action_removevolume_hover.png') no-repeat left center;
+            }
+          }
         }
         i {
           width: 15px;
@@ -265,10 +454,128 @@ ul {
           margin-right: 3px;
           display: inline-block;
           float: left;
-          background: url('../images/actions_icon.png');
-          background-position: -20px 15px;
+          &.reboot {
+            background: url('../images/action_reboot.png') no-repeat left center;
+          }
+          &.poweron {
+            background: url('../images/action_poweron.png') no-repeat left center;
+          }
+          &.poweroff {
+            background: url('../images/action_poweroff.png') no-repeat left center;
+          }
+          &.suspend {
+            background: url('../images/action_suspend.png') no-repeat left center;
+          }
+          &.snapshot {
+            background: url('../images/action_snapshot.png') no-repeat left center;
+          }
+          &.wakeup {
+            background: url('../images/action_wakeup.png') no-repeat left center;
+          }
+          &.resize {
+            background: url('../images/action_resize_list.png') no-repeat left center;
+          }
+          &.attachIp {
+            background: url('../images/action_attachip.png') no-repeat left center;
+          }
+          &.removeIP {
+            background: url('../images/action_removeip.png') no-repeat left center;
+          }
+          &.attachVolume {
+            background: url('../images/action_attachvolume.png') no-repeat left center;
+          }
+          &.removeVolume {
+            background: url('../images/action_untachvolume.png') no-repeat left center;
+          }
+          &.migrate {
+            background: url('../images/action_migrate.png') no-repeat left center;
+          }
         }
       }
     }
   }
+}
+
+.table-tab {
+  position: relative;
+}
+.ngCellText {
+  padding: 0px;
+  height: 20px;
+  a {
+    text-decoration: none;
+  }
+  li {
+    list-style: none;
+  }
+  &.status{
+    i {
+      width: 18px;
+      height: 18px;
+      margin-bottom: -4px;
+      display: inline-block;
+    }
+    &.active {
+      i {
+        background: url('../images/status_active.png') no-repeat left center;
+      }
+    }
+    &.stoped {
+      i {
+        background: url('../images/status_stop.png') no-repeat left center;
+      }
+    }
+    &.abnormal {
+      i {
+        background: url('../images/status_abnormal.png') no-repeat left center;
+      }
+    }
+    &.unknwon {
+      i {
+        width: 15px;
+        height: 15px;
+        background: url('../images/processing_status.png') no-repeat left center;
+
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-linearanimation-delay:0;
+        animation-iteration-count: infinite;
+        animation-play-state: running;
+
+        -moz-animation-name: loading;
+        -moz-animation-duration: 1s;
+        -moz-animation-timing-function: linear;
+        -moz-animation-delay: 0;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-play-state: running;
+
+        -webkit-animation-name: loading;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-delay: 0;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-play-state: running;
+
+        -ms-animation-name: loading;
+        -ms-animation-duration: 1s;
+        -ms-animation-timing-function: linear;
+        -ms-animation-delay: 0;
+        -ms-animation-iteration-count: infinite;
+        -ms-animation-play-state: running;
+      }
+    }
+  }
+}
+
+.action_group {
+  margin: 10px 0px;
+}
+
+.log-area {
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+#log-content {
+  margin: 5px;
 }

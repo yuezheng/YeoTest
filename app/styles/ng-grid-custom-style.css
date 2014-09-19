@@ -22,6 +22,22 @@
 
 /* Style of button for action */
 
+/* left width of dashboard admin over view page */
+
+/* top height of dashboard admin over view page */
+
+/* Login container background-color */
+
+/* Login container min-width */
+
+/* Login container min-height */
+
+/* Login container width */
+
+/* Login container height */
+
+/* Login logo image */
+
 .gridStyle {
   width: 100%;
   height: 500px;
@@ -40,11 +56,7 @@
 
 .gridStyle .ngCellText.status {
   padding-left: 15px;
-  text-align: left;
-}
-
-.gridStyle .ngCellText.status.stoped {
-  background: url(../images/server_status.png) no-repeat;
+  text-align: center;
 }
 
 .gridStyle .ngCellText.status.unknwon {
@@ -87,12 +99,81 @@
   background: #e1f2ff;
 }
 
-.gridStyle .ngFooterPanel {
+.cross-data-table {
+  text-align: center;
+  table-layout: fixed;
+}
+
+.cross-data-table thead tr th,
+.cross-data-table tfoot tr td {
+  text-align: center;
+  border: none;
+}
+
+.cross-data-table thead tr th span,
+.cross-data-table tfoot tr td span {
+  white-space: nowrap;
+}
+
+.cross-data-table .cross-data-table-header {
+  background-color: #CCE4F6;
+  border: none;
+}
+
+.cross-data-table .cross-data-table-body .cross-data-table-body-row.even {
+  background: #ffffff;
+}
+
+.cross-data-table .cross-data-table-body .cross-data-table-body-row.even:hover {
+  background: #CCE4F6;
+}
+
+.cross-data-table .cross-data-table-body .cross-data-table-body-row.odd {
+  background: #F2F2F2;
+}
+
+.cross-data-table .cross-data-table-body .cross-data-table-body-row.odd:hover {
+  background: #E1F2FF;
+}
+
+.cross-data-table .cross-data-table-body .cross-data-table-body-row .cross-data-table-body-cell {
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: nowrap;
+  border: none;
+}
+
+.cross-data-table .clear {
+  clear: both;
+}
+
+.cross-data-table .name,
+.cross-data-table .project,
+.cross-data-table .hypervisor_hostname {
+  width: 18%;
+}
+
+.cross-data-table .fixed,
+.cross-data-table .floating {
+  width: 10%;
+}
+
+.cross-data-table .vcpus,
+.cross-data-table .ram {
+  width: 7%;
+}
+
+.cross-data-table .checkbox-in-table {
+  width: 3%;
+  border: none;
+}
+
+.ngFooterPanel {
   background-color: #ffffff;
   border-top: none;
 }
 
-.gridStyle .ngFooterPanel .pageCode {
+.ngFooterPanel .pageCode {
   float: right;
   width: 160px;
   height: 25px;
@@ -100,7 +181,7 @@
   margin-left: 20px;
 }
 
-.gridStyle .ngFooterPanel .pageCode li {
+.ngFooterPanel .pageCode li {
   display: block;
   float: left;
   width: 20px;
@@ -112,16 +193,16 @@
   border-radius: 10px;
 }
 
-.gridStyle .ngFooterPanel .pageCode li.pagetrue {
+.ngFooterPanel .pageCode li.pagetrue {
   color: #ffffff;
   background-color: #28a9ee;
 }
 
-.gridStyle .ngFooterPanel .pageCode li.change-page {
+.ngFooterPanel .pageCode li.change-page {
   border-radius: 0;
 }
 
-.gridStyle .ngFooterPanel .pageCode li.change-page:hover {
+.ngFooterPanel .pageCode li.change-page:hover {
   color: #ffffff;
   background-color: #28a9ee;
 }

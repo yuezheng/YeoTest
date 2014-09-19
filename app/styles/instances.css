@@ -22,6 +22,22 @@
 
 /* Style of button for action */
 
+/* left width of dashboard admin over view page */
+
+/* top height of dashboard admin over view page */
+
+/* Login container background-color */
+
+/* Login container min-width */
+
+/* Login container min-height */
+
+/* Login container width */
+
+/* Login container height */
+
+/* Login logo image */
+
 ul {
   padding: 0;
   margin: 0;
@@ -65,6 +81,7 @@ ul {
 
 #viewOne .action_group .btn {
   margin: 0 5px;
+  border: none;
 }
 
 .detail-panel.ng-enter,
@@ -112,9 +129,10 @@ ul {
 
 .detail-panel.detail_show {
   position: absolute;
-  left: 410px;
+  top: 38px;
+  left: 280px;
   z-index: 100;
-  width: 890px;
+  width: 950px;
   line-height: 30px;
   background: white;
   border: 1px solid #d4d4d4;
@@ -146,12 +164,21 @@ ul {
   text-decoration: none;
 }
 
+.detail-panel.detail_show .console_area .vnc_tip {
+  text-align: center;
+}
+
+.detail-panel.detail_show .console_area iframe {
+  border: none;
+}
+
 .detail-panel.detail_show .close-detail {
   position: absolute;
   top: 260px;
-  width: 40px;
-  height: 80px;
-  line-height: 80px;
+  width: 30px;
+  height: 60px;
+  font-size: 30px;
+  line-height: 60px;
   cursor: pointer;
   background: #CCE4F6;
   border-top-right-radius: 50px;
@@ -190,11 +217,92 @@ ul {
 .detail-panel.detail_show .action_bar_in_detail li a:hover {
   color: white;
   text-decoration: none;
-  background: #29AAEE;
+  background-color: #29AAEE;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.edit {
+  background-image: url('../images/action_edit_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.edit:hover {
+  background-image: url('../images/action_edit_detail_hover.png');
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.resize {
+  background-image: url('../images/action_resize_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.resize:hover {
+  background-image: url('../images/action_resize_detail_hover.png');
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.delete {
+  background-image: url('../images/action_delete_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.delete:hover {
+  background-image: url('../images/action_delete_detail_hover.png');
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.snapshot {
+  background-image: url('../images/action_snapshot_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.snapshot:hover {
+  background-image: url('../images/action_snapshot_detail_hover.png');
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.reboot {
+  background-image: url('../images/action_reboot_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.reboot:hover {
+  background-image: url('../images/action_reboot_detail_hover.png');
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.migrate {
+  background-image: url('../images/action_migrate_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.migrate:hover {
+  background-image: url('../images/action_migrate_detail_hover.png');
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.suspend {
+  background-image: url('../images/action_suspend_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.suspend:hover {
+  background-image: url('../images/action_suspend_detail_hover.png');
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.shutdown {
+  background-image: url('../images/action_shutdown_detail.png');
+  background-position: 3px center;
+  background-repeat: no-repeat;
+}
+
+.detail-panel.detail_show .action_bar_in_detail li a.shutdown:hover {
+  background-image: url('../images/action_shutdown_detail_hover.png');
 }
 
 .detail-panel.detail_show .detail_info .detail_title {
   height: 35px;
+  padding-left: 10px;
   line-height: 35px;
   background: #f3f3f3;
 }
@@ -221,6 +329,10 @@ ul {
 .detail-panel.detail_show .detail_info .detail_area .item_value {
   float: left;
   width: 50%;
+}
+
+.detail-panel.detail_show .detail_info .detail_area .item_value li {
+  white-space: nowrap;
 }
 
 .detail-panel.detail_show .detail_info .detail_area .item_value .ip-list {
@@ -250,6 +362,19 @@ ul {
   outline: none;
 }
 
+.btn.more {
+  padding-left: 5px;
+}
+
+.btn.more i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
+  background: url('../images/action_more_hover.png') no-repeat;
+}
+
 .btn-disable {
   color: #747474;
   cursor: default;
@@ -258,6 +383,41 @@ ul {
 
 .btn-disable:hover {
   color: #747474;
+}
+
+.btn-disable.del {
+  padding-left: 5px;
+}
+
+.btn-disable.del i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
+  background: url('../images/action_delete.png') no-repeat;
+}
+
+.btn-disable.vnc {
+  padding-left: 5px;
+}
+
+.btn-disable.vnc a {
+  display: inline-block;
+  color: #747474;
+}
+
+.btn-disable.vnc a:hover {
+  text-decoration: none;
+}
+
+.btn-disable.vnc i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
+  background: url('../images/action_vnc.png') no-repeat;
 }
 
 .btn-enable {
@@ -275,6 +435,40 @@ ul {
 .btn-enable:focus {
   color: #ffffff;
   outline: none;
+}
+
+.btn-enable.del {
+  padding-left: 5px;
+}
+
+.btn-enable.del i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
+  background: url('../images/action_delete_hover.png') no-repeat;
+}
+
+.btn-enable.vnc {
+  padding-left: 5px;
+}
+
+.btn-enable.vnc a {
+  color: white;
+}
+
+.btn-enable.vnc a:hover {
+  text-decoration: none;
+}
+
+.btn-enable.vnc i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
+  background: url('../images/action_console_hover.png') no-repeat;
 }
 
 .btn-group.open .dropdown-toggle {
@@ -312,7 +506,56 @@ ul {
 }
 
 .btn-group .dropdown-menu li a:hover {
+  color: white;
   background: #28a9ee;
+}
+
+.btn-group .dropdown-menu li a:hover i.attachIp {
+  background: url('../images/action_attach_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.removeIP {
+  background: url('../images/action_attachIp_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.reboot {
+  background: url('../images/action_reboot_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.poweron {
+  background: url('../images/action_poweron_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.poweroff {
+  background: url('../images/action_poweroff_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.suspend {
+  background: url('../images/action_suspend_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.migrate {
+  background: url('../images/action_migrate_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.wakeup {
+  background: url('../images/action_wakeup_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.resize {
+  background: url('../images/action_resize_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.snapshot {
+  background: url('../images/action_snapshot_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.attachVolume {
+  background: url('../images/action_attachvolume_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a:hover i.removeVolume {
+  background: url('../images/action_removevolume_hover.png') no-repeat left center;
 }
 
 .btn-group .dropdown-menu li a i {
@@ -322,6 +565,130 @@ ul {
   height: 15px;
   margin-top: 3px;
   margin-right: 3px;
-  background: url('../images/actions_icon.png');
-  background-position: -20px 15px;
+}
+
+.btn-group .dropdown-menu li a i.reboot {
+  background: url('../images/action_reboot.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.poweron {
+  background: url('../images/action_poweron.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.poweroff {
+  background: url('../images/action_poweroff.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.suspend {
+  background: url('../images/action_suspend.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.snapshot {
+  background: url('../images/action_snapshot.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.wakeup {
+  background: url('../images/action_wakeup.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.resize {
+  background: url('../images/action_resize_list.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.attachIp {
+  background: url('../images/action_attachip.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.removeIP {
+  background: url('../images/action_removeip.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.attachVolume {
+  background: url('../images/action_attachvolume.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.removeVolume {
+  background: url('../images/action_untachvolume.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a i.migrate {
+  background: url('../images/action_migrate.png') no-repeat left center;
+}
+
+.table-tab {
+  position: relative;
+}
+
+.ngCellText {
+  height: 20px;
+  padding: 0;
+}
+
+.ngCellText a {
+  text-decoration: none;
+}
+
+.ngCellText li {
+  list-style: none;
+}
+
+.ngCellText.status i {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-bottom: -4px;
+}
+
+.ngCellText.status.active i {
+  background: url('../images/status_active.png') no-repeat left center;
+}
+
+.ngCellText.status.stoped i {
+  background: url('../images/status_stop.png') no-repeat left center;
+}
+
+.ngCellText.status.abnormal i {
+  background: url('../images/status_abnormal.png') no-repeat left center;
+}
+
+.ngCellText.status.unknwon i {
+  width: 15px;
+  height: 15px;
+  background: url('../images/processing_status.png') no-repeat left center;
+  -webkit-animation-delay: 0;
+     -moz-animation-delay: 0;
+      -ms-animation-delay: 0;
+  -webkit-animation-duration: 1s;
+     -moz-animation-duration: 1s;
+      -ms-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+     -moz-animation-iteration-count: infinite;
+      -ms-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: loading;
+     -moz-animation-name: loading;
+      -ms-animation-name: loading;
+  -webkit-animation-play-state: running;
+     -moz-animation-play-state: running;
+      -ms-animation-play-state: running;
+          animation-play-state: running;
+  -webkit-animation-timing-function: linear;
+     -moz-animation-timing-function: linear;
+      -ms-animation-timing-function: linear;
+          animation-timing-function: linear;
+  animation-linearanimation-delay: 0;
+}
+
+.action_group {
+  margin: 10px 0;
+}
+
+.log-area {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+#log-content {
+  margin: 5px;
 }

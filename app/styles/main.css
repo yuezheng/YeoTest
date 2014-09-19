@@ -24,9 +24,29 @@
 
 /* Style of button for action */
 
+/* left width of dashboard admin over view page */
+
+/* top height of dashboard admin over view page */
+
+/* Login container background-color */
+
+/* Login container min-width */
+
+/* Login container min-height */
+
+/* Login container width */
+
+/* Login container height */
+
+/* Login logo image */
+
 body {
+  width: 100%;
+  height: 100%;
   padding: 0;
-  overflow-x: hidden;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
 }
 
 .cross-index {
@@ -46,7 +66,7 @@ body {
 
 .cross-index > .cross-frame-left > .cross-tool-nav-logo {
   height: 45px;
-  background: #242424 url(../images/logo.jpg) 25px 6px no-repeat;
+  background: #242424 url(../images/logo.png) 25px 10px no-repeat;
 }
 
 .cross-index > .cross-frame-left > .cross-tool-nav {
@@ -108,6 +128,7 @@ body {
 }
 
 .cross-index > .cross-frame-main {
+  position: relative;
   height: 100%;
   margin-left: 172px;
 }
@@ -115,4 +136,93 @@ body {
 .cross-index > .cross-frame-main > .cross-frame-main-top-tool {
   height: 45px;
   background: #323232;
+}
+
+.cross-index > .cross-frame-main > .cross-frame-main-center {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.cross-topology-node {
+  position: absolute;
+  z-index: 2;
+  display: none;
+}
+
+.cross-topology-node > .content {
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  word-break: none;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+.cross-topology-line-join {
+  position: absolute;
+  z-index: 3;
+  display: none;
+  width: 8px;
+  height: 8px;
+  padding: 0 0 0 0;
+  font-family: "Arial";
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 8px;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+  background: #b6b6b6;
+  border: 1px solid #b6b6b6;
+  border: 0;
+}
+
+.cross-topology-line-join:hover {
+  color: #fff;
+  background: #2986b8;
+}
+
+.cross-topology-node-tip {
+  position: absolute;
+  z-index: 3;
+  width: 14px;
+  height: 14px;
+  padding: 0 0 0 0;
+  font-family: "Arial";
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0;
+  color: #269bd8;
+  text-align: center;
+  cursor: pointer;
+  background: #f2f2f2;
+  border: 1px solid #aaa;
+  border-radius: 7px;
+}
+
+svg.cross-topology-line path {
+  stroke-width: 1;
+  fill-opacity: 1;
+  fill: #888888;
+  stroke: #888888;
+}
+
+.cross-topology-root {
+  background: url(../images/dashboard_admin/overview/topology_root.png) center bottom no-repeat;
+}
+
+.cross-topology-cluster {
+  background: url(../images/dashboard_admin/overview/topology_cluster.png) center bottom no-repeat;
+}
+
+.cross-topology-host {
+  background: url(../images/dashboard_admin/overview/topology_host.png) center bottom no-repeat;
+}
+
+.cross-topology-vm {
+  background: url(../images/dashboard_admin/overview/topology_vm.png) center bottom no-repeat;
 }

@@ -3,7 +3,11 @@
 
 body {
   padding: 0;
-  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  color: #666666;
+  font-weight: 500;
 }
 
 .cross-index {
@@ -76,10 +80,99 @@ body {
   & > .cross-frame-main {
     margin-left: @APP_FRAME_LEFT_WIDTH;
     height: 100%;
+    position: relative;
 
     & > .cross-frame-main-top-tool {
       background: @APP_FRAME_TOP_TOOL_BACKGROUND;
       height: @APP_TOP_HEIGHT;
     }
+
+    & > .cross-frame-main-center {
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
   }
+}
+
+.cross-topology-node {
+  position: absolute;
+  display: none;
+  z-index: 2;
+
+  & > .content {
+    text-align: center;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    word-break: none;
+    word-wrap: break-word;
+    white-space: nowrap;
+  }
+}
+
+.cross-topology-line-join {
+  position: absolute;
+  text-align: center;
+  background: #b6b6b6;
+  border: 1px solid #b6b6b6;
+  letter-spacing: 0;
+  border: 0;
+  width: 8px;
+  height: 8px;
+  font-size: 8px;
+  line-height: 8px;
+  text-align: center;
+  padding: 0 0 0 0;
+  cursor: pointer;
+  font-weight: 800;
+  z-index: 3;
+  display: none;
+  font-family: "Arial";
+
+  &:hover {
+    background: #2986b8;
+    color: #fff;
+  }
+}
+
+.cross-topology-node-tip {
+  position: absolute;
+  text-align: center;
+  background: #f2f2f2;
+  letter-spacing: 0;
+  border: 1px solid #aaa;
+  border-radius: 7px;
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  padding: 0 0 0 0;
+  cursor: pointer;
+  z-index: 3;
+  color: #269bd8;
+  font-family: "Arial";
+}
+
+svg.cross-topology-line path {
+  stroke-width: 1;
+  fill-opacity: 1;
+  fill: #888888;
+  stroke: #888888;
+}
+
+.cross-topology-root {
+  background: url(../images/dashboard_admin/overview/topology_root.png) center bottom no-repeat;
+}
+.cross-topology-cluster {
+  background: url(../images/dashboard_admin/overview/topology_cluster.png) center bottom no-repeat;
+}
+.cross-topology-host {
+  background: url(../images/dashboard_admin/overview/topology_host.png) center bottom no-repeat;
+}
+.cross-topology-vm {
+  background: url(../images/dashboard_admin/overview/topology_vm.png) center bottom no-repeat;
 }

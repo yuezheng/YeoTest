@@ -14,12 +14,15 @@ app = angular.module('Cross', [
     'Cross.admin',
     #'Cross.project',
     'Cross.menu',
+    'Cross.directives',
+    'Cross.filters',
     'ngAnimate',
     'ngResource',
     'ngRoute',
     'ngGrid',
     'ui.router',
-    'loginCheck'
+    'loginCheck',
+    'ngSanitize'
   ])
 
 app.config ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) ->
@@ -40,5 +43,5 @@ app.config ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) -
 
 app.run ($rootScope, $state, $logincheck, $http, $location) ->
   $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
-    $logincheck($http, $state, toState)
+    $logincheck($http, $state, toState, event)
   return

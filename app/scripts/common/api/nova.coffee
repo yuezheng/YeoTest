@@ -10,9 +10,6 @@ class $cross.Server extends $cross.APIResourceWrapper
   constructor: (instance, attrs) ->
     super instance, attrs
 
-  getFullObj: (instance, $http) ->
-    console.log instance
-
 ###
 Simple wrapper around nova flavor API
 ###
@@ -39,7 +36,6 @@ $cross.listServers = ($http, $window, callback) ->
 ###
 List server that contain info base instance and extended.
 ###
-# TODO(ZhengYue): Modify function name
 $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
   serverUrl = $window.crossConfig.backendServer
   limitFrom = query.dataFrom || 0
@@ -53,7 +49,7 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
   flavors = $http.get(serverUrl + 'os-flavors')
     .then (response) ->
       return response.data
-  projects = $http.get(serverUrl + 'projects/5/5')
+  projects = $http.get(serverUrl + 'projects')
     .then (response) ->
       return response.data
   # TODO(ZhengYue): The user list interface not implement
@@ -96,7 +92,11 @@ $cross.listDetailedServers = ($http, $window, $q, query, callback) ->
         serverFlavor = flavorMap[flavorId]
         serverObj.vcpus = serverFlavor['vcpus']
         serverObj.ram = serverFlavor['ram']
-        serverObj.project = projectsMap[serverObj.tenant_id]['name']
+        projectId = serverObj.tenant_id
+        if projectsMap[projectId]
+          serverObj.project = projectsMap[serverObj.tenant_id]['name']
+        else
+          serverObj.project = null
         delete serverObj.flavor
 
         address = JSON.parse(serverObj.addresses)
@@ -119,7 +119,7 @@ $cross.serverGet = ($http, $window, $q, instanceId, callback) ->
   flavors = $http.get(serverUrl + 'os-flavors')
     .then (response) ->
       return response.data
-  projects = $http.get(serverUrl + 'projects/5/5')
+  projects = $http.get(serverUrl + 'projects')
     .then (response) ->
       return response.data
   server = $http.get(serverUrl + 'servers/' + instanceId)
@@ -156,6 +156,7 @@ $cross.serverGet = ($http, $window, $q, instanceId, callback) ->
       serverObj = server.getObject(server)
       flavorId = JSON.parse(serverObj.flavor).id
       serverFlavor = flavorMap[flavorId]
+      serverObj.disk = serverFlavor['disk']
       serverObj.vcpus = serverFlavor['vcpus']
       serverObj.ram = serverFlavor['ram']
       serverObj.project = projectsMap[serverObj.tenant_id]['name']
@@ -193,3 +194,43 @@ $cross.serverLog = ($http, $window, instanceId, logLength=35, callback) ->
     .success (data, status, headers) ->
       if data
         callback data.data
+
+$cross.serverConsole = ($http, $window, instanceId, callback) ->
+  if !instanceId
+    return
+  serverUrl = $window.crossConfig.backendServer
+  requestData =
+    url: serverUrl + 'servers/' + instanceId + '/action'
+    method: 'POST'
+    data: {"os-getVNCConsole": {"type": "novnc"}}
+
+  $http requestData
+    .success (data, status, headers) ->
+      if data
+        callback data
+
+action_dispatcher = (action) ->
+  # TODO(ZhengYue): Full the action, current is sample set
+  actionDataMap = {
+    'reboot': {'reboot': {"type": "HARD"}},
+    'os-getVNCConsole':{'os-getVNCConsole': {"type": "novnc"}},
+    'poweroff': {'os-stop': null},
+    'poweron': {'os-start': null},
+    'suspend': {'suspend': null},
+    'wakeup': {'resume': null},
+  }
+  return actionDataMap[action]
+
+$cross.instanceAction = (action, $http, $window, instanceId, callback) ->
+  if !instanceId
+    return
+  serverUrl = $window.crossConfig.backendServer
+  requestData =
+    url: serverUrl + 'servers/' + instanceId + '/action'
+    method: 'POST'
+    data: action_dispatcher(action)
+
+  $http requestData
+    .success (data, status, headers) ->
+      if data
+        callback data

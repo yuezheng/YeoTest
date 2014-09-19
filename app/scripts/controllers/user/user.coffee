@@ -26,7 +26,7 @@ angular.module('Cross')
 
     $scope.logout = ->
       logoutParams =
-        url: window.crossConfig.backendServer + "logout"
+        url: "#{$window.$CROSS.settings.serverURL}/logout"
         method: 'GET'
       $http logoutParams
         .success (data, status) ->

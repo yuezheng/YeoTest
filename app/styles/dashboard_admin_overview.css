@@ -1,0 +1,366 @@
+/* Variables will be used in index page */
+
+/* Min width of cross app */
+
+/* Min height of cross app */
+
+/* Background of app */
+
+/* Left frame width of cross app */
+
+/* Left frame background of cross app */
+
+/* Top height of cross app */
+
+/* Left logo background of cross app */
+
+/* Top tool background of cross app */
+
+/* Left nav bar item background */
+
+/* Attr at data table */
+
+/* Style of button for action */
+
+/* left width of dashboard admin over view page */
+
+/* top height of dashboard admin over view page */
+
+/* Login container background-color */
+
+/* Login container min-width */
+
+/* Login container min-height */
+
+/* Login container width */
+
+/* Login container height */
+
+/* Login logo image */
+
+.cross-dashboards-admin-overview {
+  position: relative;
+  width: 100%;
+  padding: 0;
+}
+
+.cross-dashboards-admin-overview .system-lead {
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+  color: #666666;
+  text-align: left;
+}
+
+.cross-dashboards-admin-overview .system-lead > .message-more {
+  position: absolute;
+  right: 40px;
+  display: inline-block;
+}
+
+.cross-dashboards-admin-overview .system-lead > i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px 0 5px;
+  vertical-align: middle;
+}
+
+.cross-dashboards-admin-overview .system-lead > i.resource {
+  background: url(../images/dashboard_admin/overview/resource.png) no-repeat;
+}
+
+.cross-dashboards-admin-overview .system-lead > i.usage {
+  height: 16px;
+  background: url(../images/dashboard_admin/overview/usage.png) no-repeat;
+}
+
+.cross-dashboards-admin-overview .system-lead > i.topology {
+  background: url(../images/dashboard_admin/overview/topology.png) no-repeat;
+}
+
+.cross-dashboards-admin-overview .system-lead > i.message {
+  margin-right: 8px;
+  background: url(../images/dashboard_admin/overview/message.png) no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview {
+  position: absolute;
+  right: 0;
+  width: 280px;
+  height: 300px;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list {
+  display: inline-block;
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .line-left {
+  position: absolute;
+  left: 25px;
+  width: 1px;
+  height: 80%;
+  background-image: -webkit-linear-gradient(top, #ffffff 0%, #dddddd 50%, #ffffff 100%);
+  background-image: -o-linear-gradient(top, #ffffff 0%, #dddddd 50%, #ffffff 100%);
+  background-image: -webkit-gradient(linear, top, bottom, from(#ffffff), color-to(50%, #dddddd), color-to(100%, #dddddd));
+  background-image: linear-gradient(to bottom, #ffffff 0%, #dddddd 50%, #ffffff 100%);
+  background-repeat: repeat-x;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content {
+  height: 36px;
+  margin-top: 14px;
+  line-height: 36px;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .lead {
+  display: inline-block;
+  width: 100px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .lead > .lead-name {
+  display: inline-block;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .lead > i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .lead > i.lead-vm {
+  background: url(../images/dashboard_admin/overview/resource_vm.png) center no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .lead > i.lead-host {
+  background: url(../images/dashboard_admin/overview/resource_host.png) center no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .lead > i.lead-cluster {
+  background: url(../images/dashboard_admin/overview/resource_cluster.png) center no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .lead > i.lead-volume {
+  background: url(../images/dashboard_admin/overview/resource_volume.png) center no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .detail {
+  display: inline-block;
+  width: 80px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .content > .detail > .detail-number {
+  color: #269bd8;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-overview > .system-resource-list > .resource-item > .line-bottom {
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #ffffff 0%, #269bd8 50%, #ffffff 100%);
+  background-image: -o-linear-gradient(left, #ffffff 0%, #269bd8 50%, #ffffff 100%);
+  background-image: -webkit-gradient(linear, left, right, from(#ffffff), color-to(50%, #269bd8), color-to(100%, #269bd8));
+  background-image: linear-gradient(to right, #ffffff 0%, #269bd8 50%, #ffffff 100%);
+  background-repeat: repeat-x;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .usage-bottom {
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #ffffff 0%, #dddddd 50%, #ffffff 100%);
+  background-image: -o-linear-gradient(left, #ffffff 0%, #dddddd 50%, #ffffff 100%);
+  background-image: -webkit-gradient(linear, left, right, from(#ffffff), color-to(50%, #dddddd), color-to(100%, #dddddd));
+  background-image: linear-gradient(to right, #ffffff 0%, #dddddd 50%, #ffffff 100%);
+  background-repeat: repeat-x;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage {
+  height: 300px;
+  margin-right: 290px;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item {
+  display: inline-block;
+  width: 22%;
+  text-align: center;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .resource-usage {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  background: url(../images/dashboard_admin/overview/usage_chart.png) 2px 3px no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .resource-usage .sector-outer {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #bfbfbf;
+  border-radius: 50px;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .resource-usage .sector-inner {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  margin-top: 8px;
+  margin-left: 8px;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 84px;
+  color: #269bd8;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 42px;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .resource-usage svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .resource-usage svg path {
+  stroke-width: 0;
+  fill-opacity: 1;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .resource-usage svg path.ok {
+  fill: #269bd8;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .resource-usage svg path.warn {
+  stroke-width: 0;
+  fill: #f65e5e;
+  fill-opacity: 1;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .usage-item-name {
+  color: #555555;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .usage-item-detail {
+  height: 50px;
+  font-size: 12px;
+  line-height: 50px;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .usage-item-detail > span:first-child {
+  color: #269bd8;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .system-usage-main > .usage-item > .usage-item-detail > span:last-child {
+  color: #bfbfbf;
+}
+
+.cross-dashboards-admin-overview > .overview-top > .system-usage > .cross-line-vertical {
+  margin-top: 36px;
+}
+
+.cross-dashboards-admin-overview > .overview-main {
+  margin-top: 20px;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message {
+  position: absolute;
+  right: 0;
+  width: 280px;
+  min-height: 300px;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list {
+  main-top: 20px;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item {
+  height: 36px;
+  line-height: 36px;
+  cursor: default;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item:hover > .message-datetime {
+  display: block;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item > .message-datetime {
+  position: absolute;
+  left: -55px;
+  display: none;
+  width: 60px;
+  margin-top: 2px;
+  font-size: 12px;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item > .message-lead {
+  display: inline-block;
+  width: 10px;
+  height: 36px;
+  margin-left: 15px;
+  vertical-align: middle;
+  border-left: 1px solid #e4e4e4;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item > .message-lead > i {
+  position: absolute;
+  display: inline-block;
+  width: 14px;
+  height: 36px;
+  margin-left: -8px;
+  background: url(../images/dashboard_admin/overview/message_point.png) center no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item > .message-lead.first {
+  height: 24px;
+  vertical-align: bottom;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item > .message-lead.first > i {
+  height: 24px;
+  background: url(../images/dashboard_admin/overview/message_clock.png) top center no-repeat;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-latest-message > .message-list > .message-item > .message-content {
+  display: inline-block;
+  width: 220px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-hosts-topology {
+  min-height: 320px;
+  margin-right: 290px;
+  text-align: center;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-hosts-topology > .host-topology-view {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.cross-dashboards-admin-overview > .overview-main > .overview-hosts-topology > .host-topology-view:hover {
+  position: relative;
+  overflow-x: auto;
+}

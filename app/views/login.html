@@ -1,22 +1,18 @@
-<html>
-  <div ui-view>
-  </div>
-  <div class="container">
-  <div class="login-container">
-    <div class='logo-area'>
-
+<div class="cross-login-background"></div>
+<div class="cross-login-background-middle"></div>
+<div class='cross-login-logo'></div>
+<div class="cross-login-container">
+  <div class="login-title">{{note.title}}</div>
+  <form method='post' action='' ng-submit='sendLoginRequest()' name='login' class='form-horizontal'>
+   <div class="control-group">
+     <input name="username" type='text' ng-model='user.username' placeholder="{{note.username}}">
+     <input name="password" type='password' ng-model='user.password' placeholder="{{note.password}}">
+    <div class="valid-input">
+      <div ng-show="validator.isInvalid" class="notice"><i></i>{{validator.note}}</div>
+      <div class="login-loading loading-container"></div>
+      <div class="login-loading-image loading-container"></div>
     </div>
-    <form method='post' action='' ng-submit='sendLoginRequest()' name='login' class='form-horizontal'>
-     <fieldset>
-     <div class="control-group">
-      <input type='text' ng-model='username' placeholder="UserName" class='span3'>
-      <br>
-      <input type='password' ng-model='password' placeholder="Password">
-      <br>
-      <button id='login_submit' type='submit' value='Login' class="btn btn-default">Login</button>
-      </fieldset>
-     </div>
-    </form>
-  </div>
-  </div>
-</html>
+    <button id='login_submit' type='submit' value='Login' class="btn">{{note.submit}}</button>
+   </div>
+  </form>
+</div>
