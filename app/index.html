@@ -9,7 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -46,13 +46,11 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/highcharts/highcharts.js"></script>
-    <script src="bower_components/highcharts/highcharts-more.js"></script>
-    <script src="bower_components/highcharts/modules/exporting.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/ng-grid/build/ng-grid.js"></script>
+    <script src="bower_components/angular-http-loader/app/package/js/angular-http-loader.min.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -63,19 +61,21 @@
     <script src="scripts/common/api/base.js"></script>
     <script src="scripts/common/api/keystone.js"></script>
     <script src="scripts/common/api/nova.js"></script>
+    <script src="scripts/common/modal.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/filters.js"></script>
     <script src="scripts/directives.js"></script>
-    <script src="scripts/config.js"></script>
+    <script src="scripts/modal.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/user/user.js"></script>
     <script src="scripts/common/topology.js"></script>
-    <script src="scripts/common/plugin/ng-grid-flexible-height.js"></script>
     <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/dashboards.js -->
     <script src="scripts/dashboards/admin/app.js"></script>
     <script src="scripts/dashboards/menu/app.js"></script>
+    <script src="scripts/dashboards/menu/controllers/navbar.js"></script>
     <div id="cross_dashboard_admin_apps">
       <script src="scripts/dashboards/admin/overview/app.js"></script>
       <script src="scripts/dashboards/admin/overview/controllers/index.js"></script>
@@ -83,9 +83,16 @@
       <script src="scripts/dashboards/admin/info/controllers/index.js"></script>
       <script src="scripts/dashboards/admin/instance/app.js"></script>
       <script src="scripts/dashboards/admin/instance/controllers/index.js"></script>
+      <script src="scripts/dashboards/admin/instance/controllers/instances.js"></script>
+      <script src="scripts/dashboards/admin/instance/controllers/instanceActions.js"></script>
+      <script src="scripts/dashboards/admin/instance/controllers/softdeleted.js"></script>
       <script src="scripts/dashboards/admin/instance/controllers/detail.js"></script>
       <script src="scripts/dashboards/admin/instance/controllers/log.js"></script>
       <script src="scripts/dashboards/admin/instance/controllers/console.js"></script>
+      <script src="scripts/dashboards/admin/instance/controllers/monitor.js"></script>
+      <script src="scripts/dashboards/admin/flavor/app.js"></script>
+      <script src="scripts/dashboards/admin/flavor/controllers/index.js"></script>
     </div>
+    <!-- endbuild -->
 </body>
 </html>

@@ -8,7 +8,7 @@
  # Controller of the Cross
 ###
 angular.module("Cross.admin.overview")
-  .controller "OverviewCtr", ($scope, $http, $q, $window) ->
+  .controller "admin.overview.OverviewCtr", ($scope, $http, $q, $window) ->
     # Initial note.
     $scope.note =
       resource: {
@@ -112,6 +112,9 @@ angular.module("Cross.admin.overview")
         "page_size": 10
         "source": "['feedback', 'workflow']"
     }).success (messages) ->
+      if not messages
+        # TODO:(lixipeng) messages empty handle.
+        return
       msgRec = []
       for message in messages.list
         msgRec.push({
@@ -119,6 +122,8 @@ angular.module("Cross.admin.overview")
           content: message.event_type
         })
       $scope.messages = msgRec
+
+    return
 
 utils =
   _HYPERVISOR_TYPE_:

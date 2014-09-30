@@ -9,7 +9,7 @@ panels = [
   {
     name: 'Instance'
     slug: 'instance'
-    panels: ['instance']
+    panels: ['instance', 'flavor']
   }
 ]
 

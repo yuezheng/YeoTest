@@ -19,13 +19,15 @@ app = angular.module('Cross', [
     'ngAnimate',
     'ngResource',
     'ngRoute',
-    'ngGrid',
     'ui.router',
     'loginCheck',
-    'ngSanitize'
+    'ngSanitize',
+    'ng.httpLoader',
+    'ui.bootstrap'
   ])
 
-app.config ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) ->
+app.config ($routeProvider, $httpProvider, $stateProvider,
+            $urlRouterProvider, httpMethodInterceptorProvider) ->
   $httpProvider.defaults.useXDomain = true
   $httpProvider.defaults.withCredentials = true
   delete $httpProvider.defaults.headers.common['X-Requested-With']
@@ -43,5 +45,5 @@ app.config ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) -
 
 app.run ($rootScope, $state, $logincheck, $http, $location) ->
   $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
-    $logincheck($http, $state, toState, event)
+    $logincheck($http, $state, toState, toParams, event)
   return

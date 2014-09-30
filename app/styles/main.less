@@ -2,6 +2,7 @@
 @import "variables.less";
 
 body {
+  font-family: "Microsoft Yahei",Tahoma,Helvetica,Arial,sans-serif;
   padding: 0;
   width: 100%;
   height: 100%;
@@ -37,22 +38,52 @@ body {
         margin: 5px 0 5px 0;
       }
 
-      .cross-tool-nav-bar .nav-title-lead {
-        height: 40px;
-        margin-left: 30px;
-        line-height: 40px;
-        cursor: pointer;
-        .crossLeftNavLeadFont();
-
-        & > i {
-          display: inline-block;
-          width: 20px;
-          height: 20px;
-          margin-right: 10px;
-          vertical-align: middle;
-          background: url(../images/cross-nav-system.jpg) no-repeat;
+      .cross-tool-nav-bar {
+        .panel-group {
+          margin-bottom: 0px;
+          .panel-default {;
+            border: none;
+            border-radius: 0px;
+            & > .panel-heading {
+              background-color: @APP_FRAME_LEFT_BACKGROUND; 
+              color: white;
+              height: 40px;
+              margin-left: 30px;
+              font-size: 15px;
+              font-weight: 600;
+              line-height: 40px;
+              cursor: pointer;
+              border: none;
+              padding: 0px;
+              .panel-title {
+                a {
+                  font-size: 15px;
+                  text-decoration: none;
+                  padding: 10px 0px 15px 0px;
+                  display: block;
+                  i {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 10px;
+                    vertical-align: middle;
+                  }
+                  @import "nav_lead.less";
+                }
+              }    
+            }
+            & > .panel-collapse {
+              .panel-body {
+                border: none;
+                padding: 0px;
+              }
+            }
+          }
+          .panel {
+            background: @APP_FRAME_LEFT_BACKGROUND;
+            margin-top: 0px;
+          }
         }
-        @import "nav_lead.less";
       }
 
       .cross-tool-nav-bar .nav-title-item > a {
@@ -175,4 +206,486 @@ svg.cross-topology-line path {
 }
 .cross-topology-vm {
   background: url(../images/dashboard_admin/overview/topology_vm.png) center bottom no-repeat;
+}
+
+.http-loader__wrapper {
+  .http-loader {
+    width: 27px;
+    height: 27px;
+    margin: 0 auto;
+    background: url(../images/login/loading.png) no-repeat;
+
+    animation-name: loading;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-linearanimation-delay:0;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+
+    -moz-animation-name: loading;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 0;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-play-state: running;
+
+    -webkit-animation-name: loading;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-play-state: running;
+
+    -ms-animation-name: loading;
+    -ms-animation-duration: 1s;
+    -ms-animation-timing-function: linear;
+    -ms-animation-delay: 0;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-play-state: running;
+  }
+}
+
+.modal-dialog {
+  margin: 10% auto 0;
+  width: 450px;
+  min-width: 300px;
+
+  .modal-content {
+    border: 0;
+    border-radius: 3px;
+  }
+
+  & > .modal-content > .cross-modal-header > .header-row {
+    height: 40px;
+    background: #323232;
+    border-radius: 3px 3px 0 0;
+
+    & > .title {
+      display: inline-block;
+      white-space:nowrap;
+      max-width: 90%;
+      line-height: 30px;
+      margin-top: 5px;
+      margin-left: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    & > .close {
+      line-height: 30px;
+      font-size: 24px;
+      color: #fff;
+      font-weight: 800;
+      margin-top: 3px;
+      margin-right: 10px;
+      opacity: 1;
+      text-align: center;
+
+      &:hover {
+        text-shadow: 0 0 20px #fff;
+        -webkit-transition: text-shadow .5s;
+        -o-transition: text-shadow .5s;
+        transition: text-shadow .5s;
+      }
+    }
+  }
+
+  & > .modal-content > .cross-modal-center {
+    width: 450px;
+  }
+
+  form > div > .step-header {
+    background: #f6f7f7;
+
+    & > .step-header-empty {
+      height: 40px;
+    }
+  }
+
+  form > div > .step-header > .step-notes {
+    height: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+
+    & .step-parallel {
+      position: absolute;
+      margin-top: -10px;
+      margin-left: -50px;
+
+      & > .step-tab {
+        height: 30px;
+        display: inline-block;
+        width: 90px;
+        text-align: center;
+        border-bottom: 2px solid #c9c9c9;
+        margin: 0 5px;
+        color: #888;
+        cursor: pointer;
+
+        &.active {
+          color: #29aaee;
+        }
+      }
+
+      & > .step-bottom {
+        position: relative;
+        margin-top: -2px;
+        height: 2px;
+
+        & > .step-index {
+         position: absolute;
+          z-index: 1;
+          width: 90px;
+          height: 2px;
+          background: #29aaee;
+          margin: 0 5px;
+          -webkit-transition: left .5s;
+          -o-transition: left .5s;
+          transition: left .5s;
+        }
+      }
+    }
+
+    & > table {
+      width: 100%;
+    }
+
+    & > table tr > .step-item {
+      height: 2px;
+      border: 1px solid #c9c9c9;
+      background: #c9c9c9;
+
+      & > .step-inner {
+        position: relative;
+      }
+
+      &:first-child {
+        width: 1px;
+      }
+
+      &.active {
+        background: #29aaee;
+
+        & > .step-inner > .step-lead-field > .step-index {
+          background: #29aaee;
+        }
+      }
+
+      & > .step-inner > .step-lead-field {
+        position: absolute;
+        display: inline-block;
+        margin-top: -35px;
+        right: -50px;
+        z-index: 1;
+        width: 100px;
+        text-align: center;
+
+        & > .step-note {
+          color: #29aaee;
+        }
+
+        & > .step-index {
+          color: #fff;
+          position: absolute;
+          left: 50%;
+          margin-left: -11px;
+          top: 25px;
+          background: #d9d9d9;
+          border: 3px solid #d9d9d9;
+          width: 20px;
+          height: 20px;
+          font-size: 11px;
+          line-height: 14px;
+          text-align: center;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  form > div > .fields-area {
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    padding-top: 27px;
+    margin-bottom: 10px;
+
+    & .field {
+      margin: 10px 10px;
+    }
+
+    & .field > .field-label {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+      vertical-align: top;
+      font-size: 14px;
+      font-weight: 600;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      &.field-next-line {
+        display: block;
+      }
+    }
+
+    & .field .field-input {
+      display: inline-block;
+
+      & .modal-tip {
+        position: fixed;
+        margin-left: 100px;
+        background: #fff;
+        margin-top: -28px;
+        border: 1px solid #e36f6f;
+        height: 24px;
+        padding-left: 3px;
+        padding-right: 3px;
+        border-radius: 5px;
+        box-shadow: 2px 0 5px #aaa;
+
+        & > .tips-pointer {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          left: 20px;
+          top: 22px;
+
+          & > .tips-pointer-outer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0px;
+            height: 0px;
+            border: 5px solid transparent;
+            border-left: 5px solid #e36f6f;
+            border-top: 5px solid #e36f6f;
+            border-radius: 0 0 2px 2px;
+          }
+
+          & > .tips-pointer-inner {
+            position: absolute;
+            top: 0px;
+            left: 1px;
+            width: 0px;
+            height: 0px;
+            border: 4px solid transparent;
+            border-left: 4px solid #fff;
+            border-top: 4px solid #fff;
+            border-radius: 0 0 1px 1px;
+          }
+        }
+      }
+    }
+  }
+
+  form textarea {
+    resize: none;
+  }
+
+  form .fields-area .field-input .checkbox-list-field {
+    display: inline-block;
+    line-height: 27px;
+    margin-right: 10px;
+  }
+
+  form .fields-area .field-input .wrap-select-field {
+    width: 240px;
+    vertical-align: middle;
+    background: #fff;
+    display: inline-block;
+    position: relative;
+
+    & > .wrap-select-selected {
+      border: 1px solid #c9c9c9;
+      border-radius: 3px;
+      padding: 0;
+      font-size: 14px;
+      position: relative;
+
+      & > input.wrap-select-input {
+        width: 234px;
+        border: 0;
+        font-size: 14px;
+        padding: 5px 3px;
+        margin: 0;
+      }
+
+      & > .wrap-select-clk {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-radius: 0 3px 3px 0;
+        background: #c9c9c9 url(../images/select-wrap-focus.png) center no-repeat;
+        width: 32px;
+        height: 31px;
+        cursor: default;
+      }
+
+      &.focus {
+        outline: none;
+        border: 1px solid #29aaee;
+
+        & > .wrap-select-clk {
+          background: #29aaee url(../images/select-wrap.png) center no-repeat;
+        }
+      }
+    }
+
+    & > .wrap-select-list {
+      display: none;
+      position: fixed;
+      z-index: 1000000;
+      width: 240px;
+      border: 1px solid #c9c9c9;
+      border-radius: 3px;
+      background: #fff;
+      max-height: 200px;
+      overflow-y: hidden;
+
+      & > .wrap-select-optgroup {
+        border-bottom: 1px solid #c9c9c9;
+
+        & > .wrap-select-group-lead {
+          text-align: left;
+          margin-left: 5px;
+          height: 24px;
+          line-height: 24px;
+          font-weight: 800;
+        }
+      }
+
+      & .wrap-select-option {
+        text-align: center;
+        height: 24px;
+        line-height: 24px;
+        cursor: pointer;
+      }
+
+      & .wrap-select-option:hover {
+        background: #29aaee;
+        color: #fff;
+      }
+
+      &:hover {
+        overflow-y: auto;
+      }
+    }
+  }
+
+  form input, form textarea, form select {
+    width: 240px;
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+    padding: 5px 3px;
+    font-size: 14px;
+    vertical-align: middle;
+    background: #fff;
+
+    &:hover, &:focus {
+      outline: none;
+    }
+
+    &:focus {
+      border-color: #29aaee;
+    }
+
+    & > .clear-float {
+      clear: both;
+    }
+
+    &[type="checkbox"] {
+      padding: 0;
+      margin: 0;
+      width: 20px;
+    }
+
+    &.invalid {
+      border-color: #e36f6f;
+    }
+  }
+
+  form > div > .fields-area .modal-steps {
+    width: 1000%;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-transition: left .5s;
+    -o-transition: left .5s;
+    transition: left .5s;
+  }
+
+  form > div > .fields-area .modal-step {
+    width: 450px;
+    float: left;
+  }
+
+  form > div > .cross-modal-footer {
+    background: #f6f7f7;
+    height: 45px;
+    border-radius: 0 0 5px 5px;
+    position: relative;
+
+    button {
+      position: absolute;
+      margin-top: 10px;
+      right: 60px;
+      vertical-align: middle;
+      background-color: #29aaee;
+      padding: 3px 2px;
+      width: 64px;
+      border-bottom: 1px solid #aaa;
+      color:  #fff;
+
+      &:hover {
+        color:  #ddd;
+      }
+
+      &[name="cancel"], &[name="stepPrevious"] {
+        position: absolute;
+        left: 60px;
+        right: auto;
+      }
+
+      &[name="cancel"] {
+        background-color: #dfe4e6;
+        color: #aaa;
+
+        &:hover {
+          color: #999;
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+
+  &.window-larger {
+    & > .modal-dialog {
+      width: 750px;
+
+      .modal-content {
+        background: #e6e6e6;
+      }
+
+      .cross-modal-center {
+        border-right: 2px solid #e0e0e0;
+        background: #fff;
+      }
+
+      .cross-modal-des {
+        position: absolute;
+        width: 195px;
+        margin-left: 452px;
+        top: 40px;
+      }
+    }
+  }
 }

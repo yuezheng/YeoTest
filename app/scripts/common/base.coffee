@@ -4,12 +4,15 @@ window.$cross =
   locale: {}
 
   initialLocal: (locale) ->
-    transData = $.ajax({
-      url: "locale/#{locale}.json"
-      type: "GET"
-      async: false
-    }).responseText
-    $cross.locale = JSON.parse(transData)
+    try
+      transData = $.ajax({
+        url: "locale/#{locale}.json"
+        type: "GET"
+        async: false
+      }).responseText
+      $cross.locale = JSON.parse(transData)
+    catch error
+      console.log "Load locale failed: %s", error
 
   initialCentBox: ->
     $ele = angular.element('.cross-frame-main-center')
@@ -82,6 +85,27 @@ window.$cross =
     o2.r1 = if o2.r1 < 0 then 0 else o2.r1
     o2.r2 = if o2.r2 < 0 then 0 else o2.r2
     return o2
+
+  getPageCountList: (currentPage, pageCount, maxCounts) ->
+    __LIST_MAX__ = maxCounts
+    list = []
+    if pageCount <= __LIST_MAX__
+      index = 0
+
+      while index < pageCount
+        list[index] = index
+        index++
+    else
+      start = currentPage - Math.ceil(__LIST_MAX__ / 2)
+      start = (if start < 0 then 0 else start)
+      start = (if start + __LIST_MAX__ >= pageCount\
+                then pageCount - __LIST_MAX__ else start)
+      index = 0
+
+      while index < __LIST_MAX__
+        list[index] = start + index
+        index++
+    return list
 
 $cross.initial = ->
   $cross.initialCentBox()

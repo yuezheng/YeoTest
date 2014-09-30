@@ -51,7 +51,7 @@ angular.module("Cross")
             # TODO(zhengyue): Judge user's rule to choice redirect
             angular.element(".loading-container").hide()
             angular.element("#login_submit").removeAttr("disabled")
-            $state.go 'admin./overview'
+            $state.go 'admin.overview'
           .error (err, status) ->
             angular.element(".loading-container").hide()
             angular.element("#login_submit").removeAttr("disabled")

@@ -4,17 +4,16 @@
   <div class="cross-frame-left">
     <div class="cross-tool-nav-logo">
     </div>
-    <div class="cross-tool-nav">
-      <ul class="cross-tool-nav-bar">
-        <li ng-repeat="dashboard in $dashboards">
-          <div class="nav-title-lead">
-            <i class="cross-nav-{{dashboard.slug}}"></i>{{dashboard.name}}
-          </div>
+    <div class="cross-tool-nav" ng-controller='navbarCtrl'>
+      <accordion close-others='true' class='cross-tool-nav-bar'>
+      <accordion-group ng-repeat="dashboard in $dashboards" is-open="{true:'true'}[dashboard.slug==currentDashboardSlug]">
+          <accordion-heading>
+          <i class="cross-nav-{{dashboard.slug}}"></i>{{dashboard.name}}
+          </accordion-heading>
           <div class="nav-title-item" ng-repeat="panel in dashboard.panels">
-            <a ui-sref="{{$view}}./{{panel.slug}}">{{panel.name}}</a>
-          </div>
-        </li>
-      </ul>
+              <a ui-sref="{{$view}}.{{panel.slug}}" ng-class="{true: 'active'}[panel.slug==currentPanelSlug]">{{panel.name}}</a></div>
+        </accordion-group>
+      </accordion>
     </div>
   </div>
 

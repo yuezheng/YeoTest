@@ -3,10 +3,13 @@
 <div class='cross-login-logo'></div>
 <div class="cross-login-container">
   <div class="login-title">{{note.title}}</div>
-  <form method='post' action='' ng-submit='sendLoginRequest()' name='login' class='form-horizontal'>
+  <form method='post' action=''
+        autocomplete="off" ng-submit='sendLoginRequest()'
+        form-autofill-fix
+        name='login' class='form-horizontal'>
    <div class="control-group">
-     <input name="username" type='text' ng-model='user.username' placeholder="{{note.username}}">
-     <input name="password" type='password' ng-model='user.password' placeholder="{{note.password}}">
+     <input name="username" type='text' ng-model='user.username' ng-attr-placeholder="{{note.username}}">
+     <input name="password" type='password' ng-model='user.password' ng-attr-placeholder="{{note.password}}">
     <div class="valid-input">
       <div ng-show="validator.isInvalid" class="notice"><i></i>{{validator.note}}</div>
       <div class="login-loading loading-container"></div>

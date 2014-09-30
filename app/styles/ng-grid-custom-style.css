@@ -168,20 +168,22 @@
   border: none;
 }
 
-.ngFooterPanel {
+.ngFooterPanel,
+.cross-footer-panel {
   background-color: #ffffff;
   border-top: none;
 }
 
-.ngFooterPanel .pageCode {
+.ngFooterPanel .pageCode,
+.cross-footer-panel .pageCode {
   float: right;
-  width: 160px;
+  width: 190px;
   height: 25px;
   margin-top: 10px;
-  margin-left: 20px;
 }
 
-.ngFooterPanel .pageCode li {
+.ngFooterPanel .pageCode li,
+.cross-footer-panel .pageCode li {
   display: block;
   float: left;
   width: 20px;
@@ -193,16 +195,19 @@
   border-radius: 10px;
 }
 
-.ngFooterPanel .pageCode li.pagetrue {
+.ngFooterPanel .pageCode li.pagetrue,
+.cross-footer-panel .pageCode li.pagetrue {
   color: #ffffff;
   background-color: #28a9ee;
 }
 
-.ngFooterPanel .pageCode li.change-page {
+.ngFooterPanel .pageCode li.change-page,
+.cross-footer-panel .pageCode li.change-page {
   border-radius: 0;
 }
 
-.ngFooterPanel .pageCode li.change-page:hover {
+.ngFooterPanel .pageCode li.change-page:hover,
+.cross-footer-panel .pageCode li.change-page:hover {
   color: #ffffff;
   background-color: #28a9ee;
 }

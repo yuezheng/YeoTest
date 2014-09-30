@@ -75,10 +75,6 @@ ul {
   height: 600px;
 }
 
-#viewOne .action_group {
-  margin: 10px 0;
-}
-
 #viewOne .action_group .btn {
   margin: 0 5px;
   border: none;
@@ -311,36 +307,26 @@ ul {
   margin: 5px 0;
 }
 
-.detail-panel.detail_show .detail_info .detail_area .item_name {
-  float: left;
-  width: 30%;
+.detail-panel.detail_show .detail_info .detail_area li {
+  padding-left: 25%;
 }
 
-.detail-panel.detail_show .detail_info .detail_area .item_name li {
+.detail-panel.detail_show .detail_info .detail_area li .title {
+  display: inline-block;
+  float: left;
+  width: 5%;
+  min-width: 60px;
+  padding-right: 15px;
   text-align: right;
 }
 
-.detail-panel.detail_show .detail_info .detail_area .space {
-  float: left;
-  width: 6%;
-  height: 100px;
-}
-
-.detail-panel.detail_show .detail_info .detail_area .item_value {
-  float: left;
-  width: 50%;
-}
-
-.detail-panel.detail_show .detail_info .detail_area .item_value li {
+.detail-panel.detail_show .detail_info .detail_area li .value {
+  display: inline-block;
+  max-width: 450px;
+  padding-left: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.detail-panel.detail_show .detail_info .detail_area .item_value .ip-list {
-  margin-right: 10px;
-}
-
-.detail-panel.detail_show .detail_info .detail_area .clear {
-  clear: both;
 }
 
 .btn {
@@ -471,6 +457,19 @@ ul {
   background: url('../images/action_console_hover.png') no-repeat;
 }
 
+.btn-enable.fresh {
+  padding-left: 5px;
+}
+
+.btn-enable.fresh i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin: 3px;
+  background: url('../images/action_fresh.png') no-repeat;
+}
+
 .btn-group.open .dropdown-toggle {
   color: #ffffff;
   background: #28a9ee;
@@ -505,60 +504,7 @@ ul {
   cursor: pointer;
 }
 
-.btn-group .dropdown-menu li a:hover {
-  color: white;
-  background: #28a9ee;
-}
-
-.btn-group .dropdown-menu li a:hover i.attachIp {
-  background: url('../images/action_attach_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.removeIP {
-  background: url('../images/action_attachIp_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.reboot {
-  background: url('../images/action_reboot_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.poweron {
-  background: url('../images/action_poweron_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.poweroff {
-  background: url('../images/action_poweroff_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.suspend {
-  background: url('../images/action_suspend_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.migrate {
-  background: url('../images/action_migrate_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.wakeup {
-  background: url('../images/action_wakeup_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.resize {
-  background: url('../images/action_resize_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.snapshot {
-  background: url('../images/action_snapshot_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.attachVolume {
-  background: url('../images/action_attachvolume_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a:hover i.removeVolume {
-  background: url('../images/action_removevolume_hover.png') no-repeat left center;
-}
-
-.btn-group .dropdown-menu li a i {
+.btn-group .dropdown-menu li a.enabled i {
   display: inline-block;
   float: left;
   width: 15px;
@@ -567,52 +513,171 @@ ul {
   margin-right: 3px;
 }
 
-.btn-group .dropdown-menu li a i.reboot {
+.btn-group .dropdown-menu li a.enabled i.reboot {
   background: url('../images/action_reboot.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.poweron {
+.btn-group .dropdown-menu li a.enabled i.poweron {
   background: url('../images/action_poweron.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.poweroff {
+.btn-group .dropdown-menu li a.enabled i.poweroff {
   background: url('../images/action_poweroff.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.suspend {
+.btn-group .dropdown-menu li a.enabled i.suspend {
   background: url('../images/action_suspend.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.snapshot {
+.btn-group .dropdown-menu li a.enabled i.snapshot {
   background: url('../images/action_snapshot.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.wakeup {
+.btn-group .dropdown-menu li a.enabled i.wakeup {
   background: url('../images/action_wakeup.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.resize {
+.btn-group .dropdown-menu li a.enabled i.resize {
   background: url('../images/action_resize_list.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.attachIp {
+.btn-group .dropdown-menu li a.enabled i.attachIp {
   background: url('../images/action_attachip.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.removeIP {
+.btn-group .dropdown-menu li a.enabled i.removeIP {
   background: url('../images/action_removeip.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.attachVolume {
+.btn-group .dropdown-menu li a.enabled i.attachVolume {
   background: url('../images/action_attachvolume.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.removeVolume {
+.btn-group .dropdown-menu li a.enabled i.removeVolume {
   background: url('../images/action_untachvolume.png') no-repeat left center;
 }
 
-.btn-group .dropdown-menu li a i.migrate {
+.btn-group .dropdown-menu li a.enabled i.migrate {
   background: url('../images/action_migrate.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover {
+  color: white;
+  background: #28a9ee;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.attachIp {
+  background: url('../images/action_attach_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.removeIP {
+  background: url('../images/action_attachIp_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.reboot {
+  background: url('../images/action_reboot_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.poweron {
+  background: url('../images/action_poweron_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.poweroff {
+  background: url('../images/action_poweroff_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.suspend {
+  background: url('../images/action_suspend_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.migrate {
+  background: url('../images/action_migrate_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.wakeup {
+  background: url('../images/action_wakeup_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.resize {
+  background: url('../images/action_resize_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.snapshot {
+  background: url('../images/action_snapshot_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.attachVolume {
+  background: url('../images/action_attachvolume_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.enabled:hover i.removeVolume {
+  background: url('../images/action_removevolume_hover.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled {
+  color: #747474;
+  background: #e3e3e3;
+}
+
+.btn-group .dropdown-menu li a.disabled i {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+
+.btn-group .dropdown-menu li a.disabled i.reboot {
+  background: url('../images/action_reboot_disabled.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.poweron {
+  background: url('../images/action_poweron_disabled.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.poweroff {
+  background: url('../images/action_shutdown_disabled.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.suspend {
+  background: url('../images/action_suspend_disabled.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.snapshot {
+  background: url('../images/action_snapshot_disabled.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.wakeup {
+  background: url('../images/action_wakeup_disabled.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.resize {
+  background: url('../images/action_resize_list.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.attachIp {
+  background: url('../images/action_attachip.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.removeIP {
+  background: url('../images/action_removeip.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.attachVolume {
+  background: url('../images/action_attachvolume.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.removeVolume {
+  background: url('../images/action_untachvolume.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled i.migrate {
+  background: url('../images/action_migrate_disabled.png') no-repeat left center;
+}
+
+.btn-group .dropdown-menu li a.disabled:hover {
+  cursor: default;
 }
 
 .table-tab {
@@ -622,6 +687,9 @@ ul {
 .ngCellText {
   height: 20px;
   padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ngCellText a {
@@ -691,4 +759,15 @@ ul {
 
 #log-content {
   margin: 5px;
+}
+
+.instance-monitor-area {
+  width: 800px;
+  height: 300px;
+  border: 1px solid;
+}
+
+.instance-monitor-area g.x-res .line {
+  stroke: black;
+  stroke-width: 1;
 }

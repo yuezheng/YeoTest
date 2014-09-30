@@ -32,7 +32,6 @@ ul {
 #viewOne {
   height: 600px;
   .action_group {
-    margin: 10px 0px;
     .btn {
       margin: 0px 5px;
       border: none;
@@ -237,30 +236,24 @@ ul {
     }
     .detail_area {
       margin: 5px 0px;
-      .item_name {
-        width: 30%;
-        float: left;
-        li {
+      li {
+        padding-left: 25%;
+        .title {
+          width: 5%;
+          min-width: 60px;
+          padding-right: 15px;
           text-align: right;
+          display: inline-block;
+          float: left;
         }
-      }
-      .space {
-        width: 6%;
-        height: 100px;
-        float: left;
-      }
-      .item_value {
-        width: 50%;
-        float: left;
-        li {
+        .value {
+          display: inline-block;
           white-space: nowrap;
+          overflow: hidden;
+          max-width: 450px;
+          text-overflow: ellipsis;
+          padding-left: 25px;
         }
-        .ip-list {
-          margin-right: 10px;
-        }
-      }
-      .clear {
-        clear: both;
       }
     }
 }
@@ -373,6 +366,17 @@ ul {
       background: url('../images/action_console_hover.png') no-repeat;
     }
   }
+  &.fresh {
+    padding-left: 5px;
+    i{
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      float: left;
+      margin: 3px;
+      background: url('../images/action_fresh.png') no-repeat;
+    }
+  }
 }
 
 .btn-group.open .dropdown-toggle {
@@ -405,90 +409,143 @@ ul {
         display: block;
         padding: 3px 10px;
         cursor: pointer;
-        &:hover {
-          color: white;
-          background: @BUTTON_ENABLED_BG;
-          i{
-            &.attachIp {
-              background: url('../images/action_attach_hover.png') no-repeat left center;
-            }
-            &.removeIP {
-              background: url('../images/action_attachIp_hover.png') no-repeat left center;
-            }
+        &.enabled {
+          i {
+            width: 15px;
+            height: 15px;
+            margin-top: 3px;
+            margin-right: 3px;
+            display: inline-block;
+            float: left;
             &.reboot {
-              background: url('../images/action_reboot_hover.png') no-repeat left center;
+              background: url('../images/action_reboot.png') no-repeat left center;
             }
             &.poweron {
-              background: url('../images/action_poweron_hover.png') no-repeat left center;
+              background: url('../images/action_poweron.png') no-repeat left center;
             }
             &.poweroff {
-              background: url('../images/action_poweroff_hover.png') no-repeat left center;
+              background: url('../images/action_poweroff.png') no-repeat left center;
             }
             &.suspend {
-              background: url('../images/action_suspend_hover.png') no-repeat left center;
-            }
-            &.migrate {
-              background: url('../images/action_migrate_hover.png') no-repeat left center;
-            }
-            &.wakeup {
-              background: url('../images/action_wakeup_hover.png') no-repeat left center;
-            }
-            &.resize {
-              background: url('../images/action_resize_hover.png') no-repeat left center;
+              background: url('../images/action_suspend.png') no-repeat left center;
             }
             &.snapshot {
-              background: url('../images/action_snapshot_hover.png') no-repeat left center;
+              background: url('../images/action_snapshot.png') no-repeat left center;
+            }
+            &.wakeup {
+              background: url('../images/action_wakeup.png') no-repeat left center;
+            }
+            &.resize {
+              background: url('../images/action_resize_list.png') no-repeat left center;
+            }
+            &.attachIp {
+              background: url('../images/action_attachip.png') no-repeat left center;
+            }
+            &.removeIP {
+              background: url('../images/action_removeip.png') no-repeat left center;
             }
             &.attachVolume {
-              background: url('../images/action_attachvolume_hover.png') no-repeat left center;
+              background: url('../images/action_attachvolume.png') no-repeat left center;
             }
             &.removeVolume {
-              background: url('../images/action_removevolume_hover.png') no-repeat left center;
+              background: url('../images/action_untachvolume.png') no-repeat left center;
+            }
+            &.migrate {
+              background: url('../images/action_migrate.png') no-repeat left center;
+            }
+          }
+          &:hover {
+            color: white;
+            background: @BUTTON_ENABLED_BG;
+            i{
+              &.attachIp {
+                background: url('../images/action_attach_hover.png') no-repeat left center;
+              }
+              &.removeIP {
+                background: url('../images/action_attachIp_hover.png') no-repeat left center;
+              }
+              &.reboot {
+                background: url('../images/action_reboot_hover.png') no-repeat left center;
+              }
+              &.poweron {
+                background: url('../images/action_poweron_hover.png') no-repeat left center;
+              }
+              &.poweroff {
+                background: url('../images/action_poweroff_hover.png') no-repeat left center;
+              }
+              &.suspend {
+                background: url('../images/action_suspend_hover.png') no-repeat left center;
+              }
+              &.migrate {
+                background: url('../images/action_migrate_hover.png') no-repeat left center;
+              }
+              &.wakeup {
+                background: url('../images/action_wakeup_hover.png') no-repeat left center;
+              }
+              &.resize {
+                background: url('../images/action_resize_hover.png') no-repeat left center;
+              }
+              &.snapshot {
+                background: url('../images/action_snapshot_hover.png') no-repeat left center;
+              }
+              &.attachVolume {
+                background: url('../images/action_attachvolume_hover.png') no-repeat left center;
+              }
+              &.removeVolume {
+                background: url('../images/action_removevolume_hover.png') no-repeat left center;
+              }
             }
           }
         }
-        i {
-          width: 15px;
-          height: 15px;
-          margin-top: 3px;
-          margin-right: 3px;
-          display: inline-block;
-          float: left;
-          &.reboot {
-            background: url('../images/action_reboot.png') no-repeat left center;
+        &.disabled {
+          background: @BUTTON_DISABLED_BG;
+          color: @BUTTON_DISABLEd_TEXT_COLOR;
+          i {
+            width: 15px;
+            height: 15px;
+            margin-top: 3px;
+            margin-right: 3px;
+            display: inline-block;
+            float: left;
+            &.reboot {
+              background: url('../images/action_reboot_disabled.png') no-repeat left center;
+            }
+            &.poweron {
+              background: url('../images/action_poweron_disabled.png') no-repeat left center;
+            }
+            &.poweroff {
+              background: url('../images/action_shutdown_disabled.png') no-repeat left center;
+            }
+            &.suspend {
+              background: url('../images/action_suspend_disabled.png') no-repeat left center;
+            }
+            &.snapshot {
+              background: url('../images/action_snapshot_disabled.png') no-repeat left center;
+            }
+            &.wakeup {
+              background: url('../images/action_wakeup_disabled.png') no-repeat left center;
+            }
+            &.resize {
+              background: url('../images/action_resize_list.png') no-repeat left center;
+            }
+            &.attachIp {
+              background: url('../images/action_attachip.png') no-repeat left center;
+            }
+            &.removeIP {
+              background: url('../images/action_removeip.png') no-repeat left center;
+            }
+            &.attachVolume {
+              background: url('../images/action_attachvolume.png') no-repeat left center;
+            }
+            &.removeVolume {
+              background: url('../images/action_untachvolume.png') no-repeat left center;
+            }
+            &.migrate {
+              background: url('../images/action_migrate_disabled.png') no-repeat left center;
+            }
           }
-          &.poweron {
-            background: url('../images/action_poweron.png') no-repeat left center;
-          }
-          &.poweroff {
-            background: url('../images/action_poweroff.png') no-repeat left center;
-          }
-          &.suspend {
-            background: url('../images/action_suspend.png') no-repeat left center;
-          }
-          &.snapshot {
-            background: url('../images/action_snapshot.png') no-repeat left center;
-          }
-          &.wakeup {
-            background: url('../images/action_wakeup.png') no-repeat left center;
-          }
-          &.resize {
-            background: url('../images/action_resize_list.png') no-repeat left center;
-          }
-          &.attachIp {
-            background: url('../images/action_attachip.png') no-repeat left center;
-          }
-          &.removeIP {
-            background: url('../images/action_removeip.png') no-repeat left center;
-          }
-          &.attachVolume {
-            background: url('../images/action_attachvolume.png') no-repeat left center;
-          }
-          &.removeVolume {
-            background: url('../images/action_untachvolume.png') no-repeat left center;
-          }
-          &.migrate {
-            background: url('../images/action_migrate.png') no-repeat left center;
+          &:hover {
+            cursor: default;
           }
         }
       }
@@ -502,6 +559,9 @@ ul {
 .ngCellText {
   padding: 0px;
   height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   a {
     text-decoration: none;
   }
@@ -578,4 +638,14 @@ ul {
 
 #log-content {
   margin: 5px;
+}
+
+.instance-monitor-area {
+  width: 800px;
+  height: 300px;
+  border: 1px solid;
+  g.x-res .line {
+    stroke: black;
+    stroke-width: 1;
+  }
 }

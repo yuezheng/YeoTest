@@ -8,5 +8,5 @@
  # Controller of the Cross
 ###
 angular.module('Cross.admin.info')
-  .controller 'InfoCtr', ($scope, $http, $rootScope) ->
+  .controller 'admin.info.InfoCtr', ($scope, $http, $rootScope) ->
     console.log 'instance'

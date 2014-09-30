@@ -19,4 +19,3 @@ angular.module('Cross.settings', [])
     $window.$CROSS.permissions = []
     $cross.initialLocal __CROSS_SETTINGS__.locale
     return
-

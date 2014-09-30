@@ -120,16 +120,14 @@ $cross.topology =
     if root == $cross.topology._NODE_TYPE_.root
       top += $cross.topology._NODE_.root.height
       top -= $cross.topology._NODE_.height
-    liner.attr({
-      left: left
-      top: top
-    }).css({
-      width: width
-      height: height
-      position: 'absolute'
-      left: left
-      top: top
-    }).slideDown()
+    liner.attr({left: left, top: top})
+      .css({
+        width: width
+        height: height
+        position: 'absolute'
+        left: left
+        top: top
+      }).slideDown()
 
   ###*
   #Set node position
@@ -142,9 +140,9 @@ $cross.topology =
       node = angular.element("<div></div>")
       node.addClass(className)
       if hostView[root].name
-        name = hostView[root].name
-        name = name.split(".")[0]
-        name = if name.length > 15 then "#{name.substr(0,12)}..." else name
+        name = hostView[root].name.split(".")[0]
+        if name.length > 15
+          name = "#{name.substr(0,12)}..."
         node.html "<div class='content'>#{name}</div>"
       node.attr({
         id: "#{nodeId}"
@@ -161,12 +159,14 @@ $cross.topology =
         .addClass("cross-topology-element")
     top = (hostView[root].depth - 1) * (height + distanceY)
     children = hostView[root].children
-    if not children || not children.length || hostView[root].not_show_children
+    notShowChildren = hostView[root].not_show_children
+    joinNodeType = $cross.topology._JOIN_NODE_TYPE_
+    if not children || not children.length || notShowChildren
       left = (options.left - 1) * (width + distanceX)
-      if children && hostView[root].type in $cross.topology._JOIN_NODE_TYPE_
+      if children && hostView[root].type in joinNodeType
         options =
-          left: left + $cross.topology._NODE_.width
           top: top
+          left: left + $cross.topology._NODE_.width
           id: "cross_topology_node_tip_id_#{hostView[root].id}"
           nodeId: hostView[root].id
           number: hostView[root].running_vms || children.length
@@ -175,11 +175,13 @@ $cross.topology =
       len = hostView[root].children.length
       firstChildID = hostView[hostView[root].children[0]].id
       lastChildID = hostView[hostView[root].children[len - 1]].id
-      firstChild = angular.element("#cross_topology_node_id_#{firstChildID}")
-      lastChild = angular.element("#cross_topology_node_id_#{lastChildID}")
+      firstNodeID = "cross_topology_node_id_#{firstChildID}"
+      lastNodeID = "cross_topology_node_id_#{lastChildID}"
+      firstChild = angular.element("##{firstNodeID}")
+      lastChild = angular.element("##{lastNodeID}")
       left = parseInt(lastChild.attr("left"))
       left = (left + parseInt(firstChild.attr("left"))) / 2
-    if hostView[root].type in $cross.topology._JOIN_NODE_TYPE_ && children
+    if hostView[root].type in joinNodeType && children
       options =
         left: left + $cross.topology._NODE_.width / 2
         top: top + $cross.topology._NODE_.height
@@ -194,14 +196,8 @@ $cross.topology =
       left -= (width - $cross.topology._NODE_.width) / 2
       top -= height - $cross.topology._NODE_.height
     top += height - $cross.topology._NODE_.height
-    node.css({
-      width: width
-      height: height
-    }).attr({
-      left: left
-      top: top
-      display: "block"
-    })
+    node.css({width: width, height: height})
+      .attr({left: left, top: top, display: "block"})
 
   ###*
   # Set _index as 0
@@ -272,8 +268,34 @@ $cross.topology =
     return hostView
 
   ###*
-  # Draw topology.
+  # Here, I use postorder traversal to draw host topology.
+  # First, set node position and draw link line.
+  # Algorithm as:
+  #   1 Loop:
+  #   2 If root node has not parent, set depth 1
+  #     else depth +1.
+  #   3 If show node children or node is leaf, set node position.
+  #     Set leaf counter +1, pop node and continue
+  #   4 If not node _index, set children node index 0.
+  #   5 If _index < node children length, set _index +1 and
+  #     push node . Otherwise, set node position, draw link
+  #     line and pop node as current node.
+  # Second, show node from root to leaves.
+  # Third, set container size.
+  # Last, set node action(hide or display children nodes).
   #
+  # @params hostView: {object}, node list.
+  #   Options of hostView item:
+  #     `id`: Unique node id.
+  #     `name`: Node name.
+  #     `parent`: Optional, parent id.
+  #     `type`: Node type(root, cluster, host, vm).
+  #     `children`: Optional, children id list.
+  #     `not_show_children`: Optional, wether not show children node.
+  #     `running_vms`: Optional, optional key only for host node.
+  #
+  # @params target: {jQuery object}, host topology container.
+  # @params options: {object}, self define options.
   ###
   _drawTopology: (hostView, target, options) ->
     root = "root"
@@ -567,7 +589,8 @@ $cross.topology =
 
     lineStr = "<svg class='cross-topology-line' #{XMLNS} #{VERSION}>"
 
-    $this = angular.element "#cross_topology_node_id_#{hostView[root].id}"
+    thisId = "cross_topology_node_id_#{hostView[root].id}"
+    $this = angular.element "##{thisId}"
     left = parseInt($this.attr("left"))
     top = parseInt($this.attr("top"))
     rnd = parseFloat $this.attr("rnd")

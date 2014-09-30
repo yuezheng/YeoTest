@@ -6,7 +6,7 @@ routes =[
     url: '/instance'
     templateUrl: 'views/index.html'
     controller: 'InstanceCtr'
-    subState:
+    subStates: [{
       url: '/:instanceId'
       templateUrl: 'views/detail.html'
       controller: 'InstanceDetailCtr'
@@ -28,8 +28,27 @@ routes =[
         {
           url: '/monitor'
           templateUrl: 'views/_detail_monitor.html'
+          controller: 'InstanceMonCtr'
         }
       ]
+    }
+    {
+      url: '/:instId'
+      controller: "InstanceActionCtrl"
+      templateUrl: 'views/instanceAction.html'
+      subStates: [
+        {
+          url: '/snapshot'
+          modal: true
+          controller: "SnapshotCreatCtrl"
+        }
+        {
+          url: '/migrate'
+          modal: true
+          controller: "MigrateCtrl"
+        }
+      ]
+    }]
   }
 ]
 

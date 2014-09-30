@@ -1,0 +1,8 @@
+<tr class='cross-data-table-header'>
+  <th class='checkbox-in-table'>
+      <select-all-checkbox checkboxes='source' ng-if="datatable.showCheckbox" all-selected="AllSelectedItems" all-clear="NoSelectedItems"></select-all-checkbox>
+  </th>
+  <th ng-repeat='col in datatable.columnDefs' ng-class=col.field custom-sort order=col.field sort="sort">
+    {{col.displayName}}
+  </th>
+</tr>

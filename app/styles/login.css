@@ -130,6 +130,7 @@
 }
 
 .cross-login-container input:focus {
+  border-color: #29aaee;
   outline: none;
   outline-offset: 0;
 }

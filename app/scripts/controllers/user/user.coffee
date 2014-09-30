@@ -5,7 +5,7 @@ angular.module('Cross')
     $scope.username = ""
     $scope.userId = ""
     reqParams =
-      url: window.crossConfig.backendServer
+      url: $window.$CROSS.settings.serverURL
       method: 'GET'
       headers:
         'Authorization': 'Basic dGVzdDp0ZXN0'
@@ -15,7 +15,7 @@ angular.module('Cross')
         $scope.username = data.user.name
         $scope.userId = data.user.id
         userParams =
-          url: window.crossConfig.backendServer + "users/" + $scope.userId
+          url: "#{$window.$CROSS.settings.serverURL}/users/#{$scope.userId}"
           method: 'GET'
         $http userParams
           .success (data, status, headers) ->

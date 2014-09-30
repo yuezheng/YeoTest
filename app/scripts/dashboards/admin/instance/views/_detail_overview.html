@@ -1,6 +1,6 @@
 <div class='action_bar_in_detail'>
   <ul>
-  <li class='action_header'>Actions</li>
+      <li class='action_header'>{{ detailItem.actions }}</li>
   <li ng-repeat='action in actionList' class='instance_action'>
     <a ng-click="serverAction(action.name)" ng-class=action.name>{{action.verbose}}</a>
   </li>
@@ -8,53 +8,61 @@
 </div>
 
 <div class='base_info detail_info'>
-  <div class='detail_title'>Detail info</div>
+  <div class='detail_title'>{{ detailItem.info }}</div>
   <div class='detail_area'>
-    <div class='item_name'>
-      <ul>
-        <li>Name</li>
-        <li>Id</li>
-        <li>Status</li>
-        <li>Host</li>
-        <li>Project</li>
-        <li>Fixed IP</li>
-        <li>Floating IP</li>
-      </ul>
-    </div>
-    <div class='space'></div>
-    <div class='item_value'>
-      <ul>
-        <li>{{server_detail.name}}</li>
-        <li>{{server_detail.id}}</li>
-        <li>{{server_detail.status}}</li>
-        <li>{{server_detail.hypervisor_hostname}}</li>
-        <li>{{server_detail.project}}</li>
-        <li><span class='ip-list' ng-repeat='ip in server_detail.fixed'>{{ip}}</span></li>
-        <li><span class='ip-list' ng-repeat='ip in server_detail.floating'>{{ip}}</span></li>
-      </ul>
-    </div>
-    <div class='clear'></div>
+    <ul>
+      <li>
+        <span class="title">{{detailItem.item.name}}</span>
+        <span class="value"> {{server_detail.name}}</span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.item.id }}</span>
+        <span class="value">{{server_detail.id}}</span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.item.status }}</span>
+        <span class="value">{{server_detail.status}}</span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.item.host }}</span>
+        <span class="value">{{server_detail.hypervisor_hostname}}</span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.item.project }}</span>
+        <span class="value">{{server_detail.project}}</span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.item.fixed }}</span>
+        <span class="value">
+          <span class='ip-list' ng-repeat='ip in server_detail.fixed'>{{ip}}</span>
+        </span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.item.floating }}</span>
+        <span class="value">
+          <span class='ip-list' ng-repeat='ip in server_detail.floating'>{{ip}}</span>
+        </span>
+      </li>
+    </ul>
   </div>
 </div>
 
 <div class='other_info detail_info'>
-  <div class='detail_title'>Flavor Info</div>
+    <div class='detail_title'>{{ detailItem.flavorInfo }}</div>
   <div class='detail_area'>
-    <div class='item_name'>
-      <ul>
-        <li>VCPUS</li>
-        <li>RAM</li>
-        <li>Disk</li>
-      </ul>
-    </div>
-    <div class='space'></div>
-    <div class='item_value'>
-      <ul>
-        <li>{{server_detail.vcpus}}</li>
-        <li>{{server_detail.ram | unitSwitch}} GB</li>
-        <li>{{server_detail.disk}} GB</li>
-      </ul>
-    </div>
-    <div class='clear'></div>
+    <ul>
+      <li>
+        <span class="title">{{detailItem.floavorItem.cpu}}</span>
+        <span class="value"> {{server_detail.vcpus}}</span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.floavorItem.ram }}</span>
+        <span class="value">{{server_detail.ram}}</span>
+      </li>
+      <li>
+        <span class="title">{{ detailItem.floavorItem.disk }}</span>
+        <span class="value">{{server_detail.disk}}</span>
+      </li>
+    </ul>
   </div>
 </div>

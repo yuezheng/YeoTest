@@ -1,0 +1,8 @@
+<tr ng-repeat='item in datatable.data | orderBy:sort.sortingOrder:sort.reverse' ng-class="{even: $even, odd: $odd}" class='cross-data-table-body-row'>
+  <td class='cross-checkbox-in-table' ng-if="datatable.showCheckbox">
+    <input type='checkbox' ng-model="item.isSelected" ng-change='selectChange()'>
+  </td>
+  <td ng-repeat='col in datatable.columnDefs' class='cross-data-table-cell cellText'>
+    <div dynamic=col.cellTemplate></div>
+  </td>
+</tr>

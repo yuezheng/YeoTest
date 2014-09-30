@@ -1,7 +1,8 @@
 'use strict'
 
 angular.module('Cross.admin.instance')
-  .controller 'InstanceConsoleCtr', ($scope, $http, $window, $q, $stateParams, $state, $compile) ->
+  .controller 'admin.instance.InstanceConsoleCtr', ($scope, $http, $window,
+                                         $q, $stateParams, $state, $compile) ->
     $scope.consoleUrl = ''
     currentInstance = $stateParams.instanceId
 
@@ -25,5 +26,6 @@ angular.module('Cross.admin.instance')
         consoleFrame = angular.element("<iframe id='console_embed' src='#{$scope.consoleUrl}' style='width: 100%; height: 90%'></iframe>")
 
         vncTip.append(vncTipContent)
-        consoleArea.append(consoleFrame)
-      # TODO(ZhengYue): Add error tips
+        if angular.element('.console_area iframe').length == 0
+          consoleArea.append(consoleFrame)
+        # TODO(ZhengYue): Add error tips
